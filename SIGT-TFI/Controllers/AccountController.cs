@@ -72,15 +72,15 @@ namespace SIGT_TFI.Controllers
             {
                 return View(model);
             }
-            string firstname = "";
-            string lastname = "";
-            firstname = model[0].ToString(); //user
-            lastname = model[1].ToString();  //pass
+            string username = "";
+            string password = "";
+            username = model[0].ToString(); //user
+            password = model[1].ToString();  //pass
             //var input = Convert.ToString(model["inputEmail"]);
             //var password = Convert.ToString(model["password-input"]);
 
 
-            var user = await UserManager.FindAsync(firstname,lastname) ; if (user != null)
+            var user = await UserManager.FindAsync(username,password) ; if (user != null)
             {
                 if (user.EmailConfirmed == true)
                 {

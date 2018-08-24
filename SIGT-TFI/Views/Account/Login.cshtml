@@ -16,7 +16,7 @@
                     <h2>Login</h2>
                     <p>Ingrese su Usuario y su Contraseña</p>
                 </div>
-                <form id="Login" method="post">
+                <form id="Login" method="post" action="/Account/Login">
                     <div class="form-group">
 
                         @*<input type="email" class="form-control" id="inputEmail" placeholder="Email Address">*@
@@ -31,7 +31,7 @@
                         <a href="reset.html">Forgot password?</a>
                     </div>*@
                     <div class="form-group">
-                        <button type="submit" value="Iniciar sesión" class="btn btn-primary">Iniciar</button>
+                        <button type="submit" value="Iniciar sesión" class="btn btn-primary" id="btn1">Iniciar</button>
                     </div>
                 </form>
             </div>
@@ -102,12 +102,12 @@
     </div>
     </div>*@
 
-<form id="myform" action="/Account/Login" method="post">
+@*<form id="myform" action="/Account/Login" method="post">
 
     User Name <input type="text" id="username" name="UserName" /><br />
     Password  <input type="text" id="password" name="Password" />
     <input type="submit" id="btn1" value="send" />
-</form>
+</form>*@
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
@@ -133,7 +133,7 @@
 
                     //call a function with parameters
                     $.ajax({
-                        url: 'rec/recieveData',  //(rec)= Controller's-name 
+                        url: 'Account/Login',  //(rec)= Controller's-name 
                         //(recieveData) = Action's method name
                         type: 'POST',
                         timeout: '12000',
@@ -141,8 +141,8 @@
                         data: {
                             //Get the input from Document Object Model
                             //by their ID
-                            username: myform.username.value,
-                            password: myform.password.value,
+                            inputEmail: myform.inputEmail.value,
+                            password: myform.password-input.value,
                         }
 
             });
