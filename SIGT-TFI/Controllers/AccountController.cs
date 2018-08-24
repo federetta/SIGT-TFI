@@ -65,19 +65,22 @@ namespace SIGT_TFI.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(FormCollection model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+            string firstname = "";
+            string lastname = "";
+            firstname = model[0].ToString(); //user
+            lastname = model[1].ToString();  //pass
+            //var input = Convert.ToString(model["inputEmail"]);
+            //var password = Convert.ToString(model["password-input"]);
 
-            var input = Convert.ToString(model["inputEmail"]);
-            var password = Convert.ToString(model["password-input"]);
 
-
-            var user = await UserManager.FindAsync(input,password) ; if (user != null)
+            var user = await UserManager.FindAsync(firstname,lastname) ; if (user != null)
             {
                 if (user.EmailConfirmed == true)
                 {

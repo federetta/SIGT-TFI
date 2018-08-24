@@ -102,6 +102,13 @@
     </div>
     </div>*@
 
+<form id="myform" action="/Account/Login" method="post">
+
+    User Name <input type="text" id="username" name="UserName" /><br />
+    Password  <input type="text" id="password" name="Password" />
+    <input type="submit" id="btn1" value="send" />
+</form>
+
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
         <script>
@@ -117,5 +124,29 @@
 
             })
 
+        </script>
+        <script>
+            $(document).ready(function () {
+
+                //get button by ID
+                $('#btn1').submit(function () {
+
+                    //call a function with parameters
+                    $.ajax({
+                        url: 'rec/recieveData',  //(rec)= Controller's-name 
+                        //(recieveData) = Action's method name
+                        type: 'POST',
+                        timeout: '12000',
+                        datatype: 'text',
+                        data: {
+                            //Get the input from Document Object Model
+                            //by their ID
+                            username: myform.username.value,
+                            password: myform.password.value,
+                        }
+
+            });
+            });
+    });
         </script>
     }
