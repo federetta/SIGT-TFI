@@ -66,19 +66,22 @@ namespace SIGT_TFI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(FormCollection model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
+            var input = Convert.ToString(model["inputEmail"]);
+            var password = Convert.ToString(model["password-input"]);
 
-            var user = await UserManager.FindAsync(model.Email, model.Password); if (user != null)
+
+            var user = await UserManager.FindAsync(input,password) ; if (user != null)
             {
                 if (user.EmailConfirmed == true)
                 {
-                    await SignInManager.SignInAsync(user, model.RememberMe, true); return RedirectToLocal(returnUrl);
+                    await SignInManager.SignInAsync(user, true, true); return RedirectToLocal(returnUrl);
                 }
                 else
                 {

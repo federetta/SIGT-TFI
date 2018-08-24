@@ -1,4 +1,4 @@
-﻿body#LoginForm {
+﻿section#LoginForm {
     /*background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg");*/
     /*background-repeat: no-repeat;
     background-position: center;
@@ -90,4 +90,42 @@
         color: #444444;
         font-size: 13px;
         text-decoration: none;
+    }
+#ojito {
+    width: 19%;
+    display: inline-block;
+    overflow: auto;
+  
+}
+
+#password-input {
+    width: 79%;
+    display: inline-block;
+    overflow: auto;
+}
+
+#ojito2 {
+    width: 19%;
+    display: inline-block;
+    overflow: auto;
+}
+
+#password-input2 {
+    width: 79%;
+    display: inline-block;
+    overflow: auto;
+}
+
+#login {
+    margin: auto;
+    text-align: center;
+    width: 60%;
+    padding: 10px;
+}
+
+    #login .form-group {
+        margin: auto;
+        text-align: center;
+        width: 60%;
+        padding: 10px;
     }

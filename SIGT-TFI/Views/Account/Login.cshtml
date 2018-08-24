@@ -3,25 +3,20 @@
 @{
     ViewBag.Title = "Iniciar sesión";
 }
-<h2>@ViewBag.Title.</h2>
+@*<h2>@ViewBag.Title.</h2>*@
 
 
 <link href="~/Content/Login.css" rel="stylesheet" />
-<head>
-</head>
 
-<body id="LoginForm">
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
+<section id="LoginForm">
         <div class="container">
-        <h1 class="form-heading">login Form</h1>
         <div class="login-form">
             <div class="main-div">
                 <div class="panel">
-                    <h2>Admin Login</h2>
-                    <p>Please enter your email and password</p>
+                    <h2>Login</h2>
+                    <p>Ingrese su Usuario y su Contraseña</p>
                 </div>
-                <form id="Login">
+                <form id="Login" method="post">
                     <div class="form-group">
 
                         @*<input type="email" class="form-control" id="inputEmail" placeholder="Email Address">*@
@@ -30,52 +25,59 @@
                     <div class="form-group">
                         @*<input type="password" class="form-control" id="inputPassword" placeholder="Password">*@
                         <input class="form-control" data-val="true" data-val-required="El campo Contraseña es obligatorio." id="password-input" name="password" type="password" placeholder="Password">
-                        <button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
+                        <button class="btn btn-default reveal" id="ojito" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
                     </div>
-                    <div class="forgot">
+                    @*<div class="forgot">
                         <a href="reset.html">Forgot password?</a>
+                    </div>*@
+                    <div class="form-group">
+                        <button type="submit" value="Iniciar sesión" class="btn btn-primary">Iniciar</button>
                     </div>
-                    <button input type="submit" value="Iniciar sesión" class="btn btn-primary">Login</button>
                 </form>
             </div>
 
         </div>
     </div>
-    }
+</section>
 
-</body>
+    @*<div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>*@
 
 
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
+@*<div class="row">
+    <div class="col-md-12">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use una cuenta local para iniciar sesión.</h4>
+            <div id="login">
+                <h4>Ingrese su Usuario y su Contraseña.</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+                    @*<div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" , @placeholder = "Email" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                <div class="form-group">*@
+                    @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                    @*<div class="col-md-10">*@
                         @*@Html.PasswordFor(m => m.Password, new { @class = "form-control" })*@
-                        @*<input class="form-control" data-val="true" data-val-required="El campo Contraseña es obligatorio." id="password-input" name="password" type="password">
+                        @*<input class="form-control" data-val="true" data-val-required="El campo Contraseña es obligatorio." id="password-input2" name="password" type="password" , placeholder = "Contraseña">*@
 
-                        <span class="input-group-btn">
-                            <button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
-                        </span>*@
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                        @*<span class="input-group-btn">*@
+                        @*<button class="btn btn-default reveal" id="ojito2" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>*@
+                        @*</span>*@
 
-                <div class="form-group">
+                        @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+                    @*</div>
+                </div>*@
+
+                @*<div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
@@ -87,37 +89,33 @@
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Iniciar sesión" class="btn btn-default" />
                     </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Registrar como nuevo usuario", "Register")
-                </p>
+                </div>*@
+                @*<p>
+                    @Html.ActionLink("Registrar como nuevo usuario", "Register")*@
+                @*</p>
                 //Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
                 <p>
                     @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
                 </p>
+            </div>
             }
-        </section>
     </div>
-    @*<div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
     </div>*@
-</div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
 
-        $(".reveal").on('click', function () {
-            var $input = $('#password-input');
-            var currentInputType = $input.attr('type');
-            var inputStatus = {
-                text: 'password',
-                password: 'text'
-            };
-            $input.attr('type', inputStatus[currentInputType]);
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
 
-        })
+            $(".reveal").on('click', function () {
+                var $input = $('#password-input');
+                var currentInputType = $input.attr('type');
+                var inputStatus = {
+                    text: 'password',
+                    password: 'text'
+                };
+                $input.attr('type', inputStatus[currentInputType]);
 
-    </script>
-}
+            })
+
+        </script>
+    }
