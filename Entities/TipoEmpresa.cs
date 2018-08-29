@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace Entities
 {
-    public class Class1
+    public class TipoEmpresa
     {
+        public int id { get; set; }
+        public String nombre { get; set; }
     }
 }

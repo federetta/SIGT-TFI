@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Class1
+    public class TipoContribuyente
     {
+        public int id { get; set; }
+        public String nombre { get; set; }
     }
 }
