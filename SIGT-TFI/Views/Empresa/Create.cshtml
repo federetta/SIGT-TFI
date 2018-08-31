@@ -1,9 +1,22 @@
 ﻿@model Entities.Empresa
 
+
+
+
 @{
     ViewBag.Title = "Create";
 }
-
+@{ var listadoTipoEmpresa = new List<SelectListItem>();
+    foreach (var std in ViewData["TipoEmpresa"] as IEnumerable<Entities.TipoEmpresa>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.Id.ToString()
+        };
+        listadoTipoEmpresa.Add(elemento);
+    }
+};
 <h2>Create</h2>
 
 
@@ -48,10 +61,12 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Tipo_Empresa.id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                <label>Tipo Empresa</label>
+            </div>
+            @*@Html.LabelFor(model => model.Tipo_Empresa.id, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Tipo_Empresa.id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Tipo_Empresa.id, "", new { @class = "text-danger" })
+               @Html.DropDownList("TipoEmpresa", listadoTipoEmpresa,  new { @class = "form-control dropdown-toggle" })
             </div>
         </div>
 

@@ -13,6 +13,7 @@ namespace SIGT_TFI.Controllers
         // GET: Empresa
         public ActionResult Index()
         {
+            
             return View();
         }
 
@@ -23,8 +24,11 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Empresa/Create
-        public ActionResult Create()
+        public ActionResult Create(int TipoEmpresa = -1)
         {
+            var be = new BLLEmpresa();
+            var bte = new BLL.BLLTipoEmpresa();
+            ViewData["TipoEmpresa"] = bte.All();
             return View();
         }
 
@@ -34,7 +38,7 @@ namespace SIGT_TFI.Controllers
         {
             try
             {
-                 BLLEmpresa bllempresa = new BLLEmpresa();
+                BLLEmpresa bllempresa = new BLLEmpresa();
                 bllempresa.Insertarempresa(empresa);
                 return RedirectToAction("Index");
             }

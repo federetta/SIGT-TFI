@@ -1,9 +1,13 @@
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\DAL.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\DAL.pdb
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Entities.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Services.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Entities.pdb
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Services.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Debug\DAL.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Debug\DAL.pdb

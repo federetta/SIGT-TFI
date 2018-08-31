@@ -11,7 +11,7 @@ namespace DAL
     /// </summary>
     public abstract class DataAccessComponent
     {
-        protected const string ConnectionName = "Data Source=frdell\\sqlexpress;Initial Catalog=SIGT_Web;Integrated Security=True";
+        protected const string ConnectionName = "default";
 
         static DataAccessComponent()
         {

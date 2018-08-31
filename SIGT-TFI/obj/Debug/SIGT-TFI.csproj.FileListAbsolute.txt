@@ -261,6 +261,8 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\b
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\SIGT-TFI.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\SIGT-TFI.pdb
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Antlr3.Runtime.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\BLL.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Entities.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\EntityFramework.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\EntityFramework.SqlServer.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.AI.Agent.Intercept.dll
@@ -294,6 +296,12 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\b
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\System.Web.WebPages.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\System.Web.WebPages.Razor.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\WebGrease.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\DAL.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Services.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\BLL.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Entities.pdb
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\System.Web.Helpers.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\System.Web.Mvc.xml
@@ -323,6 +331,10 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\b
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.AI.Web.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\DAL.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Services.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\es\System.Web.Helpers.resources.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\es\System.Web.Mvc.resources.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\es\System.Web.Optimization.resources.dll
@@ -345,11 +357,3 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\b
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\SIGT-TFI.csprojResolveAssemblyReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\SIGT-TFI.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\SIGT-TFI.pdb
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\BLL.dll
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Entities.dll
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\DAL.dll
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Services.dll
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\BLL.pdb
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Entities.pdb
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\DAL.pdb
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\Services.pdb
