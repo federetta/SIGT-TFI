@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Entities
-{
+{   [Serializable]
+
     public class Empresa
     {
         [DisplayName("id")]
@@ -21,9 +24,12 @@ namespace Entities
         [DisplayName("Cuit")]
         [Browsable(false)]
         public int Cuit { get; set; }
-        public TipoContribuyente TipoContribuyente { get; set; }
-        public TipoEmpresa Tipo_Empresa { get; set; }
+        public int Tipo_Contribuyente { get; set; }
+        //public TipoEmpresa Tipo_Empresa { get; set; }
         
+        [DisplayName("Tipo_Empresa")]
+        public int Tipo_Empresa { get; set; }
+
 
     }
 }

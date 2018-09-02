@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALEmpresa.cs" />
+    <Compile Include="DALTipoContribuyente.cs" />
     <Compile Include="DALTipoEmpresa.cs" />
     <Compile Include="DataAccessComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

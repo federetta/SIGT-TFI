@@ -1,13 +1,10 @@
 ﻿@model Entities.Empresa
 
-
-
-
 @{
     ViewBag.Title = "Create";
 }
 @{ var listadoTipoEmpresa = new List<SelectListItem>();
-    foreach (var std in ViewData["TipoEmpresa"] as IEnumerable<Entities.TipoEmpresa>)
+    foreach (var std in ViewData["TipoEmpresa"] as IList<Entities.TipoEmpresa>)
     {
         var elemento = new SelectListItem()
         {
@@ -16,7 +13,19 @@
         };
         listadoTipoEmpresa.Add(elemento);
     }
-};
+}
+
+@{ var listadoTipoContribuyente = new List<SelectListItem>();
+    foreach (var std in ViewData["TipoContribuyente"] as IList<Entities.TipoContribuyente>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.nombre,
+            Value = std.id.ToString()
+        };
+        listadoTipoContribuyente.Add(elemento);
+    }
+}
 <h2>Create</h2>
 
 
@@ -53,10 +62,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TipoContribuyente.id, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tipo_Contribuyente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TipoContribuyente.id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TipoContribuyente.id, "", new { @class = "text-danger" })
+                @Html.DropDownList("Tipo_Contribuyente", listadoTipoContribuyente, new { @class = "form-control dropdown-toggle" })
+                @Html.ValidationMessageFor(model => model.Tipo_Contribuyente, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -64,9 +73,9 @@
             <div class="col-md-2">
                 <label>Tipo Empresa</label>
             </div>
-            @*@Html.LabelFor(model => model.Tipo_Empresa.id, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @Html.LabelFor(model => model.Tipo_Empresa, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-               @Html.DropDownList("TipoEmpresa", listadoTipoEmpresa,  new { @class = "form-control dropdown-toggle" })
+               @Html.DropDownList("Tipo_Empresa", listadoTipoEmpresa,  new { @class = "form-control dropdown-toggle" })
             </div>
         </div>
 

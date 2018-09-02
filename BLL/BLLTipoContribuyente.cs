@@ -8,14 +8,16 @@ using Entities;
 
 namespace BLL
 {
-    public class BLLTipoEmpresa
+    public class BLLTipoContribuyente
     {
-        public List<TipoEmpresa> All()
+        public List<TipoContribuyente> All()
         {
-            var TipoEmpresaDac = new DALTipoEmpresa();
-            var result = TipoEmpresaDac.Select();
+            var TipoContribuyenteDAC = new DALTipoContribuyente();
+            var result = TipoContribuyenteDAC.Select();
             return result;
         }
 
     }
+
 }
+

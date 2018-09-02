@@ -24,12 +24,14 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Empresa/Create
-        public ActionResult Create(int TipoEmpresa = -1)
+        public ActionResult Create()
         {
             var be = new BLLEmpresa();
             var bte = new BLL.BLLTipoEmpresa();
+            var btc = new BLLTipoContribuyente();
             ViewData["TipoEmpresa"] = bte.All();
-            return View();
+            ViewData["TipoContribuyente"] = btc.All();
+             return View();
         }
 
         // POST: Empresa/Create

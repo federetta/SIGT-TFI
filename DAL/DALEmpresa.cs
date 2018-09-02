@@ -25,8 +25,8 @@ namespace DAL
                 cmd.Parameters.Add("@razonSocial_empresa", SqlDbType.NVarChar).Value = empresa.RazonSocial;
                 cmd.Parameters.Add("@NombreFantasia_empresa", SqlDbType.NVarChar).Value = empresa.NombreFantasia;
                 cmd.Parameters.Add("@Cuit_empresa", SqlDbType.NVarChar).Value = empresa.Cuit;
-                cmd.Parameters.Add("@TipoContribuyente_empresa", SqlDbType.Int).Value = empresa.TipoContribuyente.id;
-                cmd.Parameters.Add("@Tipo_empresa", SqlDbType.Int).Value = empresa.Tipo_Empresa.Id;
+                cmd.Parameters.Add("@TipoContribuyente_empresa", SqlDbType.Int).Value = empresa.Tipo_Contribuyente;
+                cmd.Parameters.Add("@Tipo_empresa", SqlDbType.Int).Value = empresa.Tipo_Empresa;
                 
                 // Declaro el ID para retornarlo en el textbox
                 //cmd.Parameters.Add("@id_empresa", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -79,8 +79,8 @@ namespace DAL
                 db.AddInParameter(cmd, "@razonSocial_empresa", DbType.String, empresa.RazonSocial);
                 db.AddInParameter(cmd, "@NombreFantasia_empresa", DbType.String, empresa.NombreFantasia);
                 db.AddInParameter(cmd, "@Cuit_Empresa", DbType.Int32, empresa.Cuit);
-                db.AddInParameter(cmd, "@TipoContribuyente_empresa", DbType.String, empresa.TipoContribuyente.id);
-                db.AddInParameter(cmd, "@Tipo_empresa", DbType.Int32, empresa.Tipo_Empresa.Id);
+                db.AddInParameter(cmd, "@TipoContribuyente_empresa", DbType.String, empresa.Tipo_Contribuyente);
+                db.AddInParameter(cmd, "@Tipo_empresa", DbType.Int32, empresa.Tipo_Empresa);
                 db.AddInParameter(cmd, "@Id_empresa", DbType.Int32, empresa.id);
                 db.ExecuteNonQuery(cmd);
             }
@@ -130,12 +130,13 @@ namespace DAL
         {
             var empresa = new Empresa
             {
+                                
                 id = GetDataValue<int>(dr, "Id_empresa"),
                 RazonSocial = GetDataValue<string>(dr, "razonSocial_empresa"),
-                NombreFantasia = GetDataValue<string>(dr, "Description"),
-                Cuit = GetDataValue<int>(dr, "DealerId"),
-                //TipoContribuyente = GetDataValue<int>(dr, "Image"),
-                //Tipo_Empresa = GetDataValue<int>(dr, "Price"),
+                NombreFantasia = GetDataValue<string>(dr, "NombreFantasia_empresa"),
+                Cuit = GetDataValue<int>(dr, "Cuit_Empresa"),
+                Tipo_Contribuyente = GetDataValue<int>(dr, "TipoContribuyente_empresa"),
+                Tipo_Empresa = GetDataValue<int>(dr, "Tipo_empresa"),
                 
             };
 
