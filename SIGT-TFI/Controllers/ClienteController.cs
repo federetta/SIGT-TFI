@@ -1,29 +1,31 @@
-﻿using System;
+﻿using BLL;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Entities;
-using BLL;
 
 namespace SIGT_TFI.Controllers
 {
-    public class EmpresaController : Controller
+    public class ClienteController : Controller
     {
-        // GET: Empresa
-        public ActionResult Index()
+        // GET: Cliente
+        public vie Index()
         {
+            var cp = new BLLEmpresa();
+            var lista = cp.All();
+            return View(lista);
             
-            return View();
         }
 
-        // GET: Empresa/Details/5
+        // GET: Cliente/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Empresa/Create
+        // GET: Cliente/Create
         public ActionResult Create()
         {
             var be = new BLLEmpresa();
@@ -31,28 +33,22 @@ namespace SIGT_TFI.Controllers
             var btc = new BLLTipoContribuyente();
             ViewData["TipoEmpresa"] = bte.All();
             ViewData["TipoContribuyente"] = btc.All();
-             return View();
-        }
-
-        // GET: Cliente/Create
-        public ActionResult CreateCliente()
-        {
-            var be = new BLLEmpresa();
-            var bte = new BLL.BLLTipoEmpresa();
-            var btc = new BLLTipoContribuyente();
-            ViewData["TipoEmpresa"] = bte.All();
-            ViewData["TipoContribuyente"] = btc.All();
             return View();
         }
 
-        // POST: Empresa/Create
+        // POST: Cliente/Create
         [HttpPost]
         public ActionResult Create(Empresa empresa)
         {
             try
             {
-                BLLEmpresa bllempresa = new BLLEmpresa();
-                bllempresa.CreateCliente(empresa);
+                empresa.Tipo_Empresa = 1;
+                var be = new BLLEmpresa();
+                var bte = new BLL.BLLTipoEmpresa();
+                var btc = new BLLTipoContribuyente();
+                ViewData["TipoEmpresa"] = bte.All();
+                ViewData["TipoContribuyente"] = btc.All();
+                be.CreateCliente(empresa);
                 return RedirectToAction("Index");
             }
             catch
@@ -61,13 +57,13 @@ namespace SIGT_TFI.Controllers
             }
         }
 
-        // GET: Empresa/Edit/5
+        // GET: Cliente/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Empresa/Edit/5
+        // POST: Cliente/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -83,13 +79,13 @@ namespace SIGT_TFI.Controllers
             }
         }
 
-        // GET: Empresa/Delete/5
+        // GET: Cliente/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Empresa/Delete/5
+        // POST: Cliente/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

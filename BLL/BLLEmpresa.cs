@@ -11,13 +11,28 @@ namespace BLL
     public class BLLEmpresa
     {
         DALEmpresa dalempresa = new DALEmpresa();
-        public Entities.Empresa Insertarempresa(Entities.Empresa objeto)
+        //public Entities.Empresa Insertarempresa(Entities.Empresa objeto)
+        //{
+        //    try
+        //    {
+        //        dalempresa.InsertarEmpresa(objeto);
+        //        // Guardo una bitacora Local
+              
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+        //        throw ex;
+        //    }
+        //    return objeto;
+        //}
+        public Entities.Empresa CreateCliente(Entities.Empresa objeto)
         {
             try
             {
-                dalempresa.InsertarEmpresa(objeto);
+                dalempresa.CreateCliente(objeto);
                 // Guardo una bitacora Local
-              
+
             }
             catch (Exception ex)
             {
@@ -26,6 +41,13 @@ namespace BLL
             }
             return objeto;
         }
-       
+
+        public List<Empresa> All()
+        {
+            var clienteDac = new DALEmpresa();
+            var result = clienteDac.Select();
+            return result;
+        }
+
     }
 }
