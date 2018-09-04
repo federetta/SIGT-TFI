@@ -1,0 +1,67 @@
+﻿@model IPagedList<Entities.Empresa>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2> 
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @using (Html.BeginForm("Index","Empresa", FormMethod.Get)) {  
+    <b>Buscar por Nombre:</b>
+    @Html.TextBox("Search") <input type="submit" value="Search" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().RazonSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NombreFantasia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Cuit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Tipo_Contribuyente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Tipo_Empresa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazonSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_Contribuyente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_Empresa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

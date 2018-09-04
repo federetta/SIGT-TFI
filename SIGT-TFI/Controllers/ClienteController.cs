@@ -6,23 +6,42 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace SIGT_TFI.Controllers
 {
     public class ClienteController : Controller
     {
         // GET: Cliente
-        public vie Index()
+        public ActionResult Index()
         {
+           
+            
             var cp = new BLLEmpresa();
             var lista = cp.All();
+
             return View(lista);
-            
+
         }
+        public ActionResult IndexSearch(string text)
+        {
+
+            text = "pr";
+            var cp = new BLLEmpresa();
+            var lista = cp.Search(text);
+
+            return View(lista);
+
+        }
+
+
 
         // GET: Cliente/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var cp = new BLLEmpresa();
+            var empresa = cp.SelectByID(id);
+
+            return View(empresa);
         }
 
         // GET: Cliente/Create
@@ -60,7 +79,11 @@ namespace SIGT_TFI.Controllers
         // GET: Cliente/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var cp = new BLLEmpresa();
+            var empresa = cp.SelectByID(id);
+
+            return View(empresa);
+           
         }
 
         // POST: Cliente/Edit/5

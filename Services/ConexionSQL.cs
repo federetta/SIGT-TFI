@@ -10,7 +10,7 @@ namespace Services
     public class ConexionSQL
     {
         private SqlConnection conexion;
-        private string connectionString;
+        //private string connectionString;
 
         public SqlConnection ConectarBaseDatos()
         {

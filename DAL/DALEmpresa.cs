@@ -38,7 +38,7 @@ namespace DAL
 
             return empresa;
         }
-        
+
         //public Entities.Empresa InsertarEmpresa(Entities.Empresa empresa)
         //{
         //    var db = DatabaseFactory.CreateDatabase("Data Source = frdell\\sqlexpress; Initial Catalog = SIGT_Web; Integrated Security = True");
@@ -67,9 +67,9 @@ namespace DAL
         //    }
         //    conexion.DesconectarBaseDatos();
         //    return empresa;
-    
 
-    private void agregarParametro(SqlCommand cmd, string nombre, object valor, ParameterDirection direccion, SqlDbType tipo)
+
+        private void agregarParametro(SqlCommand cmd, string nombre, object valor, ParameterDirection direccion, SqlDbType tipo)
         {
             SqlParameter parametro = cmd.CreateParameter();
             parametro.ParameterName = nombre;
@@ -85,7 +85,7 @@ namespace DAL
         /// <param name="product"></param>
         public void UpdateById(Empresa empresa)
 
-          
+
         {
             const string sqlStatement = "UPDATE dbo.Empresa " +
                 "SET [RazonSocial]=@razonSocial_empresa, " +
@@ -138,6 +138,49 @@ namespace DAL
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
             {
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var empresa = LoadEmpresa(dr); // Mapper
+                        result.Add(empresa);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public Empresa SelectbyID(int id)
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa], [TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa WHERE [Id_empresa]=@Id_empresa ";
+
+            Empresa empresa = null;
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@Id_empresa", DbType.Int32, id);
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read()) empresa = LoadEmpresa(dr);
+                }
+
+            }
+            return empresa;
+        }
+           
+    
+        public List<Empresa> Search(string text)
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa],[TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa Where [razonSocial_empresa]  LIKE '%@text%' ";
+
+            var result = new List<Empresa>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@text", DbType.String, text);
                 using (var dr = db.ExecuteReader(cmd))
                 {
                     while (dr.Read())

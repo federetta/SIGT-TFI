@@ -5,16 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 using Entities;
 using BLL;
+using PagedList;
+using PagedList.Mvc;
 
 namespace SIGT_TFI.Controllers
 {
     public class EmpresaController : Controller
     {
         // GET: Empresa
-        public ActionResult Index()
+        public ActionResult Index(string search,int ? page)
         {
-            
-            return View();
+            var cp = new BLLEmpresa();
+            var lista = cp.All();
+            //if(searchBy == "Gender")
+            //{
+            //    return View(lista.Where(x => x.Tipo_Contribuyente = search || search == null).ToList().ToPagedList(page ?? 1, 10));
+
+            //}
+            //else
+            return View(lista.Where(x => x.RazonSocial.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 10));
+            //var cp = new BLLEmpresa();
+            //var lista = cp.All();
+            return View(lista.ToList().ToPagedList(page ?? 1, 10));
+
         }
 
         // GET: Empresa/Details/5
@@ -64,7 +77,10 @@ namespace SIGT_TFI.Controllers
         // GET: Empresa/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var cp = new BLLEmpresa();
+            var empresa = cp.SelectByID(id);
+
+            return View(empresa);
         }
 
         // POST: Empresa/Edit/5

@@ -49,5 +49,18 @@ namespace BLL
             return result;
         }
 
+        public List<Empresa> Search(string text)
+        {
+            var clienteDac = new DALEmpresa();
+            var result = clienteDac.Search(text);
+            return result;
+
+        }
+        public Empresa SelectByID(int id)
+        {
+            var clienteDac = new DALEmpresa();
+            var result = clienteDac.SelectbyID(id);
+            return result;
+        }
     }
 }
