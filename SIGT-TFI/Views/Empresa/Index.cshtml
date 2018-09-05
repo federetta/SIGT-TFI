@@ -5,14 +5,14 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <h2>Index</h2> 
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <p>
-    @using (Html.BeginForm("Index","Empresa", FormMethod.Get)) {  
+    @using (Html.BeginForm("Index","Empresa", FormMethod.Get)) {
     <b>Buscar por Nombre:</b>
     @Html.TextBox("Search") <input type="submit" value="Search" />
     }
@@ -55,9 +55,17 @@
             @Html.DisplayFor(modelItem => item.Tipo_Empresa)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |*@
+            <a href="@Url.Action("Edit", "Empresa", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Editar!">
+                <span class="far fa-edit"></span>
+            </a>|
+            @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.id }) |
+            <a href="@Url.Action("Details", "Detalles", new { id = item.id })" data-toggle="tooltip">
+            <span class="glyphicon glyphicon-search"></span></a>
+            @*@Url.Action("Details", "Detalles", new { id = item.id, @class = "form-control glyphicon glyphicon-search" })*@
+
+
         </td>
     </tr>
 }
@@ -65,3 +73,14 @@
 </table>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+}

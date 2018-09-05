@@ -13,21 +13,13 @@ namespace SIGT_TFI.Controllers
     public class EmpresaController : Controller
     {
         // GET: Empresa
-        public ActionResult Index(string search,int ? page)
+        public ActionResult Index(string search, int ? page)
         {
             var cp = new BLLEmpresa();
             var lista = cp.All();
-            //if(searchBy == "Gender")
-            //{
-            //    return View(lista.Where(x => x.Tipo_Contribuyente = search || search == null).ToList().ToPagedList(page ?? 1, 10));
-
-            //}
-            //else
-            return View(lista.Where(x => x.RazonSocial.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 10));
-            //var cp = new BLLEmpresa();
-            //var lista = cp.All();
-            return View(lista.ToList().ToPagedList(page ?? 1, 10));
-
+            if (search == null) search = "";
+            return View(lista.Where(x => x.RazonSocial.ToUpper().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+           
         }
 
         // GET: Empresa/Details/5
