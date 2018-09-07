@@ -67,7 +67,7 @@ namespace SIGT_TFI.Controllers
                 var btc = new BLLTipoContribuyente();
                 ViewData["TipoEmpresa"] = bte.All();
                 ViewData["TipoContribuyente"] = btc.All();
-                be.CreateCliente(empresa);
+                be.CreateProveedor(empresa);
                 return RedirectToAction("Index");
             }
             catch

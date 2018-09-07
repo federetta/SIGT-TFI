@@ -23,10 +23,11 @@ namespace Entities
         public String NombreFantasia { get; set; }
         [DisplayName("Cuit")]
         [Browsable(false)]
-        public Int32 Cuit { get; set; }
+        public string Cuit { get; set; }
         public int Tipo_Contribuyente { get; set; }
+        public string Tipo_Name { get; set; }
         //public TipoEmpresa Tipo_Empresa { get; set; }
-        
+
         [DisplayName("Tipo_Empresa")]
         public int Tipo_Empresa { get; set; }
 

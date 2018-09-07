@@ -10,13 +10,15 @@ using PagedList.Mvc;
 
 namespace SIGT_TFI.Controllers
 {
-    public class EmpresaController : Controller
+    public class ProveedorController : Controller
     {
         // GET: Empresa
         public ActionResult Index(string search, int ? page)
         {
             var cp = new BLLEmpresa();
             var lista = cp.All();
+            var btc = new BLLTipoContribuyente();
+            ViewData["TipoContribuyente"] = btc.All();
             if (search == null) search = "";
             return View(lista.Where(x => x.RazonSocial.ToUpper().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
            
@@ -40,24 +42,25 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Cliente/Create
-        public ActionResult CreateCliente()
+        public ActionResult CreateProveedor()
         {
             var be = new BLLEmpresa();
             var bte = new BLL.BLLTipoEmpresa();
             var btc = new BLLTipoContribuyente();
-            ViewData["TipoEmpresa"] = bte.All();
             ViewData["TipoContribuyente"] = btc.All();
+            ViewData["TipoEmpresa"] = bte.All();
+            
             return View();
         }
 
         // POST: Empresa/Create
         [HttpPost]
-        public ActionResult Create(Empresa empresa)
+        public ActionResult Create(Empresa proveedor)
         {
             try
             {
                 BLLEmpresa bllempresa = new BLLEmpresa();
-                bllempresa.CreateCliente(empresa);
+                bllempresa.CreateProveedor(proveedor);
                 return RedirectToAction("Index");
             }
             catch
@@ -69,6 +72,8 @@ namespace SIGT_TFI.Controllers
         // GET: Empresa/Edit/5
         public ActionResult Edit(int id)
         {
+            var btc = new BLLTipoContribuyente();
+            ViewData["TipoContribuyente"] = btc.All();
             var cp = new BLLEmpresa();
             var empresa = cp.SelectByID(id);
 
@@ -77,13 +82,16 @@ namespace SIGT_TFI.Controllers
 
         // POST: Empresa/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Empresa proveedor)
         {
             try
             {
-                // TODO: Add update logic here
-
+                var btc = new BLLTipoContribuyente();
+                ViewData["TipoContribuyente"] = btc.All();
+                BLLEmpresa bllempresa = new BLLEmpresa();
+                bllempresa.UpdateProveedor(proveedor);
                 return RedirectToAction("Index");
+                
             }
             catch
             {

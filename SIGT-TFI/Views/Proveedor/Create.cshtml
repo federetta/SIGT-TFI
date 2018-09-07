@@ -3,18 +3,6 @@
 @{
     ViewBag.Title = "Create";
 }
-@{ var listadoTipoEmpresa = new List<SelectListItem>();
-    foreach (var std in ViewData["TipoEmpresa"] as IList<Entities.TipoEmpresa>)
-    {
-        var elemento = new SelectListItem()
-        {
-            Text = std.Nombre,
-            Value = std.Id.ToString()
-        };
-        listadoTipoEmpresa.Add(elemento);
-    }
-}
-
 @{ var listadoTipoContribuyente = new List<SelectListItem>();
     foreach (var std in ViewData["TipoContribuyente"] as IList<Entities.TipoContribuyente>)
     {
@@ -66,16 +54,6 @@
             <div class="col-md-10">
                 @Html.DropDownList("Tipo_Contribuyente", listadoTipoContribuyente, new { @class = "form-control dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.Tipo_Contribuyente, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-2">
-                <label>Tipo Empresa</label>
-            </div>
-            @Html.LabelFor(model => model.Tipo_Empresa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Html.DropDownList("Tipo_Empresa", listadoTipoEmpresa,  new { @class = "form-control dropdown-toggle" })
             </div>
         </div>
 
