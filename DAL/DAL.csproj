@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALContacto.cs" />
     <Compile Include="DALEmpresa.cs" />
+    <Compile Include="DALTipoContacto.cs" />
     <Compile Include="DALTipoContribuyente.cs" />
     <Compile Include="DALTipoEmpresa.cs" />
     <Compile Include="DALTransporte.cs" />

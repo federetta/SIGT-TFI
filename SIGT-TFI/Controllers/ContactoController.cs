@@ -3,62 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BLL;
 using Entities;
+using BLL;
 
 namespace SIGT_TFI.Controllers
 {
-    public class TransporteController : Controller
+    public class ContactoController : Controller
     {
-        // GET: Transporte
+        // GET: Contacto
         public ActionResult Index(int id)
         {
-            var cp = new BLL.BLLTransporte();
-            var lista = cp.ListByProviderID(id);
-            var transporte = new Transporte();
-            TempData["mydata"] = transporte.IdProveedor;
+            var cp = new BLLContacto();
+            var lista = cp.ListByCompanyID(id);
+            var btc = new BLLTipoContacto();
+            ViewData["TipoContacto"] = btc.All();
+            //var transporte = new Transporte();
+            //TempData["mydata"] = transporte.IdProveedor;
             return View(lista);
         }
 
-        // GET: Transporte/Details/5
+        // GET: Contacto/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Transporte/Create
+        // GET: Contacto/Create
         public ActionResult Create(int id)
         {
-            var blltipocontacto = new BLLTipoContacto();
-            ViewData["TipoContacto"] = blltipocontacto.All();
-            var tranp = new Transporte();
-            tranp.IdProveedor = id;
+            var btc = new BLLTipoContacto();
+            ViewData["TipoContacto"] = btc.All();
+            var contacto = new Contacto();
+            contacto.idempresa = id;
 
-            return View(tranp);
+            return View(contacto);
         }
 
-        // POST: Transporte/Create
+        // POST: Contacto/Create
         [HttpPost]
-        public ActionResult Create(Transporte transporte, int id)
+        public ActionResult Create(Contacto contacto, int id)
         {
-          
-            BLLTransporte blltransporte = new BLLTransporte();
-            transporte.IdProveedor = id;
-            
 
-            blltransporte.CreateProveedor(transporte);
-                return RedirectToAction("Index", new { id = id });
-          
-          
+            BLLContacto bll = new BLLContacto();
+            contacto.idempresa = id;
+           contacto.id = 0;
+
+            bll.CreateContacto(contacto);
+            return RedirectToAction("Index", new { id = id });
         }
 
-        // GET: Transporte/Edit/5
-        public ActionResult Edit(int id)
+            // GET: Contacto/Edit/5
+            public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Transporte/Edit/5
+        // POST: Contacto/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -74,13 +74,13 @@ namespace SIGT_TFI.Controllers
             }
         }
 
-        // GET: Transporte/Delete/5
+        // GET: Contacto/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Transporte/Delete/5
+        // POST: Contacto/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
