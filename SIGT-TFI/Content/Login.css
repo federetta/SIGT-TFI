@@ -130,6 +130,13 @@
         padding: 10px;
     }
 
+    #nav {
+        margin: auto;
+        text-align: center;
+        width: 80%;
+       
+    }
+
 /*.centerBlock input, select, textarea {
     margin-left: 5%;*/
     /*max-width: 90%;*/

@@ -66,37 +66,27 @@ namespace SIGT_TFI.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(FormCollection model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            string username = "";
-            string password = "";
-            username = model[0].ToString(); //user
-            password = model[1].ToString();  //pass
-            //var input = Convert.ToString(model["inputEmail"]);
-            //var password = Convert.ToString(model["password-input"]);
 
 
-            var user = await UserManager.FindAsync(username,password) ; if (user != null)
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)
             {
-                if (user.EmailConfirmed == true)
-                {
-                    await SignInManager.SignInAsync(user, true, true); return RedirectToLocal(returnUrl);
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Confirm Email Address.");
-                    //return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
                     return View(model);
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Invalid username or password.");
-                return View(model);
             }
         }
 
