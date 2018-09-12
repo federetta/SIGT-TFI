@@ -19,7 +19,7 @@ namespace DAL
         /// </summary>
         /// <param name="empresa"></param>
         /// <returns></returns>
-        public Empresa CreateProveedor(Empresa proveedor)
+        public Empresa CreateEmpresa(Empresa proveedor)
         {
             const string sqlStatement = "INSERT INTO dbo.Empresa ([razonSocial_empresa], [NombreFantasia_empresa], [Cuit_empresa], [TipoContribuyente_empresa], [Tipo_empresa]) " +
                 "VALUES(@razonSocial_empresa, @NombreFantasia_empresa, @Cuit_empresa, @TipoContribuyente_empresa, @Tipo_empresa); SELECT SCOPE_IDENTITY();";
@@ -100,6 +100,28 @@ namespace DAL
         {
             // WARNING! Performance
             const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa], [TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa Where [Tipo_empresa] = 2";
+
+            var result = new List<Empresa>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var empresa = LoadEmpresa(dr); // Mapper
+                        result.Add(empresa);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public List<Empresa> SelectCliente()
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa], [TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa Where [Tipo_empresa] = 1";
 
             var result = new List<Empresa>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);

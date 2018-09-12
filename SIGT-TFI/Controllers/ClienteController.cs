@@ -1,73 +1,67 @@
-﻿using BLL;
-using Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Entities;
+using BLL;
+using PagedList;
+using PagedList.Mvc;
 
 
 namespace SIGT_TFI.Controllers
 {
     public class ClienteController : Controller
     {
-        // GET: Cliente
-        public ActionResult Index()
+        // GET: Empresa
+        public ActionResult Index(string search, int? page)
         {
-           
-            
             var cp = new BLLEmpresa();
-            var lista = cp.All();
-
-            return View(lista);
-
-        }
-        public ActionResult IndexSearch(string text)
-        {
-
-            text = "pr";
-            var cp = new BLLEmpresa();
-            var lista = cp.Search(text);
-
-            return View(lista);
+            var lista = cp.AllCliente();
+            var btc = new BLLTipoContribuyente();
+            ViewData["TipoContribuyente"] = btc.All();
+            if (search == null) search = "";
+            return View(lista.Where(x => x.RazonSocial.ToUpper().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
 
         }
 
-
-
-        // GET: Cliente/Details/5
+        // GET: Empresa/Details/5
         public ActionResult Details(int id)
         {
-            var cp = new BLLEmpresa();
-            var empresa = cp.SelectByID(id);
-
-            return View(empresa);
+            return View();
         }
 
-        // GET: Cliente/Create
+        // GET: Empresa/Create
         public ActionResult Create()
         {
             var be = new BLLEmpresa();
             var bte = new BLL.BLLTipoEmpresa();
             var btc = new BLLTipoContribuyente();
-            ViewData["TipoEmpresa"] = bte.All();
+            //ViewData["TipoEmpresa"] = bte.All();
             ViewData["TipoContribuyente"] = btc.All();
             return View();
         }
 
-        // POST: Cliente/Create
+        // GET: Cliente/Create
+        public ActionResult CreateProveedor()
+        {
+            var be = new BLLEmpresa();
+            var bte = new BLL.BLLTipoEmpresa();
+            var btc = new BLLTipoContribuyente();
+            ViewData["TipoContribuyente"] = btc.All();
+            ViewData["TipoEmpresa"] = bte.All();
+
+            return View();
+        }
+
+        // POST: Empresa/Create
         [HttpPost]
-        public ActionResult Create(Empresa empresa)
+        public ActionResult Create(Empresa cliente)
         {
             try
             {
-                empresa.Tipo_Empresa = 1;
-                var be = new BLLEmpresa();
-                var bte = new BLL.BLLTipoEmpresa();
-                var btc = new BLLTipoContribuyente();
-                ViewData["TipoEmpresa"] = bte.All();
-                ViewData["TipoContribuyente"] = btc.All();
-                be.CreateProveedor(empresa);
+                BLLEmpresa bllempresa = new BLLEmpresa();
+                bllempresa.CreateCliente(cliente);
                 return RedirectToAction("Index");
             }
             catch
@@ -76,25 +70,29 @@ namespace SIGT_TFI.Controllers
             }
         }
 
-        // GET: Cliente/Edit/5
+        // GET: Empresa/Edit/5
         public ActionResult Edit(int id)
         {
+            var btc = new BLLTipoContribuyente();
+            ViewData["TipoContribuyente"] = btc.All();
             var cp = new BLLEmpresa();
             var empresa = cp.SelectByID(id);
 
             return View(empresa);
-           
         }
 
-        // POST: Cliente/Edit/5
+        // POST: Empresa/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Empresa proveedor)
         {
             try
             {
-                // TODO: Add update logic here
-
+                var btc = new BLLTipoContribuyente();
+                ViewData["TipoContribuyente"] = btc.All();
+                BLLEmpresa bllempresa = new BLLEmpresa();
+                bllempresa.UpdateProveedor(proveedor);
                 return RedirectToAction("Index");
+
             }
             catch
             {
@@ -102,13 +100,13 @@ namespace SIGT_TFI.Controllers
             }
         }
 
-        // GET: Cliente/Delete/5
+        // GET: Empresa/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Cliente/Delete/5
+        // POST: Empresa/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

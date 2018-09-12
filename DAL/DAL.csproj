@@ -48,9 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALContacto.cs" />
+    <Compile Include="DALDomicilio.cs" />
     <Compile Include="DALEmpresa.cs" />
+    <Compile Include="DALProvincia.cs" />
     <Compile Include="DALTipoContacto.cs" />
     <Compile Include="DALTipoContribuyente.cs" />
+    <Compile Include="DALLocalidad.cs" />
     <Compile Include="DALTipoEmpresa.cs" />
     <Compile Include="DALTransporte.cs" />
     <Compile Include="DataAccessComponent.cs" />

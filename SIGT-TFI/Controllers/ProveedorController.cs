@@ -16,7 +16,7 @@ namespace SIGT_TFI.Controllers
         public ActionResult Index(string search, int ? page)
         {
             var cp = new BLLEmpresa();
-            var lista = cp.All();
+            var lista = cp.AllProveedor();
             var btc = new BLLTipoContribuyente();
             ViewData["TipoContribuyente"] = btc.All();
             if (search == null) search = "";

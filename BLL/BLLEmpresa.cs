@@ -31,7 +31,7 @@ namespace BLL
             try
             {
                 objeto.Tipo_Empresa = 2;
-                dalempresa.CreateProveedor(objeto);
+                dalempresa.CreateEmpresa(objeto);
                 // Guardo una bitacora Local
 
             }
@@ -42,6 +42,24 @@ namespace BLL
             }
             return objeto;
         }
+
+        public Entities.Empresa CreateCliente(Entities.Empresa objeto)
+        {
+            try
+            {
+                objeto.Tipo_Empresa = 1;
+                dalempresa.CreateEmpresa(objeto);
+                // Guardo una bitacora Local
+
+            }
+            catch (Exception ex)
+            {
+                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                throw ex;
+            }
+            return objeto;
+        }
+
 
         public Entities.Empresa UpdateProveedor(Entities.Empresa proveedor)
         {
@@ -60,10 +78,17 @@ namespace BLL
             return proveedor;
         }
 
-        public List<Empresa> All()
+        public List<Empresa> AllProveedor()
         {
             var clienteDac = new DALEmpresa();
             var result = clienteDac.SelectProveedor();
+            return result;
+        }
+
+        public List<Empresa> AllCliente()
+        {
+            var clienteDac = new DALEmpresa();
+            var result = clienteDac.SelectCliente();
             return result;
         }
 

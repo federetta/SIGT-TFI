@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLContacto.cs" />
+    <Compile Include="BLLDomicilio.cs" />
     <Compile Include="BLLEmpresa.cs" />
+    <Compile Include="BLLLocalidad.cs" />
     <Compile Include="BLLTipoContacto.cs" />
     <Compile Include="BLLTipoContribuyente.cs" />
+    <Compile Include="BLLProvincia.cs" />
     <Compile Include="BLLTipoEmpresa.cs" />
     <Compile Include="BLLTransporte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

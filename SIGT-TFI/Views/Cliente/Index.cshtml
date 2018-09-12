@@ -1,119 +1,100 @@
-﻿@model IEnumerable<Entities.Empresa>
-@using GridMvc.Html
-<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
-<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-
+﻿@model IPagedList<Entities.Empresa>
+@using PagedList;
+@using PagedList.Mvc;
+@using Entities;
 @{
     ViewBag.Title = "Index";
+    var tipocontri = "TipoContribuyente";
 }
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
-<h2>Index</h2>
+<h2>Clientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Cliente", "Create")
 </p>
 <p>
-    @Html.ActionLink("Search", "IndexSearch")
+    @using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
+    {
+        <b>Buscar por Nombre:</b>
+        @Html.TextBox("Search") <input type="submit" value="Search" />
+    }
 </p>
-<button type="button" class="btn btn-default","glyphicon glyphicon-align-left" >
-</button>
-@Html.Grid(Model).Columns(columns =>
-{
-
-
-
-    columns.Add(foo => foo.RazonSocial).Sortable(true).Filterable(true).SetWidth(110);
-    columns.Add(foo => foo.NombreFantasia).Sortable(true).Filterable(true);
-    columns.Add(foo => foo.Cuit).Sortable(true).Filterable(true);
-    columns.Add()
-       .Titled("Detalles")
-       .Sanitized(false)
-       .Encoded(false)
-       .RenderValueAs(model => new HtmlString
-           (
-               "<button data-id=" + model.id + " class=\"btn btn-outline-info details\">Detalles</button>"
-           )
-       );
-    columns.Add()
-      .Titled("Editar")
-      .Sanitized(false)
-      .Encoded(false)
-      .RenderValueAs(model => new HtmlString
-          (
-              "<button data-id=" + model.id + " class=\"btn btn-outline-info edit\">Editar</button>"
-          )
-      );
-    columns.Add()
-      .Titled("Direccion")
-      .Sanitized(false)
-      .Encoded(false)
-      .RenderValueAs(model => new HtmlString
-          (
-              "<button data-id=" + model.id + " class=\"btn btn-outline-info details\">Direccion</button>"
-          )
-      );
-
-}).WithPaging(10)
-
-<script>
-    $(document).ready(function () {
-        $('.details').on('click', function (e) {
-            $.get('/Cliente/Details/' + $(e.target).data('id'), null, function (r) {
-            });
-        });
-    });
-    $(document).ready(function () {
-        $('.edit').on('click', function (e) {
-            $.get('/Cliente/Edit/' + $(e.target).data('id'), null, function (r) {
-            });
-        });
-    });
-</script>
-
-@*<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RazonSocial)
+            Razon Social
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombreFantasia)
+            Nombre Fantasia
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cuit)
+            Cuit
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tipo_Contribuyente)
+            Tipo Contribuyente
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipo_Empresa)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RazonSocial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreFantasia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cuit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo_Contribuyente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo_Empresa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        {
+            foreach (var std in ViewData["TipoContribuyente"] as IList<TipoContribuyente>)
+            {
+                if (std.id == item.Tipo_Contribuyente)
+                {
+                    tipocontri = std.nombre;
+                    break;
+                }
+            }
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazonSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreFantasia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cuit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => tipocontri)
+            </td>
 
-</table>*@
+            <td>
+                <a href="@Url.Action("Edit", "Proveedor", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Editar!">
+                    <span class="far fa-edit"></span>
+                </a>|
+                <a href="@Url.Action("Details", "Detalles", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Detalles!">
+                    <span class="glyphicon glyphicon-search">
+                    </span>
+                </a>|
+                <a href="@Url.Action("Index", "Contacto", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Contactos!">
+                    <span class="far fa-envelope-open"></span>
+                </a>
+                |
+                <a href="@Url.Action("Index", "Domicilio", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Domicilio!">
+                    <span class="far fa-address-book"></span>
+                </a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+}
