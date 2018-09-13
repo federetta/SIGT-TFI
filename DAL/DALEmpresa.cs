@@ -29,7 +29,7 @@ namespace DAL
             {
                 db.AddInParameter(cmd, "@razonSocial_empresa", DbType.String, proveedor.RazonSocial);
                 db.AddInParameter(cmd, "@NombreFantasia_empresa", DbType.String, proveedor.NombreFantasia);
-                db.AddInParameter(cmd, "@Cuit_empresa", DbType.Int32, proveedor.Cuit);
+                db.AddInParameter(cmd, "@Cuit_empresa", DbType.String, proveedor.Cuit);
                 db.AddInParameter(cmd, "@TipoContribuyente_empresa", DbType.Int32, proveedor.Tipo_Contribuyente);
                 db.AddInParameter(cmd, "@Tipo_empresa", DbType.Int32, proveedor.Tipo_Empresa);
                 // Obtener el valor de la primary key.
@@ -70,7 +70,7 @@ namespace DAL
             {
                 db.AddInParameter(cmd, "@razonSocial_empresa", DbType.String, empresa.RazonSocial);
                 db.AddInParameter(cmd, "@NombreFantasia_empresa", DbType.String, empresa.NombreFantasia);
-                db.AddInParameter(cmd, "@Cuit_Empresa", DbType.Int32, empresa.Cuit);
+                db.AddInParameter(cmd, "@Cuit_Empresa", DbType.String, empresa.Cuit);
                 db.AddInParameter(cmd, "@TipoContribuyente_empresa", DbType.String, empresa.Tipo_Contribuyente);
                 db.AddInParameter(cmd, "@Tipo_empresa", DbType.Int32, empresa.Tipo_Empresa);
                 db.AddInParameter(cmd, "@Id_empresa", DbType.Int32, empresa.id);
@@ -99,7 +99,7 @@ namespace DAL
         public List<Empresa> SelectProveedor()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa], [TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa Where [Tipo_empresa] = 2";
+            const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa], [CUIT_empresa], [TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa Where [Tipo_empresa] = 2";
 
             var result = new List<Empresa>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -121,7 +121,7 @@ namespace DAL
         public List<Empresa> SelectCliente()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa], [TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa Where [Tipo_empresa] = 1";
+            const string sqlStatement = "SELECT [Id_empresa], [razonSocial_empresa], [NombreFantasia_empresa], [CUIT_empresa] , [TipoContribuyente_empresa], [Tipo_empresa]  FROM dbo.Empresa Where [Tipo_empresa] = 1";
 
             var result = new List<Empresa>();
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -192,7 +192,7 @@ namespace DAL
                 RazonSocial = GetDataValue<string>(dr, "razonSocial_empresa"),
                 NombreFantasia = GetDataValue<string>(dr, "NombreFantasia_empresa"),              
                 Tipo_Contribuyente = GetDataValue<int>(dr, "TipoContribuyente_empresa"),
-                //Cuit = GetDataValue<string>(dr, "Cuit_Empresa"),
+                Cuit = GetDataValue<string>(dr, "Cuit_Empresa"),
                 Tipo_Empresa = GetDataValue<int>(dr, "Tipo_empresa"),
                 
             };

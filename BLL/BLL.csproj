@@ -45,6 +45,8 @@
     <Compile Include="BLLDomicilio.cs" />
     <Compile Include="BLLEmpresa.cs" />
     <Compile Include="BLLLocalidad.cs" />
+    <Compile Include="BLLRecorrido.cs" />
+    <Compile Include="BLLObra.cs" />
     <Compile Include="BLLTipoContacto.cs" />
     <Compile Include="BLLTipoContribuyente.cs" />
     <Compile Include="BLLProvincia.cs" />

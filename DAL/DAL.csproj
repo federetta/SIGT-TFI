@@ -50,6 +50,8 @@
     <Compile Include="DALContacto.cs" />
     <Compile Include="DALDomicilio.cs" />
     <Compile Include="DALEmpresa.cs" />
+    <Compile Include="DALRecorrido.cs" />
+    <Compile Include="DALObra.cs" />
     <Compile Include="DALProvincia.cs" />
     <Compile Include="DALTipoContacto.cs" />
     <Compile Include="DALTipoContribuyente.cs" />

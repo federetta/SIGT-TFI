@@ -202,9 +202,11 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\DomicilioController.cs" />
+    <Compile Include="Controllers\ObraController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecorridoController.cs" />
     <Compile Include="Controllers\TipoEmpresaController.cs" />
     <Compile Include="Controllers\TransporteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -306,6 +308,10 @@
     <Content Include="Views\Contacto\Create.cshtml" />
     <Content Include="Views\Domicilio\Index.cshtml" />
     <Content Include="Views\Domicilio\Create.cshtml" />
+    <Content Include="Views\Obra\Index.cshtml" />
+    <Content Include="Views\Obra\Create.cshtml" />
+    <Content Include="Views\Recorrido\Index.cshtml" />
+    <Content Include="Views\Recorrido\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
