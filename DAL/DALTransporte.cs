@@ -134,6 +134,35 @@ namespace DAL
             return result;
         }
 
+        public List<Transporte> SelectAllTransporte()
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [Id_Transporte]," +
+                "                       [IdProveedor_Transporte]," +
+                "                       [Marca_Transporte]," +
+                "                       [Modelo_Transporte]," +
+                "                       [tara_Transporte]," +
+                "                       [Patente_Transporte]," +
+                "                       [Descripcion_Transporte]," +
+                "                       [Titular_Transporte] FROM[dbo].[Transporte]";
+
+            var result = new List<Transporte>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var transporte = LoadTransporte(dr); // Mapper
+                        result.Add(transporte);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public Transporte SelectbyID(int id)
         {
             // WARNING! Performance

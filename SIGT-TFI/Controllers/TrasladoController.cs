@@ -3,59 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PagedList;
-using PagedList.Mvc;
 using Entities;
 using BLL;
 
 namespace SIGT_TFI.Controllers
 {
-    public class RecorridoController : Controller
+    public class TrasladoController : Controller
     {
-        // GET: Recorrido
-        public ActionResult Index(int id, string search, int? page)
+        // GET: Traslado
+        public ActionResult Index()
         {
-            var cp = new BLLRecorrido();
-            var lista = cp.ListByObra(id);
-            if (search == null) search = "";
-            return View(lista.Where(x => x.Inicio.ToUpper().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+            return View();
         }
 
-        // GET: Recorrido/Details/5
+        // GET: Traslado/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Contacto/Create
-        public ActionResult Create(int id)
+        // GET: Traslado/Create
+        public ActionResult Create()
         {
-            var recorrido = new Recorrido();
-            recorrido.IdObra = id;
-
-            return View(recorrido);
+            var blltransporte = new BLLTransporte();
+            ViewData["Transporte"] = blltransporte.List();
+            return View();
         }
 
-        // POST: Contacto/Create
+        // POST: Traslado/Create
         [HttpPost]
-        public ActionResult Create(Recorrido recorrido, int id)
+        public ActionResult Create(Transporte transporte)
         {
+            try
+            {
+              
 
-            BLLRecorrido bll = new BLLRecorrido();
-            recorrido.IdObra = id;
-            recorrido.id = 0;
-
-            bll.CreateRecorrido(recorrido);
-            return RedirectToAction("Index", new { id = recorrido.IdObra });
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: Recorrido/Edit/5
+        // GET: Traslado/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Recorrido/Edit/5
+        // POST: Traslado/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -71,13 +68,13 @@ namespace SIGT_TFI.Controllers
             }
         }
 
-        // GET: Recorrido/Delete/5
+        // GET: Traslado/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Recorrido/Delete/5
+        // POST: Traslado/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

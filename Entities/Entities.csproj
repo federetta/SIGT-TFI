@@ -53,6 +53,7 @@
     <Compile Include="TipoContribuyente.cs" />
     <Compile Include="TipoEmpresa.cs" />
     <Compile Include="Transporte.cs" />
+    <Compile Include="Traslado.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

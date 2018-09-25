@@ -35,5 +35,13 @@ namespace BLL
             return result;
 
         }
+
+        public List<Transporte> List()
+        {
+            var transporteDac = new DALTransporte();
+            var result = transporteDac.SelectAllTransporte();
+            return result;
+
+        }
     }
 }
