@@ -24,5 +24,9 @@ namespace Entities
         [DisplayName("Fin")]
         [Browsable(false)]
         public String Fin { get; set; }
+
+        [DisplayName("Nombre")]
+        [Browsable(false)]
+        public String Nombre { get; set; }
     }
 }

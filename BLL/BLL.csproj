@@ -52,6 +52,7 @@
     <Compile Include="BLLProvincia.cs" />
     <Compile Include="BLLTipoEmpresa.cs" />
     <Compile Include="BLLTransporte.cs" />
+    <Compile Include="BLLTraslado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

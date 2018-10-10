@@ -7,7 +7,10 @@ using Entities;
 using BLL;
 using PagedList;
 using PagedList.Mvc;
-
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.UI;
+using ClosedXML.Excel;
 
 namespace SIGT_TFI.Controllers
 {
@@ -23,6 +26,26 @@ namespace SIGT_TFI.Controllers
             if (search == null) search = "";
             return View(lista.Where(x => x.RazonSocial.ToUpper().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
 
+        }
+        public ActionResult ExportToExcel(string search, int? page)
+        {
+            var gv = new GridView();
+            var cp = new BLLEmpresa();
+            var lista = cp.AllCliente();
+            gv.DataSource = cp.AllCliente();
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=DemoExcel.xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            gv.RenderControl(objHtmlTextWriter);
+            Response.Output.Write(objStringWriter.ToString());
+            Response.Flush();
+            Response.End();
+            return View(lista.Where(x => x.RazonSocial.ToUpper().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
         }
 
         // GET: Empresa/Details/5

@@ -5,15 +5,22 @@ using System.Web;
 using System.Web.Mvc;
 using Entities;
 using BLL;
+using PagedList;
+using PagedList.Mvc;
 
 namespace SIGT_TFI.Controllers
 {
     public class TrasladoController : Controller
     {
         // GET: Traslado
-        public ActionResult Index()
+        public ActionResult Index(string search, int? page)
         {
-            return View();
+            var cp = new BLLTraslado();
+            var lista = cp.All();
+            //var btc = new BLLTipoContribuyente();
+            //ViewData["TipoContribuyente"] = btc.All();
+            if (search == null) search = "";
+            return View(lista.Where(x => x.NumeroTraslado.ToString().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
         }
 
         // GET: Traslado/Details/5
@@ -27,18 +34,22 @@ namespace SIGT_TFI.Controllers
         {
             var blltransporte = new BLLTransporte();
             ViewData["Transporte"] = blltransporte.List();
+            var bllrecorrido = new BLLRecorrido();
+            ViewData["Recorrido"] = bllrecorrido.ListAll();
             return View();
         }
 
         // POST: Traslado/Create
         [HttpPost]
-        public ActionResult Create(Transporte transporte)
+        public ActionResult Create(Traslado traslado)
         {
             try
             {
-              
+                var blltraslado = new BLLTraslado();
+                blltraslado.CreateTraslado(traslado);
 
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Create");
             }
             catch
             {

@@ -1,6 +1,4 @@
 ﻿@model Entities.Traslado
-<script src="~/Scripts/bootstrap-datepicker.min.js"></script>
-<link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Create";
@@ -19,7 +17,19 @@
     }
 }
 
-<h2>Create</h2>
+@{ var listadoRecorrido = new List<SelectListItem>();
+    foreach (var std in ViewData["Recorrido"] as IList<Entities.Recorrido>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.id.ToString()
+        };
+        listadoRecorrido.Add(elemento);
+    }
+}
+
+<h2>Alta de traslado</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -38,20 +48,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2"  })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" , @type = "date" } })
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
             </div>
         </div>
-
-       
 
 
         <div class="form-group">
             @Html.LabelFor(model => model.IdTransporte, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Transporte", listadoTransporte, new { @class = "form-control dropdown-toggle" })
+                @Html.DropDownList("IdTransporte", listadoTransporte, new { @class = "form-control dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.IdTransporte, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,35 +67,25 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdRecorrido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdRecorrido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("IdRecorrido", listadoRecorrido ,new { @class = "form-control dropdown-toggle"})
                 @Html.ValidationMessageFor(model => model.IdRecorrido, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Carga, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Carga, htmlAttributes: new { @class = "control-label col-md-2"  })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Carga, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Carga, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
           
-        </div>
-        <div class="input-group date">
-            <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
         </div>
     </div>
 }
@@ -99,15 +97,9 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $("#Transporte").selectize()
+        $("#IdTransporte").selectize();
+        $("#IdRecorrido").selectize();
     </script>
-    <script>
-        $('#sandbox-container .input-group.date').datepicker({
-            format: "dd/mm/yy",
-            todayBtn: "linked",
-            language: "es",
-            todayHighlight: true
-        });
-</script>
+
 
 }

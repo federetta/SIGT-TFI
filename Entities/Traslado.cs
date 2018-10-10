@@ -32,7 +32,7 @@ namespace Entities
 
         [DisplayName("Carga")]
         [Browsable(false)]
-        public string Carga { get; set; }
+        public Decimal Carga { get; set; }
 
         [DisplayName("Estado")]
         [Browsable(false)]

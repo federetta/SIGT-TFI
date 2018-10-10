@@ -21,7 +21,7 @@ namespace DAL
         public Recorrido CreateRecorrido(Recorrido Recorrido)
         {
             const string sqlStatement = "INSERT INTO dbo.Recorrido ([idObra_Recorrido]," +
-                " [DomicilioInicial_Recorrido], [DomicilioFinal_Recorrido]) " +
+                " [DomicilioInicial_Recorrido], [DomicilioFinal_Recorrido], [Nombre_Recorrido]) " +
                 "VALUES(@idObra_Recorrido, @DomicilioInicial_Recorrido, @DomicilioFinal_Recorrido); SELECT SCOPE_IDENTITY();";
 
 
@@ -31,6 +31,7 @@ namespace DAL
                 db.AddInParameter(cmd, "@idObra_Recorrido", DbType.Int32, Recorrido.IdObra);
                 db.AddInParameter(cmd, "@DomicilioInicial_Recorrido", DbType.String, Recorrido.Inicio);
                 db.AddInParameter(cmd, "@DomicilioFinal_Recorrido", DbType.String, Recorrido.Fin);
+                db.AddInParameter(cmd, "@Nombre_Recorrido", DbType.String, Recorrido.Nombre);
 
                 // Obtener el valor de la primary key.
                 Recorrido.id = Convert.ToInt32(db.ExecuteScalar(cmd));
@@ -58,6 +59,7 @@ namespace DAL
                 "                       [idObra_Recorrido]," +
                 "                       [DomicilioInicial_Recorrido]," +
                 "                       [DomicilioFinal_Recorrido] " +
+                "                       [Nombre_Recorrido] " + 
                 "                       FROM[dbo].[Recorrido]" +
                 "                       WHERE [idObra_Recorrido] = @idObra_Recorrido";
 
@@ -80,7 +82,35 @@ namespace DAL
             return result;
         }
 
-         private static Recorrido LoadRecorrido(IDataReader dr)
+        public List<Recorrido> SelectAll()
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [id_Recorrido]," +
+                "                       [idObra_Recorrido]," +
+                "                       [DomicilioInicial_Recorrido]," +
+                "                       [DomicilioFinal_Recorrido], " +
+                "                       [Nombre_Recorrido] " +
+                "                       FROM[dbo].[Recorrido]";
+
+            var result = new List<Recorrido>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+              
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var Recorrido = LoadRecorrido(dr); // Mapper
+                        result.Add(Recorrido);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private static Recorrido LoadRecorrido(IDataReader dr)
         {
             var Recorrido = new Recorrido
             {
@@ -89,6 +119,7 @@ namespace DAL
                 IdObra = GetDataValue<int>(dr, "idObra_Recorrido"),
                 Inicio = GetDataValue<string>(dr, "DomicilioInicial_Recorrido"),
                 Fin = GetDataValue<string>(dr, "DomicilioFinal_Recorrido"),
+                Nombre = GetDataValue<string>(dr, "Nombre_Recorrido"),
             };
             return Recorrido;
         }

@@ -58,6 +58,7 @@
     <Compile Include="DALLocalidad.cs" />
     <Compile Include="DALTipoEmpresa.cs" />
     <Compile Include="DALTransporte.cs" />
+    <Compile Include="DALTraslado.cs" />
     <Compile Include="DataAccessComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

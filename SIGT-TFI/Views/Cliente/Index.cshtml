@@ -20,7 +20,8 @@
         @Html.TextBox("Search") <input type="submit" value="Search" />
     }
 </p>
-<table class="table table-striped">
+
+<table class="table table-striped" id="tabla">
     <tr>
         <th>
             Razon Social
@@ -85,10 +86,16 @@
                 </a>
 
             </td>
+            
         </tr>
+        
     }
 
 </table>
+<p>
+    
+        <input type="submit" value="ExporttoExcel" class="button" />
+</p>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
 @section Scripts {
@@ -98,7 +105,9 @@
     <script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
-    });
+        });
+        
     </script>
+   
 
 }

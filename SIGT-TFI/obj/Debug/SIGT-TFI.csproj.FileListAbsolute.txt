@@ -362,3 +362,14 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\b
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\PagedList.Mvc.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\PagedList.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\PagedList.Mvc.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\ClosedXML.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\ClosedXML.Extensions.Mvc.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\DocumentFormat.OpenXml.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\ExcelNumberFormat.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\FastMember.Signed.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\System.IO.Packaging.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\ClosedXML.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\ClosedXML.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\DocumentFormat.OpenXml.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\ExcelNumberFormat.xml

@@ -17,6 +17,12 @@ namespace BLL
             return result;
         }
 
+        public List<Recorrido> ListAll()
+        {
+            var result = DAL.SelectAll();
+            return result;
+        }
+
         public Recorrido CreateRecorrido(Recorrido objeto)
         {
             try
