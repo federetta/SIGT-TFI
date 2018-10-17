@@ -59,6 +59,24 @@ namespace SIGT_TFI.Controllers
             string idtraslado = form["selected"];
             if (string.IsNullOrWhiteSpace(idtraslado)) throw new Exception("Debe seleccionar al menos un translado");
             var translations = idtraslado.Split(new char[] { ',' }).Select(x => Convert.ToInt32(x));
+            var bll = new BLLFactura();
+            var factura = new Factura();
+          
+          
+            factura.IdTipo = Convert.ToInt32(form["IdTipoComprobante"]);
+            factura.IdLetra = Convert.ToInt32(form["IdLetra"]);
+            factura.FechaFactura = Convert.ToDateTime(form["FechaFactura"]);
+            factura.IdCliente = Convert.ToInt32(form["IdCliente"]);
+            bll.CrearFactura(factura);
+            var Lista = new System.Collections.ArrayList();
+            Lista.Add(new Factura());
+            foreach (int value in translations)
+            {
+                factura.IdTraslado = value;
+               
+                bll.CrearFacturaDetalle(factura);
+            }
+
             return View();
         }
 
