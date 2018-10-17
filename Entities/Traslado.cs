@@ -38,5 +38,31 @@ namespace Entities
         [Browsable(false)]
         public int Estado { get; set; }
 
+        [DisplayName("EstadoNombre")]
+        [Browsable(false)]
+        public string Estado1 { get; set; }
+
+        [DisplayName("Patente")]
+        [Browsable(false)]
+        public string Patente { get; set; }
+
+        [DisplayName("Obra")]
+        [Browsable(false)]
+        public string Obra { get; set; }
+
+        [DisplayName("Precio")]
+        [Browsable(false)]
+        public decimal Precio { get; set; }
+
+        [DisplayName("Comision")]
+        [Browsable(false)]
+        public decimal Comision { get; set; }
+
+        [DisplayName("Total")]
+        [Browsable(false)]
+        public decimal Total { get; set; }
+
+        public bool Selected { get; set; }
+
     }
 }

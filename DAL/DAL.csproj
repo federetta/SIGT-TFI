@@ -50,10 +50,13 @@
     <Compile Include="DALContacto.cs" />
     <Compile Include="DALDomicilio.cs" />
     <Compile Include="DALEmpresa.cs" />
+    <Compile Include="DALFactura.cs" />
     <Compile Include="DALRecorrido.cs" />
     <Compile Include="DALObra.cs" />
     <Compile Include="DALProvincia.cs" />
+    <Compile Include="DALLetra.cs" />
     <Compile Include="DALTipoContacto.cs" />
+    <Compile Include="DALTipoComprobante.cs" />
     <Compile Include="DALTipoContribuyente.cs" />
     <Compile Include="DALLocalidad.cs" />
     <Compile Include="DALTipoEmpresa.cs" />

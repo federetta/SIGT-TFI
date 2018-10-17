@@ -44,10 +44,13 @@
     <Compile Include="BLLContacto.cs" />
     <Compile Include="BLLDomicilio.cs" />
     <Compile Include="BLLEmpresa.cs" />
+    <Compile Include="BLLFactura.cs" />
     <Compile Include="BLLLocalidad.cs" />
     <Compile Include="BLLRecorrido.cs" />
     <Compile Include="BLLObra.cs" />
     <Compile Include="BLLTipoContacto.cs" />
+    <Compile Include="BLLTipoComprobante.cs" />
+    <Compile Include="BLLLetra.cs" />
     <Compile Include="BLLTipoContribuyente.cs" />
     <Compile Include="BLLProvincia.cs" />
     <Compile Include="BLLTipoEmpresa.cs" />

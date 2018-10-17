@@ -1,0 +1,249 @@
+﻿@model Entities.Factura
+
+
+
+@{
+    ViewBag.Title = "Buscar";
+}
+
+@{ var listadoLetra = new List<SelectListItem>();
+    foreach (var std in ViewData["Letra"] as IList<Entities.Letra>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.id.ToString()
+        };
+        listadoLetra.Add(elemento);
+    }
+}
+
+@{ var listadoTipoComprobante = new List<SelectListItem>();
+    foreach (var std in ViewData["TipoComprobante"] as IList<Entities.TipoComprobante>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.id.ToString()
+        };
+        listadoTipoComprobante.Add(elemento);
+    }
+}
+
+@{ var listadoCliente = new List<SelectListItem>();
+    foreach (var std in ViewData["Cliente"] as IList<Entities.Empresa>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.RazonSocial,
+            Value = std.id.ToString()
+        };
+        listadoCliente.Add(elemento);
+    }
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Buscar Traslados</h4>
+   
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="col-md-2">
+                <label>Fecha Inicial</label>
+            </div>
+            @*@Html.LabelFor(model => model.FechaInicialTraslado, htmlAttributes: new { @class = "control-label col-md-6" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaInicialTraslado, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.FechaInicialTraslado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+      
+       
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="col-md-2">
+                <label>Fecha Final</label>
+            </div>
+            @*@Html.LabelFor(model => model.FechaFinalTraslado, htmlAttributes: new { @class = "control-label col-md-6" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaFinalTraslado, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.FechaFinalTraslado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+      
+      
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="col-md-2">
+                <label>Cliente</label>
+            </div>
+            @*@Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.DropDownList("IdCliente", listadoCliente, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+      
+      
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+            </div>
+        </div>
+    </div>   
+</div>
+}
+
+@using (Html.BeginForm("GenerarFactura", "Factura", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>Factura</h4>
+    @Html.HiddenFor(model => model.IdCliente)
+    <div class="col-sm-4">
+      
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdTipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdTipoComprobante", listadoTipoComprobante, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-4">
+       
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.IdLetra, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdLetra", listadoLetra, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                @Html.ValidationMessageFor(model => model.IdLetra, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-4">
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaFactura, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaFactura, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.FechaFactura, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Facturar" class="btn btn-primary btn-lg btn-block" />
+            </div>
+        </div>
+    </div>
+</div>
+
+   if (ViewData["ListaTraslados"] != null)
+    {
+    <table class="table">
+        <tr>
+            <th>
+                <label>ID</label>
+            </th>
+            <th>
+                <label>Numero</label>
+            </th>
+            <th>
+                <label>Fecha</label>
+            </th>
+            <th>
+                <label>Patente</label>
+            </th>
+            <th>
+                <label>Obra</label>
+            </th>
+            <th>
+                <label>Carga</label>
+            </th>
+            <th>
+                <label>Precio</label>
+            </th>
+            <th>
+                <label>Comision</label>
+            </th>
+            <th>
+                <label>Total</label>
+            </th>
+            <th>
+                <label>Estado</label>
+            </th>
+            <th>
+                <label>Seleccionar</label>
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var std in ViewData["ListaTraslados"] as IList<Entities.Traslado>)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(i => std.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.NumeroTraslado)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Patente)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Obra)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Carga)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Comision)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => std.Estado1)
+                </td>
+                <td>
+                <td style="text-align:center">
+                    <input type="checkbox" name="selected" value="@std.id" />
+                    @*@Html.CheckBoxFor(model => std.Selected)*@
+                </td>
+
+            </tr>
+        }
+
+
+    </table>
+
+}
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#IdTipoComprobante").selectize();
+        $("#IdCliente").selectize();
+        $("#IdLetra").selectize();
+    </script>
+
+
+}

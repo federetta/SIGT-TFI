@@ -8,6 +8,8 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    <div><a href="@Url.Action("ExportTraslados")"> Report PDF </a></div> 
+    <div><a href="@Url.Action("ExportToXML")"> Report XML </a></div> 
 </p>
 <p>
     @using (Html.BeginForm("Index", "Traslado", FormMethod.Get))
