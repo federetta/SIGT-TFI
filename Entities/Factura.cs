@@ -21,9 +21,17 @@ namespace Entities
         [Browsable(false)]
         public int IdTipo { get; set; }
 
+        [DisplayName("Tipo")]
+        [Browsable(false)]
+        public string Tipo { get; set; }
+
         [DisplayName("Letra")]
         [Browsable(false)]
         public int IdLetra { get; set; }
+
+        [DisplayName("Letra")]
+        [Browsable(false)]
+        public string Letra { get; set; }
 
         [DisplayName("Fecha")]
         [Browsable(false)]
@@ -68,6 +76,13 @@ namespace Entities
         [DisplayName("Comision")]
         [Browsable(false)]
         public decimal Comision { get; set; }
+        [DisplayName("Subtotal")]
+        [Browsable(false)]
+        public decimal Subtotal { get; set; }
+
+        [DisplayName("Iva")]
+        [Browsable(false)]
+        public decimal Iva { get; set; }
 
         [DisplayName("Total")]
         [Browsable(false)]

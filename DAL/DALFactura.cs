@@ -57,6 +57,8 @@ namespace DAL
             agregarParametro(comando, "@fechaFinal", factura.FechaFinalTraslado, ParameterDirection.Input, SqlDbType.Date);
         }
 
+        
+
 
         public Factura CrearFactura(Factura factura)
         {
@@ -163,7 +165,61 @@ namespace DAL
             return comprobante;
         }
 
+        /// <summary>
+        ///     ''' Utilizo este StoreProcedure para impactar fijo los totales de la factura en la cabecera. 
+        ///     ''' </summary>
+        ///     ''' <param name="factura"></param>
+        public void CrearTotales(Factura factura)
+        {
+            try
+            {
+                Services.ConexionSQL conexion = new Services.ConexionSQL();
+                var link = conexion.ConectarBaseDatos();
+                SqlCommand cmd = new SqlCommand("OBTENER_PRECIO_COMPROBANTE",link);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Id_ComprobanteCabecera", SqlDbType.Int).Value = factura.id;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        public DataTable VW_FACTURA_CABECERA(Factura factura)
+        {
+            Services.ConexionSQL conexion = new Services.ConexionSQL();
+            var link = conexion.ConectarBaseDatos();
+
+
+            DataSet dataset = new DataSet("LISTAR_FACTURAS");
+            DataTable table = new DataTable();
+            try
+            {
+                string procedure = "LISTAR_FACTURAS";
+
+                SqlCommand comando = new SqlCommand(procedure, link);
+                comando.CommandType = CommandType.StoredProcedure;
+                listarParametros2(comando, factura);
+                SqlDataAdapter da = new SqlDataAdapter(comando);
+                da.Fill(dataset, "factura");
+                table = dataset.Tables["factura"];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+            }
+            return table;
+        }
+        private void listarParametros2(SqlCommand comando, Entities.Factura factura)
+        {
+            //agregarParametro(comando, "@id_cliente", factura.IdCliente, ParameterDirection.Input, SqlDbType.Int);
+            agregarParametro(comando, "@id_letra", factura.IdLetra, ParameterDirection.Input, SqlDbType.Int);
+            agregarParametro(comando, "@id_tipocomprobante", factura.IdTipo, ParameterDirection.Input, SqlDbType.Int);
+        }
 
     }
 

@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cobranza.cs" />
     <Compile Include="Contacto.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="Empresa.cs" />
+    <Compile Include="EntidadBancaria.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Localidad.cs" />
+    <Compile Include="MedioPago.cs" />
     <Compile Include="Obra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provincia.cs" />
+    <Compile Include="Recibo.cs" />
     <Compile Include="Recorrido.cs" />
     <Compile Include="Letra.cs" />
     <Compile Include="TipoComprobante.cs" />

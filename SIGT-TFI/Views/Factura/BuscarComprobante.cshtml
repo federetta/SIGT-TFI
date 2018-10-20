@@ -1,0 +1,190 @@
+﻿@model Entities.Factura
+
+
+
+@{
+    ViewBag.Title = "Buscar";
+}
+
+@{ var listadoLetra = new List<SelectListItem>();
+    foreach (var std in ViewData["Letra"] as IList<Entities.Letra>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.id.ToString()
+        };
+        listadoLetra.Add(elemento);
+    }
+}
+
+@{ var listadoTipoComprobante = new List<SelectListItem>();
+    foreach (var std in ViewData["TipoComprobante"] as IList<Entities.TipoComprobante>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.id.ToString()
+        };
+        listadoTipoComprobante.Add(elemento);
+    }
+}
+
+@{ var listadoCliente = new List<SelectListItem>();
+    foreach (var std in ViewData["Cliente"] as IList<Entities.Empresa>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.RazonSocial,
+            Value = std.id.ToString()
+        };
+        listadoCliente.Add(elemento);
+    }
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Buscar Factura</h4>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdTipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdTipoComprobante", listadoTipoComprobante, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                    @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.IdLetra, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdLetra", listadoLetra, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                    @Html.ValidationMessageFor(model => model.IdLetra, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Cliente</label>
+                </div>
+                @*@Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-10">
+                    @Html.DropDownList("IdCliente", listadoCliente, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                    @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("BuscarComprobante", "Factura", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+       </div>
+
+    if (ViewData["ListaFacturas"] != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    <label>Id</label>
+                </th>
+                <th>
+                    <label>Tipo</label>
+                </th>
+                <th>
+                    <label>Letra</label>
+                </th>
+                <th>
+                    <label>Fecha</label>
+                </th>
+                <th>
+                    <label>Numero</label>
+                </th>
+                <th>
+                    <label>Subtotal</label>
+                </th>
+                <th>
+                    <label>Iva</label>
+                </th>
+                <th>
+                    <label>Total</label>
+                </th>
+               
+               
+
+                <th></th>
+            </tr>
+            @foreach (var std in ViewData["ListaFacturas"] as IList<Entities.Factura>)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(i => std.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => std.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => std.Letra)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => std.FechaFactura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => std.NumeroFactura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => std.Subtotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => std.Iva)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => std.Total)
+                    </td>
+                   
+                    <td>
+                        @Html.ActionLink("PDF", "PDF", new { id = std.id }) 
+                    </td>
+                   
+
+                </tr>
+            }
+
+
+        </table>
+
+    }
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#IdTipoComprobante").selectize();
+        $("#IdCliente").selectize();
+        $("#IdLetra").selectize();
+    </script>
+
+
+}

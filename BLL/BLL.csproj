@@ -45,6 +45,8 @@
     <Compile Include="BLLDomicilio.cs" />
     <Compile Include="BLLEmpresa.cs" />
     <Compile Include="BLLFactura.cs" />
+    <Compile Include="BLLEntidadBancaria.cs" />
+    <Compile Include="BLLMedioPago.cs" />
     <Compile Include="BLLLocalidad.cs" />
     <Compile Include="BLLRecorrido.cs" />
     <Compile Include="BLLObra.cs" />

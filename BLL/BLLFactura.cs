@@ -42,6 +42,33 @@ namespace BLL
                 throw ex;
             }
         }
+        public List<Factura> VW_FACTURA_CABECERA(Factura objeto)
+        {
+            var DAC = new DALFactura();
+            try
+            {
+
+                var datatable = DAC.VW_FACTURA_CABECERA(objeto);
+                return datatable.AsEnumerable().Select(row => new Factura()
+                {
+                    id = row.Field<int>("Id_ComprobanteCabecera"),
+                    Tipo = row.Field<string>("Descripcion_TipoComprobante"),
+                    Letra = row.Field<string>("nombre_letra"),
+                    FechaFactura= row.Field<DateTime>("Fecha_ComprobanteCabecera"),
+                    NumeroFactura = row.Field<int>("Numero_ComprobanteCabecera"),
+                    Subtotal = row.Field<Decimal>("Subtotal_ComprobanteCabecera"),
+                    Iva = row.Field<decimal>("TotalIva_ComprobanteCabecera"),
+                    Total = row.Field<decimal>("Total_ComprobanteCabecera"),
+
+
+
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public Factura UltimoComprobante(Factura objeto)
         {
             var DAC = new DALFactura();
@@ -94,7 +121,16 @@ namespace BLL
                     factura.IdTraslado = factura.IdTraslado;
                     factura.id = factura.id;
                     DAC.CrearFacturaDetalle(factura);
-                
+                try
+                {
+                    DAC.CrearTotales(factura);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+
+                }
+
 
                 //    // Guardo una bitacora Local
                 //    //logLocal.CrearLog("Nuevo detalle Factura");
@@ -110,5 +146,22 @@ namespace BLL
 
         }
 
+
+        public void CrearTotales(Factura factura)
+        {
+            var DAC = new DALFactura();
+        
+                try
+                {
+                    DAC.CrearTotales(factura);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+
+                }
+            
+
+        }
     }
 }

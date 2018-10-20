@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Entities;
 using BLL;
+using Rotativa;
 
 namespace SIGT_TFI.Controllers
 {
@@ -26,9 +27,40 @@ namespace SIGT_TFI.Controllers
             ViewData["Letra"] = letra.All();
             var bllempresa = new BLLEmpresa();
             ViewData["Cliente"] = bllempresa.AllCliente();
-            ViewData["ListaTraslados"] = null;
+            ViewData["ListaFacturas"] = null;
             return View();
         }
+
+        public ActionResult BuscarComprobante()
+        {
+           
+            var btcomp = new BLLTipoComprobante();
+            ViewData["TipoComprobante"] = btcomp.All();
+            var letra = new BLLLetra();
+            ViewData["Letra"] = letra.All();
+            var bllempresa = new BLLEmpresa();
+            ViewData["Cliente"] = bllempresa.AllCliente();
+            ViewData["ListaFacturas"] = null;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult BuscarComprobante(Factura factura)
+        {
+
+            var btcomp = new BLLTipoComprobante();
+            ViewData["TipoComprobante"] = btcomp.All();
+            var letra = new BLLLetra();
+            ViewData["Letra"] = letra.All();
+            var bllempresa = new BLLEmpresa();
+            ViewData["Cliente"] = bllempresa.AllCliente();
+            factura.IdTipo = 1;
+            var fac = new BLLFactura();
+            ViewData["ListaFacturas"] = fac.VW_FACTURA_CABECERA(factura).ToList();
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult Buscar(Factura factura)
@@ -76,80 +108,102 @@ namespace SIGT_TFI.Controllers
                
                 bll.CrearFacturaDetalle(factura);
             }
+            bll.CrearTotales(factura);
 
             return View();
         }
 
-        // GET: Factura/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Factura/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Factura/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult PDF(Factura Factura)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var idfactura = Convert.ToInt32(Factura);
+                return new ActionAsPdf("makePDFFact") { FileName = "invoice" + idfactura + ".pdf" };
+                //return Json(new { Result = "" }, JsonRequestBehavior.AllowGet);
             }
             catch
             {
-                return View();
+                Nullable<int> idUser = null;
+                string ip = "Unknown";
+                try
+                {
+                    idUser = (int)Session["userID"];
+                }
+                catch (Exception ex) { }
+                try
+                {
+                    ip = Session["_ip"].ToString();
+                }
+                catch (Exception ex) { }
+                try
+                {
+                    //Bita.guardarBitacora(new BIZBitacora("Error", "Error al intentar imprimir factura", idUser, ip));
+                }
+                catch (Exception ex) { }
+                return Json(new { Result = "Error" }, JsonRequestBehavior.AllowGet);
             }
+
         }
 
-        // GET: Factura/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //public ActionResult makePDFFact()
+        //{
+        //    try
+        //    {
 
-        // POST: Factura/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //    }
+        //    //    var doc = DocWorker.ObtenerDocXID(GIdFactura);
+        //    //    double monto = 0;
+        //    //    if (doc.ClienteEmpresa.TipoIVA.Detalle != "Responsable Inscripto")
+        //    //    {
+        //    //        foreach (BIZDocumentoDetalle d in doc.DocumentoDetalle)
+        //    //        {
+        //    //            d.PrecioDetalle.Precio = d.PrecioDetalle.Precio + (doc.ClienteEmpresa.TipoIVA.Valor * d.PrecioDetalle.Precio / 100);
+        //    //            monto += Convert.ToDouble(d.PrecioDetalle.Precio) * d.Cantidad;
+        //    //        }
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        foreach (BIZDocumentoDetalle d in doc.DocumentoDetalle)
+        //    //        {
+        //    //            monto += Convert.ToDouble(d.PrecioDetalle.Precio) * d.Cantidad;
+        //    //        }
+        //    //        monto = monto + (monto * doc.ClienteEmpresa.TipoIVA.Valor / 100);
+        //    //    }
+        //    //    doc.Monto = monto;
+        //    //    Utils utils = new Utils();
+        //    //    int codigo = Convert.ToInt32(doc.NrDocumento);
+        //    //    string Scodigo = codigo.ToString();
+        //    //    ViewBag.CB = utils.generaCodigoBarras("779053800" + Scodigo.PadLeft(3, '0')); //un numero +nr fact
+        //    //    ViewBag.QR = utils.generarQR("779053800" + Scodigo.PadLeft(3, '0'));
+        //    //    ViewBag.letras = utils.enletras(doc.Monto.ToString());
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Factura/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Factura/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //    //    //ViewBag.Barcode = codigo + ".jpg";
+        //    //    return View(doc);
+        //    //}
+        //    //catch
+        //    //{
+        //    //    Nullable<int> idUser = null;
+        //    //    string ip = "Unknown";
+        //    //    try
+        //    //    {
+        //    //        idUser = (int)Session["userID"];
+        //    //    }
+        //    //    catch (Exception ex) { }
+        //    //    try
+        //    //    {
+        //    //        ip = Session["_ip"].ToString();
+        //    //    }
+        //    //    catch (Exception ex) { }
+        //    //    try
+        //    //    {
+        //    //        Bita.guardarBitacora(new BIZBitacora("Error", "Error al intentar imprimir factura", idUser, ip));
+        //    //    }
+        //    catch (Exception ex) {
+        //    }
+        //    //    TempData["ErrorNormal"] = Resources.Language.ErrorNormal;
+        //    return RedirectToAction("Index", "Home");
+        //    }
+        //}
     }
 }
+

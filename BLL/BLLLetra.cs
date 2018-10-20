@@ -8,12 +8,12 @@ using Entities;
 
 namespace BLL
 {
-    public class BLLLetra
+    public class BllMedioPago
     {
-        public List<Letra> All()
+        public List<MedioPago> All()
         {
-            var LetraDac = new DALLetra();
-            var result = LetraDac.Select();
+            var MedioPagoDAC = new DALMedioPago();
+            var result = MedioPagoDAC.Select();
             return result;
         }
 

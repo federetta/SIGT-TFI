@@ -221,10 +221,13 @@
                     @Html.DisplayFor(i => std.Estado1)
                 </td>
                 <td>
-                <td style="text-align:center">
-                    <input type="checkbox" class="custom-control-input" name="selected" value="@std.id" />
-                    @*@Html.CheckBoxFor(model => std.Selected)*@
-                </td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="selected" value="@std.id" />
+                        <span class="custom-control-indicator"></span>
+                        @*<input type="checkbox" class="custom-control-input" name="selected" value="@std.id" />*@
+                        @*@Html.CheckBoxFor(model => std.Selected)*@
+                    </label>
+</td>
 
             </tr>
         }

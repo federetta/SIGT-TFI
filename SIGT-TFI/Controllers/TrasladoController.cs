@@ -7,6 +7,7 @@ using System.IO;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Web;
 using SIGT_TFI.Reports;
+using Rotativa;
 
 namespace SIGT_TFI.Controllers
 {
