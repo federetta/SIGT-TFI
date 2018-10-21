@@ -247,6 +247,7 @@
     <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\DomicilioController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
+    <Compile Include="Controllers\ListaPrecioController.cs" />
     <Compile Include="Controllers\ObraController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -411,6 +412,9 @@
     <Content Include="Views\Factura\Create.cshtml" />
     <Content Include="Views\Cobranza\Create.cshtml" />
     <Content Include="Views\Factura\BuscarComprobante.cshtml" />
+    <Content Include="Views\Factura\makePDFFact.cshtml" />
+    <Content Include="Views\ListaPrecio\Index.cshtml" />
+    <Content Include="Views\ListaPrecio\Buscar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

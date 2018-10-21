@@ -77,12 +77,10 @@ namespace DAL
                 // Declaro el ID para retornarlo
                 var returnParameter = cmd.Parameters.Add("@id_ComprobanteCabecera", SqlDbType.Int);
                 returnParameter.Direction = ParameterDirection.ReturnValue;
-                //cmd.Parameters.Add("@id_ComprobanteCabecera", SqlDbType.Int).Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
                 // Retorno el ID_ComprobanteCabecera
                 var result = returnParameter.Value;
                 factura.id = Convert.ToInt32(result);
-                //factura.IDComprobanteCabecera = Convert.ToInt32(cmd.Parameters("@id_ComprobanteCabecera").Value);
             }
             catch (Exception ex)
             {

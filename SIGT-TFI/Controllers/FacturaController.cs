@@ -117,8 +117,8 @@ namespace SIGT_TFI.Controllers
         {
             try
             {
-                var idfactura = Convert.ToInt32(Factura);
-                return new ActionAsPdf("makePDFFact") { FileName = "invoice" + idfactura + ".pdf" };
+    
+                return new ActionAsPdf("makePDFFact") { FileName = "invoice" + Factura.id + ".pdf" };
                 //return Json(new { Result = "" }, JsonRequestBehavior.AllowGet);
             }
             catch
@@ -145,65 +145,15 @@ namespace SIGT_TFI.Controllers
 
         }
 
-        //public ActionResult makePDFFact()
-        //{
-        //    try
-        //    {
+        public ActionResult makePDFFact()
+        {
+            var bll = new BLLFactura();
+            var factura = new Factura();
+            factura.id = 13;
+            var doc = bll.VW_FACTURA_CABECERA(factura);
+            return View(doc);
 
-        //    }
-        //    //    var doc = DocWorker.ObtenerDocXID(GIdFactura);
-        //    //    double monto = 0;
-        //    //    if (doc.ClienteEmpresa.TipoIVA.Detalle != "Responsable Inscripto")
-        //    //    {
-        //    //        foreach (BIZDocumentoDetalle d in doc.DocumentoDetalle)
-        //    //        {
-        //    //            d.PrecioDetalle.Precio = d.PrecioDetalle.Precio + (doc.ClienteEmpresa.TipoIVA.Valor * d.PrecioDetalle.Precio / 100);
-        //    //            monto += Convert.ToDouble(d.PrecioDetalle.Precio) * d.Cantidad;
-        //    //        }
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        foreach (BIZDocumentoDetalle d in doc.DocumentoDetalle)
-        //    //        {
-        //    //            monto += Convert.ToDouble(d.PrecioDetalle.Precio) * d.Cantidad;
-        //    //        }
-        //    //        monto = monto + (monto * doc.ClienteEmpresa.TipoIVA.Valor / 100);
-        //    //    }
-        //    //    doc.Monto = monto;
-        //    //    Utils utils = new Utils();
-        //    //    int codigo = Convert.ToInt32(doc.NrDocumento);
-        //    //    string Scodigo = codigo.ToString();
-        //    //    ViewBag.CB = utils.generaCodigoBarras("779053800" + Scodigo.PadLeft(3, '0')); //un numero +nr fact
-        //    //    ViewBag.QR = utils.generarQR("779053800" + Scodigo.PadLeft(3, '0'));
-        //    //    ViewBag.letras = utils.enletras(doc.Monto.ToString());
-
-        //    //    //ViewBag.Barcode = codigo + ".jpg";
-        //    //    return View(doc);
-        //    //}
-        //    //catch
-        //    //{
-        //    //    Nullable<int> idUser = null;
-        //    //    string ip = "Unknown";
-        //    //    try
-        //    //    {
-        //    //        idUser = (int)Session["userID"];
-        //    //    }
-        //    //    catch (Exception ex) { }
-        //    //    try
-        //    //    {
-        //    //        ip = Session["_ip"].ToString();
-        //    //    }
-        //    //    catch (Exception ex) { }
-        //    //    try
-        //    //    {
-        //    //        Bita.guardarBitacora(new BIZBitacora("Error", "Error al intentar imprimir factura", idUser, ip));
-        //    //    }
-        //    catch (Exception ex) {
-        //    }
-        //    //    TempData["ErrorNormal"] = Resources.Language.ErrorNormal;
-        //    return RedirectToAction("Index", "Home");
-        //    }
-        //}
+        }
     }
 }
 

@@ -55,7 +55,7 @@
                         <label>Numero</label>
                     </div>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.NumeroCobranza, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.NumeroCobranza, new { htmlAttributes = new { @class = "form-control" , id = "numero" } })
                         @Html.ValidationMessageFor(model => model.NumeroCobranza, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                         <label>Medio</label>
                     </div>
                     <div class="col-md-10">
-                        @Html.DropDownList("IdMedioPago", listadoMedioPago, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                        @Html.DropDownList("IdMedioPago", listadoMedioPago, new { htmlAttributes = new { @class = "form-control dropdown-toggle" , id = "mediopago" } })
                         @Html.ValidationMessageFor(model => model.IdMedioPago, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -211,6 +211,22 @@
             </div>
                     
         </div>
+
+        <table class="table" id="myTable">
+            <tr>
+                <td>Row1 cell1</td>
+                <td>Row1 cell2</td>
+            </tr>
+            <tr>
+                <td>Row2 cell1</td>
+                <td>Row2 cell2</td>
+            </tr>
+            <tr>
+                <td>Row3 cell1</td>
+                <td>Row3 cell2</td>
+            </tr>
+        </table>
+        <button onclick="myFunction()">Try it</button>
     }
 
          
@@ -221,5 +237,13 @@
                     $("#IdMedioPago").selectize();
                     $("#IdCliente").selectize();
                     $("#IdEntidadBancaria").selectize();
+                    function myFunction() {
+                        var table = document.getElementById("myTable");
+                        var row = table.insertRow(0);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        cell1.innerHTML = document.getElementById("mediopago");
+                        cell2.innerHTML = document.getElementById("numero");
+                    }
                 </script>
    }
