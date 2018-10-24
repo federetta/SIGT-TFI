@@ -260,8 +260,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FacturaPDFViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TrasladoPDFViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\CrystalReport2.cs">
       <AutoGen>True</AutoGen>
@@ -415,6 +417,9 @@
     <Content Include="Views\Factura\makePDFFact.cshtml" />
     <Content Include="Views\ListaPrecio\Index.cshtml" />
     <Content Include="Views\ListaPrecio\Buscar.cshtml" />
+    <Content Include="Views\Factura\PDF2.cshtml" />
+    <Content Include="Views\Factura\PDF3.cshtml" />
+    <Content Include="Views\Factura\PDF4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

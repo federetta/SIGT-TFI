@@ -66,8 +66,42 @@ namespace BLL
             }
             catch (Exception ex)
             {
+               throw ex;
+            }
+        }
+
+
+        public List<Factura> VW_FACTURA_HISTORICO2(int objeto)
+        {
+            var factura = new Factura();
+            factura.id = Convert.ToInt32(objeto);
+            var DAC = new DALFactura();
+            try
+            {
+                var datatable = DAC.VW_FACTURA_HISTORICO2(factura);
+                return datatable.AsEnumerable().Select(row => new Factura()
+                {
+                    id = row.Field<int>("Id_ComprobanteCabecera"),
+                    Tipo = row.Field<string>("Descripcion_TipoComprobante"),
+                    Letra = row.Field<string>("nombre_letra"),
+                    FechaFactura = row.Field<DateTime>("Fecha_ComprobanteCabecera"),
+                    NumeroFactura = row.Field<int>("Numero_ComprobanteCabecera"),
+                    NumeroTraslado = row.Field<int>("numero_traslado"),
+                    carga = row.Field<decimal>("carga_traslado"),
+                    Precio = row.Field<decimal>("precioFacturado_Traslado"),
+                    Comision = row.Field<decimal>("preciocomision_Traslado"),
+                    Subtotal = row.Field<decimal>("Subtotal_ComprobanteCabecera"),
+                    Iva = row.Field<decimal>("TotalIva_ComprobanteCabecera"),
+                    Total = row.Field<decimal>("Total_ComprobanteCabecera"),
+                    
+
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
+
         }
         public Factura UltimoComprobante(Factura objeto)
         {
@@ -80,11 +114,8 @@ namespace BLL
         /// <summary>
 
         ///     '''     Crea la cabecera de la facutra.
-
         ///     ''' </summary>
-
         ///     ''' <param name="objeto"></param>
-
         ///     ''' <returns></returns>
         public Factura CrearFactura(Factura objeto)
         {

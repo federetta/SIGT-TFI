@@ -53,6 +53,10 @@ namespace Entities
         [Browsable(false)]
         public int IdTraslado { get; set; }
 
+        [DisplayName("NumeroTraslado")]
+        [Browsable(false)]
+        public int NumeroTraslado { get; set; }
+
         [DisplayName("IdComprobanteDetalle")]
         [Browsable(false)]
         public int IdComprobanteDetalle { get; set; }
@@ -76,6 +80,11 @@ namespace Entities
         [DisplayName("Comision")]
         [Browsable(false)]
         public decimal Comision { get; set; }
+
+        [DisplayName("carga")]
+        [Browsable(false)]
+        public decimal carga { get; set; }
+
         [DisplayName("Subtotal")]
         [Browsable(false)]
         public decimal Subtotal { get; set; }

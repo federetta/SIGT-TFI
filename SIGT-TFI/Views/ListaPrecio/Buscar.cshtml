@@ -22,65 +22,133 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Lista de Precio</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-sm-12">
+            <h4>Buscar</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.idrecorrido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdRecorrido", listadoRecorrido, new { @class = "form-control dropdown-toggle" })
-                @Html.ValidationMessageFor(model => model.idrecorrido, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.idrecorrido, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdRecorrido", listadoRecorrido, new { @class = "form-control dropdown-toggle" })
+                    @Html.ValidationMessageFor(model => model.idrecorrido, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.fechafinal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fechafinal, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.fechafinal, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.comision, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.comision, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.comision, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Agregar" class="btn btn-primary btn-lg btn-block" />
-            </div>
         </div>
         </div>
     
 }
+@using (Html.BeginForm("Buscar", "ListaPrecio", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    if (ViewData["ListaPrecio"] != null)
+    {
+        <div class="col-sm-12">
+            <table class="table">
+                <tr>
+                    <th>
+                        <label>ID</label>
+                    </th>
+                    <th>
+                        <label>Fecha Inicial</label>
+                    </th>
+                    <th>
+                        <label>Fecha Final</label>
+                    </th>
+                    <th>
+                        <label>Precio</label>
+                    </th>
+                    <th>
+                        <label>Comision</label>
+                    </th>
+                </tr>
+                @foreach (var std in ViewData["ListaPrecio"] as IList<Entities.ListaPrecio>)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(i => std.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(i => std.fechainicial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(i => std.fechafinal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(i => std.precio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(i => std.comision)
+                        </td>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $("#IdRecorrido").selectize();
-    </script>
+                    </tr>
+                }
 
 
-}
+            </table>
+            </div>
+            }
+            }
+
+
+            @using (Html.BeginForm("Create", "ListaPrecio", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Ingresar</h4>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.fechainicial, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.fechainicial, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                @Html.ValidationMessageFor(model => model.fechainicial, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.comision, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.comision, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.comision, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Agregar" class="btn btn-primary btn-lg btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                <script>
+                    $("#IdRecorrido").selectize();
+                </script>
+
+
+            }

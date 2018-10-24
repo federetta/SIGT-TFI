@@ -23,6 +23,18 @@ namespace SIGT_TFI.Controllers
         {
             var bll = new BLLRecorrido();
             ViewData["Recorrido"] = bll.ListAll();
+            ViewData["ListaPrecio"] = null;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Buscar(FormCollection form)
+        {
+            var bllPrecio = new BLLListaPrecio();
+            var bllrecorrido = new BLLRecorrido();
+            var listaPrecio = new ListaPrecio();
+            listaPrecio.idrecorrido = Convert.ToInt32(form["IdRecorrido"]);
+            ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
+            ViewData["Recorrido"] = bllrecorrido.ListAll();
             return View();
         }
 
@@ -41,11 +53,20 @@ namespace SIGT_TFI.Controllers
 
         // POST: ListaPrecio/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form)
         {
             try
             {
-                // TODO: Add insert logic here
+                var bllPrecio = new BLLListaPrecio();
+                var bllrecorrido = new BLLRecorrido();
+                var listaPrecio = new ListaPrecio();
+                listaPrecio.idrecorrido = Convert.ToInt32(form["IdRecorrido"]);
+                listaPrecio.fechainicial = Convert.ToDateTime(form["FechaInicial"]);
+                listaPrecio.precio = Convert.ToDecimal(form["Precio"]);
+                listaPrecio.comision = Convert.ToDecimal(form["Comision"]);
+                bllPrecio.CrearListaPrecio(listaPrecio);
+                ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
+                ViewData["Recorrido"] = bllrecorrido.ListAll();
 
                 return RedirectToAction("Index");
             }

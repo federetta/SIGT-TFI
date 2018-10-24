@@ -6,11 +6,13 @@ using System.Web.Mvc;
 using Entities;
 using BLL;
 using Rotativa;
+using SIGT_TFI.Models;
 
 namespace SIGT_TFI.Controllers
 {
     public class FacturaController : Controller
     {
+        public static int GIdFactura;
         // GET: Factura
         public ActionResult Index()
         {
@@ -115,45 +117,50 @@ namespace SIGT_TFI.Controllers
 
         public ActionResult PDF(Factura Factura)
         {
-            try
-            {
-    
-                return new ActionAsPdf("makePDFFact") { FileName = "invoice" + Factura.id + ".pdf" };
+                 GIdFactura = Factura.id;
+                 return new ActionAsPdf("PDF4") { FileName = "invoice" + GIdFactura + ".pdf" };
                 //return Json(new { Result = "" }, JsonRequestBehavior.AllowGet);
-            }
-            catch
-            {
-                Nullable<int> idUser = null;
-                string ip = "Unknown";
-                try
-                {
-                    idUser = (int)Session["userID"];
-                }
-                catch (Exception ex) { }
-                try
-                {
-                    ip = Session["_ip"].ToString();
-                }
-                catch (Exception ex) { }
-                try
-                {
-                    //Bita.guardarBitacora(new BIZBitacora("Error", "Error al intentar imprimir factura", idUser, ip));
-                }
-                catch (Exception ex) { }
-                return Json(new { Result = "Error" }, JsonRequestBehavior.AllowGet);
-            }
+       
 
         }
 
-        public ActionResult makePDFFact()
+        public ActionResult PDF4()
         {
             var bll = new BLLFactura();
             var factura = new Factura();
-            factura.id = 13;
-            var doc = bll.VW_FACTURA_CABECERA(factura);
-            return View(doc);
+            var doc = bll.VW_FACTURA_HISTORICO2(GIdFactura);
+            Models.FacturaPDFViewModels Vista = MapVista(doc);
+            return View(Vista);
 
         }
+
+        private FacturaPDFViewModels MapVista(List<Factura> doc)
+        {
+            FacturaPDFViewModels model = new FacturaPDFViewModels();
+            List<TrasladoPDFViewModels> listatraslado = new List<TrasladoPDFViewModels>();
+            foreach (var item in doc)
+            {
+                model.Letra = item.Letra;
+                model.Tipo = item.Tipo;
+                model.NumeroFactura = item.NumeroFactura;
+                model.FechaFactura = item.FechaFactura;
+                model.Subtotal = item.Subtotal;
+                model.Iva = item.Iva;
+                model.Total = item.Total;
+                TrasladoPDFViewModels traslados = new TrasladoPDFViewModels();
+                traslados.NumeroTraslado = item.NumeroTraslado;
+                traslados.carga = item.carga;
+                traslados.Precio = item.Precio;
+                traslados.Comision = item.Comision;
+                traslados.PrecioTotal = item.Precio + item.Comision;
+                traslados.PrecioxCant = (item.Precio + item.Comision) * (item.carga);
+                listatraslado.Add(traslados);
+                
+                }
+                     model.ListaTraslados = listatraslado;
+                       return model;
+                }
+        }
     }
-}
+
 

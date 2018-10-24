@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Entities.Factura>
+
+@{
+    ViewBag.Title = "PDF";
+}
+
+<h2>PDF</h2>
+
+
+<p>
+    @Html.DisplayNameFor(model => model.NumeroFactura)
+</p>
+<p>
+    @Html.DisplayNameFor(model => model.Tipo)
+</p>
+<p>
+    @Html.DisplayNameFor(model => model.Letra)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroFactura)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+    
+        <th>
+            @Html.DisplayNameFor(model => model.Letra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFactura)
+        </th>
+        
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroFactura)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.Letra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFactura)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subtotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

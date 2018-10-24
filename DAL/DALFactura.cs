@@ -214,11 +214,44 @@ namespace DAL
         }
         private void listarParametros2(SqlCommand comando, Entities.Factura factura)
         {
-            //agregarParametro(comando, "@id_cliente", factura.IdCliente, ParameterDirection.Input, SqlDbType.Int);
+            agregarParametro(comando, "@id_cliente", factura.IdCliente, ParameterDirection.Input, SqlDbType.Int);
             agregarParametro(comando, "@id_letra", factura.IdLetra, ParameterDirection.Input, SqlDbType.Int);
             agregarParametro(comando, "@id_tipocomprobante", factura.IdTipo, ParameterDirection.Input, SqlDbType.Int);
         }
 
+
+        public DataTable VW_FACTURA_HISTORICO2(Factura factura)
+        {
+            Services.ConexionSQL conexion = new Services.ConexionSQL();
+            var link = conexion.ConectarBaseDatos();
+
+
+            DataSet dataset = new DataSet("LISTAR_FACTURA_HISTORICO2");
+            DataTable table = new DataTable();
+            try
+            {
+                string procedure = "LISTAR_FACTURA_HISTORICO2";
+
+                SqlCommand comando = new SqlCommand(procedure, link);
+                comando.CommandType = CommandType.StoredProcedure;
+                listarParametros3(comando, factura);
+                SqlDataAdapter da = new SqlDataAdapter(comando);
+                da.Fill(dataset, "factura");
+                table = dataset.Tables["factura"];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+            }
+            return table;
+        }
+        private void listarParametros3(SqlCommand comando, Entities.Factura factura)
+        {
+            agregarParametro(comando, "@id_tipocomprobante", factura.id, ParameterDirection.Input, SqlDbType.Int);
+        }
     }
 
 
