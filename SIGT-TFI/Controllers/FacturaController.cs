@@ -147,6 +147,12 @@ namespace SIGT_TFI.Controllers
                 model.Subtotal = item.Subtotal;
                 model.Iva = item.Iva;
                 model.Total = item.Total;
+                model.Cuit = item.Cuit;
+                model.RazonSocial = item.RazonSocial;
+                model.Calle = item.Calle;
+                model.numero = item.numero;
+                model.Localidad = item.Localidad;
+                model.TipoContribuyente = item.TipoContribuyente;
                 TrasladoPDFViewModels traslados = new TrasladoPDFViewModels();
                 traslados.NumeroTraslado = item.NumeroTraslado;
                 traslados.carga = item.carga;

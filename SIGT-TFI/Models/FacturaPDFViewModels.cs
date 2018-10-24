@@ -37,7 +37,27 @@ namespace SIGT_TFI.Models
         [DisplayName("Total")]
         [Browsable(false)]
         public decimal Total { get; set; }
+        [DisplayName("RazonSocial")]
+        [Browsable(false)]
+        public String RazonSocial { get; set; }
 
+        [DisplayName("Cuit")]
+        [Browsable(false)]
+        public string Cuit { get; set; }
+
+        [DisplayName("Calle")]
+        [Browsable(false)]
+        public String Calle { get; set; }
+
+        [DisplayName("numero")]
+        [Browsable(false)]
+        public int numero { get; set; }
+
+        public String TipoContribuyente { get; set; }
+
+        [DisplayName("Numero")]
+        [Browsable(false)]
+        public String Localidad { get; set; }
         public List<TrasladoPDFViewModels> ListaTraslados { get; set; }
     }
 }

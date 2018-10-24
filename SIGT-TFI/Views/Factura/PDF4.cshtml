@@ -5,406 +5,126 @@
 @{
     ViewBag.Title = "PDF4";
 }
-
-<style>
-    img {
-        width: 150px;
-        height: 150px;
-    }
-
-    body {
-        border: 1px solid black;
-        background-color: white;
-        margin: 20px;
-        font-size: 14px;
-    }
-
-    td, th {
-        border: none !important;
-        border-right: none !important;
-        border-left: none !important;
-    }
-
-    #tablaTotal {
-        margin-right: 15px;
-        float: right;
-        font-size: 20px;
-    }
-
-    .fleft {
-        float: left;
-    }
-
-    .fright {
-        float: right;
-    }
-
-    .fnone {
-        float: none;
-    }
-
-    .clear {
-        clear: both;
-    }
-
-    .nombre {
-        font-size: 20px;
-        font-weight: bolder;
-        font-family: Castellar;
-        text-align: center;
-    }
-
-    .nombre2 {
-        font-size: 15px;
-        font-weight: bolder;
-        font-family: Aharoni;
-        text-align: center;
-    }
-
-    .detalle {
-        font-size: 14px;
-    }
-
-    .pedido {
-        text-align: center;
-        font-size: 22px;
-        font-weight: bold;
-    }
-
-    .cliente h4 {
-        text-decoration: underline;
-    }
-
-    #CB {
-        width: 257px;
-        height: 150px;
-    }
-
-    .letra {
-        font-size: 40px;
-        text-align: center;
-        border: 1px solid gray;
-        padding: 12px;
-        border-radius: 12px;
-        font-weight: bold;
-        margin-right: 150px;
-    }
-
-    .fact {
-        font-weight: bold;
-        font-size: 25px;
-        margin-top: -75px;
-        margin-right: 75px;
-    }
-
-    #logo {
-        margin-top: -30px;
-        margin-bottom: -26px;
-    }
-
-    .fecha {
-        border: 1px solid black;
-        padding: 6px;
-        font-size: 14px;
-    }
-
-    .fecha1 {
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
-        padding-right: 54px;
-    }
-
-    .fecha2 {
-        border-bottom-right-radius: 4px;
-        border-top-right-radius: 4px;
-    }
-
-    .sinBDer {
-        border-right: 0px !important;
-    }
-
-    .sinBIzq {
-        border-left: 0px !important;
-    }
-
-    .cuit {
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 7px;
-        margin-top: -14px;
-        margin-right: 3px;
-        font-size: 12px;
-    }
-
-    .ffecha {
-        margin-right: 3px;
-    }
-
-    .venc {
-        padding-right: 5px;
-    }
-
-    .vencFecha {
-        margin-top: -9px;
-    }
-
-    .strong {
-        font-weight: bold;
-    }
-</style>
-
-@*<h2>Comprobante</h2>
-
-<div>
-    
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroFactura)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumeroFactura)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Letra)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Letra)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaFactura)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaFactura)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Subtotal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Subtotal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Iva)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Iva)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-
-    </dl>
-    <table class="table">
-        <tr>
-            <th>
-                <p>Numero</p>
-            </th>
-
-            <th>
-                <p>Carga</p>
-            </th>
-
-            <th>
-                <p>Precio</p>
-            </th>
-            <th>
-                <p>Subtotal</p>
-            </th>
-
-            
-        </tr>
-
-
-
-        @foreach (var item in Model.ListaTraslados)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumeroTraslado)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.carga)
-                </td>
-
-                <td>
-                   @Html.DisplayFor(modelItem => item.PrecioTotal)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrecioxCant)
-                </td>
-
-            </tr>
-        }
-    </table>
-</div>*@
-
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <body>
-    <div class="container" style="margin-top: 32px;">
-        <div class="fleft">
-            @*<img src="~/Content/images/Logo2.png" id="logo" />*@
-        </div>
-        @* <div class="fnone nombre">
-                @Model.EmpresaLocal.NombreFantasia
-            </div>*@
-        <div style="text-align:center;"><span class="letra">@Model.Letra</span></div>
-        <div class="fright fact">FACTURA</div>
-        <br />
-        <div class="fright detalle ffecha">
-            <span class="fecha fecha1 sinBDer"><strong>FECHA</strong></span><span class="fecha sinBDer">@Model.FechaFactura.Day</span><span class="fecha sinBDer">@Model.FechaFactura.Month</span><span class="fecha fecha2">@Model.FechaFactura.Year</span>
-        </div>
-        <div class="clear"></div>
-        <br />
-        <div class="fright detalle ffecha vencFecha">
-            @{DateTime FechaVenc = Convert.ToDateTime(@Model.FechaFactura);}
-            <span class="fecha fecha1 sinBDer venc"><strong>VENCIMIENTO</strong></span><span class="fecha sinBDer">@FechaVenc.Day</span><span class="fecha sinBDer">@FechaVenc.Month</span><span class="fecha fecha2">@FechaVenc.Year</span>
-        </div>
-        <div class="clear"></div>
-        <br />
-        <div class="fright detalle cuit">
-            C.U.I.T.: 20-35380568
-            <br />
-            INICIO DE ACTIVIDADES: Octubre 2018
-        </div>
-        <br />
-        <div class="fright detalle">
-        </div>
-        <div class="clear"></div>
-        <hr />
-        <div class="cliente">
-            <div class="fleft">
-                <span class="strong">Señor(es):</span> Empresa
-            </div>
-            <div class="clear"></div>
-            <div class="fleft detalle">
-                <span class="strong">Dirección:</span> Paunero 1879
-                &nbsp;&nbsp;&nbsp;
-            </div>
-            <span style="float: right;"><span class="strong">Loc:</span> Martinez</span>
-            <br />
-            <div class="fleft detalle">
-                <span class="strong">Condición de Venta: </span>Cta. Cte.  &nbsp;&nbsp;&nbsp;
-            </div>
-            <span style="float: right;"><span class="strong">C.U.I.T.: </span>20-35380568-2</span>
-        </div>
-        <div class="clear"></div>
-        <hr />
-        <div class="pedido">
-            Nr Factura: <span>0001-@Model.NumeroFactura.ToString().PadLeft(8, '0')</span>
-        </div>
-        <div class="clear"></div>
-        <hr />
-        <table id="" class="table table-striped" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th style="max-width: 10px;">
-                        Cantidad
-                    </th>
-                    <th style="text-align: left;">N° Traslado</th>
-                    <th style="width: 150px !important;text-align: right;">
-                        Precio Unitario
-                    </th>
-                    <th style="width: 100px; text-align: right;">
-                        Precio
-                    </th>
+    <div class="col-xs-12 col-md-12">
 
-                </tr>
-            </thead>
-            <tbody>
-              
-                @foreach (var item in Model.ListaTraslados)
-                {
+        <div class="container" style="border-style: solid; border-width: 1px;">
+            <div class="row" style="">
+                <div class="col-xs-5 col-md-5">
+                    <img src="~/Content/Logo.JPG" height="108" width="128" style="">
+
+                </div>
+                <div class="col-xs-2 col-md-2">
+                    <h4 style="text-align: center; border-style: solid; border-width: 1px;">@Model.Letra</h4>
+                </div>
+                <div class="col-xs-5 col-md-5">
+                    <h4 style="text-align: center;">Factura<br>N°:0001-@Model.NumeroFactura.ToString().PadLeft(8, '0')</h4>
+                </div>
+            </div>
+            <div class="row" style="">
+                <div class="col-xs-6 col-md-6" style="text-align: left;">
+                    Ecocargo SA - Paunero 1879 - Martinez - Buenos Aires - Argentina<br>Tel: 11-4792-3065<br>Ventas@ecocargo.com<h3 style="text-align: center;"></h3>
+                </div>
+
+                <div class="col-xs-6 col-md-6" style="text-align: left; font-family: Arial, Helvetica, sans-serif; font-weight: 300; width: auto; height: auto; line-height: 28px;" id="fecha">
+                    <p style="text-align: left;" id="">
+                        Fecha:@Model.FechaFactura.Day/@Model.FechaFactura.Month/@Model.FechaFactura.Year
+                        <br>IVA Responsable Inscripto&nbsp
+                        <br>Cuit: 30353805682
+                        <br>Inicio actividades:04/04/2018
+                </div>
+            </div>
+            <hr>
+            <div class="row" style="">
+                <div class=" col-xs-6 col-md-6">
+                    <p>Cliente:@Model.RazonSocial<br>Dirección:@Model.Calle @Model.numero , @Model.Localidad<br>Iva:@Model.TipoContribuyente</p>
+                </div>
+
+                <div class="row" style="">
+                    <div class=" col-xs-6 col-md-6">
+                        <p>Cuit:@Model.Cuit</p>
+                    </div>
+                </div>
+            </div>
+
+            <table id="" class="table table-striped" cellspacing="0" width="100%">
+                <thead>
                     <tr>
-                        <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
-                            @Html.DisplayFor(modelItem => item.carga)
-
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NumeroTraslado)
-
-                        </td>
-                        <td style="width: 150px !important; border-right: none !important; border-left: none !important;" class="tdNumero">
-                            @*                            <span class="MontoPrePedido">@item.PrecioDetalle.Precio.ToString().Replace(",", ".")</span>*@
-                            @{double precio = Convert.ToDouble(item.PrecioTotal);}
-                            <span class="MontoPrePedido">@precio.ToString("C")</span>
-                        </td>
-                        <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
-                            @{double preciototal = Convert.ToDouble(item.PrecioxCant);}
-
-
-                            <span class="MontoPrePedido">@item.PrecioxCant </span>
-                        </td>
+                        <th style="max-width: 10px;">
+                            Cantidad
+                        </th>
+                        <th style="text-align: left;">N° Traslado</th>
+                        <th style="width: 150px !important;text-align: right;">
+                            Precio Unitario
+                        </th>
+                        <th style="width: 100px; text-align: right;">
+                            Precio
+                        </th>
 
                     </tr>
-                                }
-            </tbody>
-        </table>
-        <hr />
-        <div id="tablaTotal" class="fleft">
+                </thead>
+                <tbody>
 
-
-            <table>
-                @{
+                    @foreach (var item in Model.ListaTraslados)
+                    {
                         <tr>
-                            <td style="padding-right: 50px !important;">
-                                Subtotal:
+                            <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
+                                @Html.DisplayFor(modelItem => item.carga)
+
                             </td>
                             <td>
-                                @Html.DisplayFor(model => model.Subtotal)
+                                @Html.DisplayFor(modelItem => item.NumeroTraslado)
+
                             </td>
-                        </tr>
-                        <tr>
-                            <td style="padding-right: 50px !important;">
-                                IVA Cliente:
+                            <td style="width: 150px !important; border-right: none !important; border-left: none !important;" class="tdNumero">
+                                @{double precio = Convert.ToDouble(item.PrecioTotal);}
+                                <span class="MontoPrePedido">@precio.ToString("C")</span>
                             </td>
-                            <td>@Html.DisplayFor(model => model.Iva)</td>
+                            <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
+                                @{double preciototal = Convert.ToDouble(item.PrecioxCant);}
+
+
+                                <span class="MontoPrePedido">@item.PrecioxCant </span>
+                            </td>
 
                         </tr>
-                    }
-               
-                <tr>
-                    <td style="padding-right: 50px !important;">
-                        Total:
-                    </td>
-                    <td>@Html.DisplayFor(model => model.Total)</td>
-                </tr>
+                                    }
+                </tbody>
             </table>
-            <br />
-            <br />
-            <br />
-        </div>
-        <div class="clear"></div>
-        <div style="float:left;">
-          
-        </div>
-        <div class="clear"></div>
-        <br />
-        © Empresa @DateTime.Now.Year
+            <hr />
+            <div class="row" style="">
+                <div class=" col-xs-12 col-md-12" style="text-align: right;">
+                    <h6>Subtotal: $ @Html.DisplayFor(model => model.Subtotal) </h6>
+                </div>
+            </div>
+            <div class="row" style="">
+                <div class=" col-xs-12 col-md-12" style="text-align: right;">
+                    <h6>Iva: $ @Html.DisplayFor(model => model.Iva)</h6>
+                </div>
+            </div>
 
+            <div class="row" style="">
+                <div class=" col-xs-12 col-md-12" style="text-align: right;">
+                    <h6>Total: $ @Html.DisplayFor(model => model.Total) </h6>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+
+            <div class="clear"></div>
+            <div style="float:left;">
+
+            </div>
+            <div class="clear"></div>
+            <br />
+            <footer class="footer" style="text-align: right;">
+                <p>CAE N°: 6668556686448421 </p>
+            </footer>
+        </div>
     </div>
- 
+
 </body>

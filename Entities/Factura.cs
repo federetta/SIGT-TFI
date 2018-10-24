@@ -96,5 +96,29 @@ namespace Entities
         [DisplayName("Total")]
         [Browsable(false)]
         public decimal Total { get; set; }
+
+        [DisplayName("RazonSocial")]
+        [Browsable(false)]
+        public String RazonSocial { get; set; }
+
+        [DisplayName("Cuit")]
+        [Browsable(false)]
+        public String Cuit { get; set; }
+
+        [DisplayName("Calle")]
+        [Browsable(false)]
+        public String Calle { get; set; }
+
+        [DisplayName("numero")]
+        [Browsable(false)]
+        public int numero { get; set; }
+
+        [DisplayName("Numero")]
+        [Browsable(false)]
+        public String Localidad { get; set; }
+
+        [DisplayName("TipoContribuyente")]
+        [Browsable(false)]
+        public String TipoContribuyente { get; set; }
     }
 }

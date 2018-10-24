@@ -93,7 +93,13 @@ namespace BLL
                     Subtotal = row.Field<decimal>("Subtotal_ComprobanteCabecera"),
                     Iva = row.Field<decimal>("TotalIva_ComprobanteCabecera"),
                     Total = row.Field<decimal>("Total_ComprobanteCabecera"),
-                    
+                    RazonSocial = row.Field<string>("RazonSocial_Empresa"),
+                    Cuit = row.Field<string>("Cuit_Empresa"),
+                    Calle = row.Field<string>("Calle_Domicilio"),
+                    numero = row.Field<int>("Numero_Domicilio"),
+                    Localidad = row.Field<string>("Nombre_Localidad"),
+                    TipoContribuyente = row.Field<string>("Nombre_TipoContribuyente"),
+
 
                 }).ToList();
             }

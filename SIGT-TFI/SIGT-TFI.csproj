@@ -306,6 +306,7 @@
     <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\Logo.JPG" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\selectize.default.css" />
     <Content Include="favicon.ico" />
@@ -420,6 +421,7 @@
     <Content Include="Views\Factura\PDF2.cshtml" />
     <Content Include="Views\Factura\PDF3.cshtml" />
     <Content Include="Views\Factura\PDF4.cshtml" />
+    <Content Include="Views\Factura\PDF4 - Copia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
