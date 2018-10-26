@@ -1,4 +1,8 @@
-﻿@model Entities.Recibo
+﻿@model  Entities.Recibo
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
 
 @{
     ViewBag.Title = "Create";
@@ -69,7 +73,7 @@
                         <label>Fecha</label>
                     </div>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.FechaCobranza, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.EditorFor(model => model.FechaCobranza, new { htmlAttributes = new { @class = "form-control", @type = "date", id ="fecha" } })
                         @Html.ValidationMessageFor(model => model.FechaCobranza, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -101,7 +105,7 @@
                         <label>Medio</label>
                     </div>
                     <div class="col-md-10">
-                        @Html.DropDownList("IdMedioPago", listadoMedioPago, new { htmlAttributes = new { @class = "form-control dropdown-toggle" , id = "mediopago" } })
+                        @Html.DropDownList("IdMedioPago", listadoMedioPago, new { htmlAttributes = new { @class = "form-control dropdown-toggle", id = "mediopago" } })
                         @Html.ValidationMessageFor(model => model.IdMedioPago, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -208,28 +212,42 @@
                         <input type="submit" value="Create" class="btn btn-primary btn-lg btn-block" />
                     </div>
                 </div>
+
+                <table id="tblCustomers" class="table" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th style="width:150px">Numero</th>
+                            <th style="width:150px">Fecha</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var std in Model as IList<Entities.Recibo>)
+                        {
+                            <tr>
+                                <td>@std.NumeroCobranza</td>
+                                <td>@std.FechaCobranza</td>
+                                <td><input type="button" value="Remove" onclick="Remove(this)" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="button" id="btnAdd" value="Add" /></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <br />
+                <input type="button" id="btnSave" value="Save All" />
+                }
             </div>
                     
         </div>
-
-        <table class="table" id="myTable">
-            <tr>
-                <td>Row1 cell1</td>
-                <td>Row1 cell2</td>
-            </tr>
-            <tr>
-                <td>Row2 cell1</td>
-                <td>Row2 cell2</td>
-            </tr>
-            <tr>
-                <td>Row3 cell1</td>
-                <td>Row3 cell2</td>
-            </tr>
-        </table>
-        <button onclick="myFunction()">Try it</button>
     }
 
-         
+
+
+
 
             @section Scripts {
                 @Scripts.Render("~/bundles/jqueryval")
@@ -237,14 +255,86 @@
                     $("#IdMedioPago").selectize();
                     $("#IdCliente").selectize();
                     $("#IdEntidadBancaria").selectize();
-                    function myFunction() {
-                        var table = document.getElementById("myTable");
-                        var row = table.insertRow(0);
-                        var cell1 = row.insertCell(0);
-                        var cell2 = row.insertCell(1);
-                        cell1.innerHTML = document.getElementById("mediopago");
-                        cell2.innerHTML = document.getElementById("numero").value;
-                        console.dir(document.getElementById("mediopago"));
-                    }
+                    //function myFunction() {
+                    //    var table = document.getElementById("myTable");
+                    //    var row = table.insertRow(0);
+                    //    var cell1 = row.insertCell(0);
+                    //    var cell2 = row.insertCell(1);
+                    //    cell1.innerHTML = document.getElementById("mediopago").value;
+                    //    console.dir(document.getElementById("mediopago"));
+                    //    cell2.innerHTML = document.getElementById("numero").value;
+                        
+                    //}
+
+                    //numero
+                    //fecha
+                    $("body").on("click", "#btnAdd", function () {
+                        //Reference the Name and Country TextBoxes.
+                        var txtnumero = $("#numero");
+                        var txtfecha = $("#fecha");
+
+                        //Get the reference of the Table's TBODY element.
+                        var tBody = $("#tblCustomers > TBODY")[0];
+
+                        //Add Row.
+                        var row = tBody.insertRow(-1);
+
+                        //Add Name cell.
+                        var cell = $(row.insertCell(-1));
+                        cell.html(txtnumero.val());
+
+                        //Add Country cell.
+                        cell = $(row.insertCell(-1));
+                        cell.html(txtfecha.val());
+
+                        //Add Button cell.
+                        cell = $(row.insertCell(-1));
+                        var btnRemove = $("<input />");
+                        btnRemove.attr("type", "button");
+                        btnRemove.attr("onclick", "Remove(this);");
+                        btnRemove.val("Remove");
+                        cell.append(btnRemove);
+
+                        //Clear the TextBoxes.
+                        txtnumero.val("");
+                        txtfecha.val("");
+                    });
+
+                    function Remove(button) {
+                        //Determine the reference of the Row using the Button.
+                        var row = $(button).closest("TR");
+                        var name = $("TD", row).eq(0).html();
+                        if (confirm("Do you want to delete: " + name)) {
+                            //Get the reference of the Table.
+                            var table = $("#tblCustomers")[0];
+
+                            //Delete the Table row using it's Index.
+                            table.deleteRow(row[0].rowIndex);
+                        }
+                    };
+
+                    $("body").on("click", "#btnSave", function () {
+                        //Loop through the Table rows and build a JSON array.
+                        var customers = new Array();
+                        $("#tblCustomers TBODY TR").each(function () {
+                            var row = $(this);
+                            var customer = {};
+                            customer.Name = row.find("TD").eq(0).html();
+                            customer.Country = row.find("TD").eq(1).html();
+                            customers.push(customer);
+                        });
+
+                        //Send the JSON array to Controller using AJAX.
+                        $.ajax({
+                            type: "POST",
+                            url: "/Home/InsertCustomers",
+                            data: JSON.stringify(customers),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (r) {
+                                alert(r + " record(s) inserted.");
+                            }
+                        });
+                    });
                 </script>
    }

@@ -422,6 +422,7 @@
     <Content Include="Views\Factura\PDF3.cshtml" />
     <Content Include="Views\Factura\PDF4.cshtml" />
     <Content Include="Views\Factura\PDF4 - Copia.cshtml" />
+    <Content Include="Views\Cobranza\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

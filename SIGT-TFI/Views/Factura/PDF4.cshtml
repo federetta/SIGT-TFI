@@ -4,127 +4,146 @@
 }
 @{
     ViewBag.Title = "PDF4";
+    var len = Model.ListaTraslados.Count;
+    var totalSheets = (len / 17) + 1;
 }
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@for (int i = 0; i < len; i++)
+{
+    if (i % 17 == 0)
+    {
+        <body>
+            <div class="col-xs-12 col-md-12">
 
-<body>
-    <div class="col-xs-12 col-md-12">
+                <div class="container" style="border-style: solid; border-width: 1px;">
+                    <div class="row" style="">
+                        <div class="col-xs-5 col-md-5">
+                            <img src="~/Content/Logo.JPG" height="108" width="128" style="">
 
-        <div class="container" style="border-style: solid; border-width: 1px;">
-            <div class="row" style="">
-                <div class="col-xs-5 col-md-5">
-                    <img src="~/Content/Logo.JPG" height="108" width="128" style="">
-
-                </div>
-                <div class="col-xs-2 col-md-2">
-                    <h4 style="text-align: center; border-style: solid; border-width: 1px;">@Model.Letra</h4>
-                </div>
-                <div class="col-xs-5 col-md-5">
-                    <h4 style="text-align: center;">Factura<br>N°:0001-@Model.NumeroFactura.ToString().PadLeft(8, '0')</h4>
-                </div>
-            </div>
-            <div class="row" style="">
-                <div class="col-xs-6 col-md-6" style="text-align: left;">
-                    Ecocargo SA - Paunero 1879 - Martinez - Buenos Aires - Argentina<br>Tel: 11-4792-3065<br>Ventas@ecocargo.com<h3 style="text-align: center;"></h3>
-                </div>
-
-                <div class="col-xs-6 col-md-6" style="text-align: left; font-family: Arial, Helvetica, sans-serif; font-weight: 300; width: auto; height: auto; line-height: 28px;" id="fecha">
-                    <p style="text-align: left;" id="">
-                        Fecha:@Model.FechaFactura.Day/@Model.FechaFactura.Month/@Model.FechaFactura.Year
-                        <br>IVA Responsable Inscripto&nbsp
-                        <br>Cuit: 30353805682
-                        <br>Inicio actividades:04/04/2018
-                </div>
-            </div>
-            <hr>
-            <div class="row" style="">
-                <div class=" col-xs-6 col-md-6">
-                    <p>Cliente:@Model.RazonSocial<br>Dirección:@Model.Calle @Model.numero , @Model.Localidad<br>Iva:@Model.TipoContribuyente</p>
-                </div>
-
-                <div class="row" style="">
-                    <div class=" col-xs-6 col-md-6">
-                        <p>Cuit:@Model.Cuit</p>
+                        </div>
+                        <div class="col-xs-2 col-md-2">
+                            <h4 style="text-align: center; border-style: solid; border-width: 1px;">@Model.Letra</h4>
+                        </div>
+                        <div class="col-xs-5 col-md-5">
+                            <h4 style="text-align: center;">Factura<br>N°:0001-@Model.NumeroFactura.ToString().PadLeft(8, '0')</h4>
+                        </div>
                     </div>
+                    <div class="row" style="">
+                        <div class="col-xs-6 col-md-6" style="text-align: left;">
+                            Ecocargo SA - Paunero 1879 - Martinez - Buenos Aires - Argentina<br>Tel: 11-4792-3065<br>Ventas@ecocargo.com<h3 style="text-align: center;"></h3>
+                        </div>
+
+                        <div class="col-xs-6 col-md-6" style="text-align: left; font-family: Arial, Helvetica, sans-serif; font-weight: 300; width: auto; height: auto; line-height: 28px;" id="fecha">
+                            <p style="text-align: left;" id="">
+                                Fecha:@Model.FechaFactura.Day/@Model.FechaFactura.Month/@Model.FechaFactura.Year
+                                <br>IVA Responsable Inscripto&nbsp
+                                <br>Cuit: 30353805682
+                                <br>Inicio actividades:04/04/2018
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="">
+                        <div class=" col-xs-6 col-md-6">
+                            <p>Cliente:@Model.RazonSocial<br>Dirección:@Model.Calle @Model.numero , @Model.Localidad<br>Iva:@Model.TipoContribuyente</p>
+                        </div>
+
+                        <div class="row" style="">
+                            <div class=" col-xs-6 col-md-6">
+                                <p>Cuit:@Model.Cuit</p>
+                                @{ 
+                                    var sheet = (i / 17) + 1;
+                                }
+                                <!-- TODO falta calcular el ceil -->
+                                <p>Hoja @sheet de @totalSheets</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="" class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th style="max-width: 10px;">
+                                    Cantidad
+                                </th>
+                                <th style="text-align: left;">N° Traslado</th>
+                                <th style="width: 150px !important;text-align: right;">
+                                    Precio Unitario
+                                </th>
+                                <th style="width: 100px; text-align: right;">
+                                    Precio
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var traslados = new List<SIGT_TFI.Models.TrasladoPDFViewModels>();
+                                for(int k = i; k < i + 17 && k < len; k++)
+                                {
+                                    traslados.Add(Model.ListaTraslados[k]);
+                                }
+                            }
+                            @foreach (var item in traslados)
+                            {
+                                <tr>
+                                    <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
+                                        @Html.DisplayFor(modelItem => item.carga)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NumeroTraslado)
+
+                                    </td>
+                                    <td style="width: 150px !important; border-right: none !important; border-left: none !important;" class="tdNumero">
+                                        @{double precio = Convert.ToDouble(item.PrecioTotal);}
+                                        <span class="MontoPrePedido">@precio.ToString("C")</span>
+                                    </td>
+                                    <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
+                                        @{double preciototal = Convert.ToDouble(item.PrecioxCant);}
+
+
+                                        <span class="MontoPrePedido">@item.PrecioxCant </span>
+                                    </td>
+
+                                </tr>
+                                            }
+                        </tbody>
+                    </table>
+                    <hr />
+                    <div class="row" style="">
+                        <div class=" col-xs-12 col-md-12" style="text-align: right;">
+                            <h6>Subtotal: $ @Html.DisplayFor(model => model.Subtotal) </h6>
+                        </div>
+                    </div>
+                    <div class="row" style="">
+                        <div class=" col-xs-12 col-md-12" style="text-align: right;">
+                            <h6>Iva: $ @Html.DisplayFor(model => model.Iva)</h6>
+                        </div>
+                    </div>
+
+                    <div class="row" style="">
+                        <div class=" col-xs-12 col-md-12" style="text-align: right;">
+                            <h6>Total: $ @Html.DisplayFor(model => model.Total) </h6>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+
+                    <div class="clear"></div>
+                    <div style="float:left;">
+
+                    </div>
+                    <div class="clear"></div>
+                    <br />
+                    <footer class="footer" style="text-align: right;">
+                        <p>CAE N°: 6668556686448421 </p>
+                        <br />
+                    </footer>
                 </div>
             </div>
 
-            <table id="" class="table table-striped" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th style="max-width: 10px;">
-                            Cantidad
-                        </th>
-                        <th style="text-align: left;">N° Traslado</th>
-                        <th style="width: 150px !important;text-align: right;">
-                            Precio Unitario
-                        </th>
-                        <th style="width: 100px; text-align: right;">
-                            Precio
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var item in Model.ListaTraslados)
-                    {
-                        <tr>
-                            <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
-                                @Html.DisplayFor(modelItem => item.carga)
-
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NumeroTraslado)
-
-                            </td>
-                            <td style="width: 150px !important; border-right: none !important; border-left: none !important;" class="tdNumero">
-                                @{double precio = Convert.ToDouble(item.PrecioTotal);}
-                                <span class="MontoPrePedido">@precio.ToString("C")</span>
-                            </td>
-                            <td class="tdNumero" style="border-right: none !important; border-left: none !important;">
-                                @{double preciototal = Convert.ToDouble(item.PrecioxCant);}
-
-
-                                <span class="MontoPrePedido">@item.PrecioxCant </span>
-                            </td>
-
-                        </tr>
-                                    }
-                </tbody>
-            </table>
-            <hr />
-            <div class="row" style="">
-                <div class=" col-xs-12 col-md-12" style="text-align: right;">
-                    <h6>Subtotal: $ @Html.DisplayFor(model => model.Subtotal) </h6>
-                </div>
-            </div>
-            <div class="row" style="">
-                <div class=" col-xs-12 col-md-12" style="text-align: right;">
-                    <h6>Iva: $ @Html.DisplayFor(model => model.Iva)</h6>
-                </div>
-            </div>
-
-            <div class="row" style="">
-                <div class=" col-xs-12 col-md-12" style="text-align: right;">
-                    <h6>Total: $ @Html.DisplayFor(model => model.Total) </h6>
-                </div>
-            </div>
-            <br />
-            <br />
-            <br />
-
-            <div class="clear"></div>
-            <div style="float:left;">
-
-            </div>
-            <div class="clear"></div>
-            <br />
-            <footer class="footer" style="text-align: right;">
-                <p>CAE N°: 6668556686448421 </p>
-            </footer>
-        </div>
-    </div>
-
-</body>
+        </body>
+    }
+}

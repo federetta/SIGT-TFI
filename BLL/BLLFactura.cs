@@ -70,7 +70,11 @@ namespace BLL
             }
         }
 
-
+        /// <summary>
+        /// Convierto la vista de VW_FACTURA en objeto factura para emitir el PDF del comprobante. 
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <returns></returns>
         public List<Factura> VW_FACTURA_HISTORICO2(int objeto)
         {
             var factura = new Factura();
