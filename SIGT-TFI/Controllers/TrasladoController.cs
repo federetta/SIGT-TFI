@@ -8,6 +8,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Web;
 using SIGT_TFI.Reports;
 using Rotativa;
+using OfficeOpenXml;
 
 namespace SIGT_TFI.Controllers
 {
@@ -91,13 +92,44 @@ namespace SIGT_TFI.Controllers
 
             Response.ClearContent();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename = listado.xml");
-            Response.ContentType = "text/xml";
+            Response.AddHeader("content-disposition", "attachment; filename = listado.xls");
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
             var serializer = new
             System.Xml.Serialization.XmlSerializer(lista.GetType());
             serializer.Serialize(Response.OutputStream, lista);
         }
+
+        public void ExportToXLS()
+        {
+            var cp = new BLLTraslado();
+            var lista = cp.All();
+
+          
+            ExcelPackage excel = new ExcelPackage();
+            var workSheet = excel.Workbook.Worksheets.Add("Hoja1");
+            workSheet.Cells[1, 1].LoadFromCollection(lista, true);
+            using (var memoryStream = new MemoryStream())
+            {
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;  filename=ListaTraslados.xlsx");
+                excel.SaveAs(memoryStream);
+                memoryStream.WriteTo(Response.OutputStream);
+                Response.Flush();
+                Response.End();
+            }
+        }
+        //public void ExportToXSL()
+        //{
+        //    var cp = new BLLTraslado();
+        //    var lista = cp.All();
+        //    Response.ClearContent();
+        //   Response.AddHeader("content-disposition", "attachment;filename=Contact.xls");
+        //   Response.AddHeader("Content-Type", "application/vnd.ms-excel");
+        //   WriteHtmlTable(lista, Response.Output);
+        //    Response.End();
+
+        //}
 
         // GET: Traslado/Edit/5
         public ActionResult Edit(int id)
