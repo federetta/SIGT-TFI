@@ -62,5 +62,13 @@ namespace Entities
         [Browsable(false)]
         public string Observaciones { get; set; }
 
+        [DisplayName("Monto")]
+        [Browsable(false)]
+        public double Monto { get; set; }
+
+        [DisplayName("IdCobranza")]
+        [Browsable(false)]
+        public int idcobranza { get; set; }
+
     }
 }

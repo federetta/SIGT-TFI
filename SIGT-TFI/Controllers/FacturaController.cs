@@ -48,7 +48,7 @@ namespace SIGT_TFI.Controllers
 
 
         [HttpPost]
-        public ActionResult BuscarComprobante(Factura factura)
+        public ActionResult BuscarComprobante(Cliente factura)
         {
 
             var btcomp = new BLLTipoComprobante();
@@ -65,7 +65,7 @@ namespace SIGT_TFI.Controllers
 
 
         [HttpPost]
-        public ActionResult Buscar(Factura factura)
+        public ActionResult Buscar(Cliente factura)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace SIGT_TFI.Controllers
             if (string.IsNullOrWhiteSpace(idtraslado)) throw new Exception("Debe seleccionar al menos un translado");
             var translations = idtraslado.Split(new char[] { ',' }).Select(x => Convert.ToInt32(x));
             var bll = new BLLFactura();
-            var factura = new Factura();
+            var factura = new Cliente();
           
           
             factura.IdTipo = Convert.ToInt32(form["IdTipoComprobante"]);
@@ -103,7 +103,7 @@ namespace SIGT_TFI.Controllers
             factura.IdCliente = Convert.ToInt32(form["IdCliente"]);
             bll.CrearFactura(factura);
             var Lista = new System.Collections.ArrayList();
-            Lista.Add(new Factura());
+            Lista.Add(new Cliente());
             foreach (int value in translations)
             {
                 factura.IdTraslado = value;
@@ -115,7 +115,7 @@ namespace SIGT_TFI.Controllers
             return View();
         }
 
-        public ActionResult PDF(Factura Factura)
+        public ActionResult PDF(Cliente Factura)
         {
                  GIdFactura = Factura.id;
                  return new ActionAsPdf("PDF4") { FileName = "invoice" + GIdFactura + ".pdf" };
@@ -127,14 +127,14 @@ namespace SIGT_TFI.Controllers
         public ActionResult PDF4()
         {
             var bll = new BLLFactura();
-            var factura = new Factura();
+            var factura = new Cliente();
             var doc = bll.VW_FACTURA_HISTORICO2(GIdFactura);
             Models.FacturaPDFViewModels Vista = MapVista(doc);
             return View(Vista);
 
         }
 
-        private FacturaPDFViewModels MapVista(List<Factura> doc)
+        private FacturaPDFViewModels MapVista(List<Cliente> doc)
         {
             FacturaPDFViewModels model = new FacturaPDFViewModels();
             List<TrasladoPDFViewModels> listatraslado = new List<TrasladoPDFViewModels>();

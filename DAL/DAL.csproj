@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALContacto.cs" />
+    <Compile Include="DALCuentaCorriente.cs" />
     <Compile Include="DALDomicilio.cs" />
     <Compile Include="DALEmpresa.cs" />
+    <Compile Include="DALCobranza.cs" />
     <Compile Include="DALListaPrecio.cs" />
     <Compile Include="DALMedioPago.cs" />
     <Compile Include="DALFactura.cs" />

@@ -13,7 +13,7 @@ namespace DAL
 {
    public class DALFactura : DataAccessComponent
     {
-        public DataTable LISTAR_COMPROBANTE_DETALLE(Factura factura)
+        public DataTable LISTAR_COMPROBANTE_DETALLE(Cliente factura)
         {Services.ConexionSQL conexion = new Services.ConexionSQL();
                 var link = conexion.ConectarBaseDatos();
 
@@ -50,7 +50,7 @@ namespace DAL
             cmd.Parameters.Add(parametro);
         }
 
-        private void listarParametros(SqlCommand comando, Entities.Factura factura)
+        private void listarParametros(SqlCommand comando, Entities.Cliente factura)
         {
             agregarParametro(comando, "@id_cliente", factura.IdCliente, ParameterDirection.Input, SqlDbType.Int);
             agregarParametro(comando, "@fechaInicial", factura.FechaInicialTraslado, ParameterDirection.Input, SqlDbType.Date);
@@ -60,7 +60,7 @@ namespace DAL
         
 
 
-        public Factura CrearFactura(Factura factura)
+        public Cliente CrearFactura(Cliente factura)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace DAL
         ///     ''' Cuando se produce una falla en algun insert, es un rollback del proceso.
         ///     ''' </summary>
         ///     ''' <param name="Comprobante"></param>
-        public void EliminarComprobante(Factura comprobante)
+        public void EliminarComprobante(Cliente comprobante)
         {
             Services.ConexionSQL conexion = new Services.ConexionSQL();
             var link = conexion.ConectarBaseDatos();
@@ -111,7 +111,7 @@ namespace DAL
         ///     ''' </summary>
         ///     ''' <param name="factura"></param>
         ///     ''' <param name="traslado"></param>
-        public void CrearFacturaDetalle(Factura factura)
+        public void CrearFacturaDetalle(Cliente factura)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace DAL
         ///     ''' </summary>
         ///     ''' <param name="Factura"></param>
         ///     ''' <returns></returns>
-        public Factura UltimoComprobante(Factura comprobante)
+        public Cliente UltimoComprobante(Cliente comprobante)
         {
             try
             {
@@ -167,7 +167,7 @@ namespace DAL
         ///     ''' Utilizo este StoreProcedure para impactar fijo los totales de la factura en la cabecera. 
         ///     ''' </summary>
         ///     ''' <param name="factura"></param>
-        public void CrearTotales(Factura factura)
+        public void CrearTotales(Cliente factura)
         {
             try
             {
@@ -184,7 +184,7 @@ namespace DAL
             }
         }
 
-        public DataTable VW_FACTURA_CABECERA(Factura factura)
+        public DataTable VW_FACTURA_CABECERA(Cliente factura)
         {
             Services.ConexionSQL conexion = new Services.ConexionSQL();
             var link = conexion.ConectarBaseDatos();
@@ -212,7 +212,7 @@ namespace DAL
             }
             return table;
         }
-        private void listarParametros2(SqlCommand comando, Entities.Factura factura)
+        private void listarParametros2(SqlCommand comando, Entities.Cliente factura)
         {
             agregarParametro(comando, "@id_cliente", factura.IdCliente, ParameterDirection.Input, SqlDbType.Int);
             agregarParametro(comando, "@id_letra", factura.IdLetra, ParameterDirection.Input, SqlDbType.Int);
@@ -220,7 +220,44 @@ namespace DAL
         }
 
 
-        public DataTable VW_FACTURA_HISTORICO2(Factura factura)
+
+
+
+        public DataTable VW_FACTURA_SALDO(Cliente factura)
+        {
+            Services.ConexionSQL conexion = new Services.ConexionSQL();
+            var link = conexion.ConectarBaseDatos();
+
+
+            DataSet dataset = new DataSet("BUSCAR_FACTURA_SALDO");
+            DataTable table = new DataTable();
+            try
+            {
+                string procedure = "BUSCAR_FACTURA_SALDO";
+
+                SqlCommand comando = new SqlCommand(procedure, link);
+                comando.CommandType = CommandType.StoredProcedure;
+                listarParametros4(comando, factura);
+                SqlDataAdapter da = new SqlDataAdapter(comando);
+                da.Fill(dataset, "factura");
+                table = dataset.Tables["factura"];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+            }
+            return table;
+        }
+        private void listarParametros4(SqlCommand comando, Entities.Cliente factura)
+        {
+            agregarParametro(comando, "@id_cliente", factura.IdCliente, ParameterDirection.Input, SqlDbType.Int);
+        }
+
+
+        public DataTable VW_FACTURA_HISTORICO2(Cliente factura)
         {
             Services.ConexionSQL conexion = new Services.ConexionSQL();
             var link = conexion.ConectarBaseDatos();
@@ -248,7 +285,7 @@ namespace DAL
             }
             return table;
         }
-        private void listarParametros3(SqlCommand comando, Entities.Factura factura)
+        private void listarParametros3(SqlCommand comando, Entities.Cliente factura)
         {
             agregarParametro(comando, "@id_tipocomprobante", factura.id, ParameterDirection.Input, SqlDbType.Int);
         }

@@ -1,0 +1,5 @@
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\bin\Release\Services.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\bin\Release\Services.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\obj\Release\Services.csprojResolveAssemblyReference.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\obj\Release\Services.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\obj\Release\Services.pdb

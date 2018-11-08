@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Entities.Domicilio>
+@using Entities;
+
+@{
+    ViewBag.Title = "Index";
+    var id = Url.RequestContext.RouteData.Values["id"];
+    var localidad = "Localidad";
+    var provincia = "Provincia";
+
+}
+
+<h2>Domicilios</h2>
+
+<p>
+   @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdLocalidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Piso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Depto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoPostal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdProvincia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    {
+        foreach (var std in ViewData["Localidad"] as IList<Localidad>)
+        {
+            if (std.Id == item.IdLocalidad)
+            {
+                localidad = std.Nombre;
+                break;
+            }
+        }
+        foreach (var std in ViewData["Provincia"] as IList<Provincia>)
+        {
+            if (std.Id == item.IdProvincia)
+            {
+                provincia = std.Nombre;
+                break;
+            }
+        }
+    }
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Calle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => localidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Piso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Depto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoPostal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => provincia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

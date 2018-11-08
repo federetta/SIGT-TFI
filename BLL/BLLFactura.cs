@@ -13,7 +13,7 @@ namespace BLL
     public class BLLFactura
     {
 
-        public List<Traslado> LISTAR_COMPROBANTE_DETALLE(Factura objeto)
+        public List<Traslado> LISTAR_COMPROBANTE_DETALLE(Cliente objeto)
         {
             var DAC = new DALFactura();
             try
@@ -42,14 +42,14 @@ namespace BLL
                 throw ex;
             }
         }
-        public List<Factura> VW_FACTURA_CABECERA(Factura objeto)
+        public List<Cliente> VW_FACTURA_CABECERA(Cliente objeto)
         {
             var DAC = new DALFactura();
             try
             {
 
                 var datatable = DAC.VW_FACTURA_CABECERA(objeto);
-                return datatable.AsEnumerable().Select(row => new Factura()
+                return datatable.AsEnumerable().Select(row => new Cliente()
                 {
                     id = row.Field<int>("Id_ComprobanteCabecera"),
                     Tipo = row.Field<string>("Descripcion_TipoComprobante"),
@@ -70,20 +70,47 @@ namespace BLL
             }
         }
 
+        public List<Cliente> VW_FACTURA_SALDO(Cliente objeto)
+        {
+            var DAC = new DALFactura();
+            try
+            {
+
+                var datatable = DAC.VW_FACTURA_SALDO(objeto);
+                return datatable.AsEnumerable().Select(row => new Cliente()
+                {
+                    Tipo = row.Field<string>("Descripcion"),
+                    Letra = row.Field<string>("letra"),
+                    FechaFactura = row.Field<DateTime>("Fecha"),
+                    NumeroFactura = row.Field<int>("Numero"),
+                    Subtotal = row.Field<Decimal>("Subtotal"),
+                    Iva = row.Field<decimal>("TotalIva"),
+                    Total = row.Field<decimal>("Total"),
+
+
+
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Convierto la vista de VW_FACTURA en objeto factura para emitir el PDF del comprobante. 
         /// </summary>
         /// <param name="objeto"></param>
         /// <returns></returns>
-        public List<Factura> VW_FACTURA_HISTORICO2(int objeto)
+        public List<Cliente> VW_FACTURA_HISTORICO2(int objeto)
         {
-            var factura = new Factura();
+            var factura = new Cliente();
             factura.id = Convert.ToInt32(objeto);
             var DAC = new DALFactura();
             try
             {
                 var datatable = DAC.VW_FACTURA_HISTORICO2(factura);
-                return datatable.AsEnumerable().Select(row => new Factura()
+                return datatable.AsEnumerable().Select(row => new Cliente()
                 {
                     id = row.Field<int>("Id_ComprobanteCabecera"),
                     Tipo = row.Field<string>("Descripcion_TipoComprobante"),
@@ -113,7 +140,7 @@ namespace BLL
             }
 
         }
-        public Factura UltimoComprobante(Factura objeto)
+        public Cliente UltimoComprobante(Cliente objeto)
         {
             var DAC = new DALFactura();
             return DAC.UltimoComprobante(objeto);
@@ -127,7 +154,7 @@ namespace BLL
         ///     ''' </summary>
         ///     ''' <param name="objeto"></param>
         ///     ''' <returns></returns>
-        public Factura CrearFactura(Factura objeto)
+        public Cliente CrearFactura(Cliente objeto)
         {
             try
             {
@@ -153,7 +180,7 @@ namespace BLL
         ///     '''     Creo el detalle de la Factura emitida.
         ///     ''' </summary>
         ///     ''' <param name="factura"></param>
-        public void CrearFacturaDetalle(Factura factura)
+        public void CrearFacturaDetalle(Cliente factura)
         {
             var DAC = new DALFactura();
             try
@@ -188,7 +215,7 @@ namespace BLL
         }
 
 
-        public void CrearTotales(Factura factura)
+        public void CrearTotales(Cliente factura)
         {
             var DAC = new DALFactura();
         

@@ -38,6 +38,39 @@
             </div>
         </div>
     </div>*@
+
+
+    @if (TempData["ErrorNormal"] != null && TempData["ErrorNormal"] != String.Empty)
+    {
+        ViewBag.AlertError = TempData["ErrorNormal"];
+    }
+    @if (TempData["OKNormal"] != null && TempData["OKNormal"] != String.Empty)
+    {
+        ViewBag.AlertOK = TempData["OKNormal"];
+    }
+
+
+    @if (ViewBag.AlertError != null && ViewBag.AlertError != String.Empty)
+    {
+        @*
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @ViewBag.AlertError
+            </div>*@
+
+        <input id="AlertError" type="hidden" value="@ViewBag.AlertError" />
+    }
+
+    @if (ViewBag.AlertOk != null && ViewBag.AlertOk != String.Empty)
+    {
+
+        @*<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @ViewBag.AlertOk
+            </div>*@
+
+        <input id="AlertOk" type="hidden" value="@ViewBag.AlertOK" />
+    }
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid" id="nav">
             <div class="navbar-header">
@@ -82,6 +115,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cobranzas<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Ingresar", "Create", "Cobranza")</li>
+                            <li>@Html.ActionLink("Cuenta Corriente", "BuscarComprobantes", "CuentaCorriente")</li>
                         </ul>
                     </li>
 

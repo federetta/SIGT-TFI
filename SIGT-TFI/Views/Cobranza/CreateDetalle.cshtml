@@ -1,0 +1,318 @@
+﻿@model Entities.Recibo
+
+@{
+    ViewBag.Title = "Create";
+    var id = Url.RequestContext.RouteData.Values["id"];
+}
+@{ var listadoEntidadBancaria = new List<SelectListItem>();
+    foreach (var std in ViewData["EntidadBancaria"] as IList<Entities.EntidadBancaria>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.Id.ToString()
+        };
+        listadoEntidadBancaria.Add(elemento);
+    }
+}
+
+@{ var listadoMedioPago = new List<SelectListItem>();
+    foreach (var std in ViewData["MedioPago"] as IList<Entities.MedioPago>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.Nombre,
+            Value = std.IdMedioPago.ToString()
+        };
+        listadoMedioPago.Add(elemento);
+    }
+}
+
+@{ var listadoCliente = new List<SelectListItem>();
+    foreach (var std in ViewData["Cliente"] as IList<Entities.Empresa>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.RazonSocial,
+            Value = std.id.ToString()
+        };
+        listadoCliente.Add(elemento);
+    }
+}
+
+<h2>Create</h2>
+
+<form id="formagregar">
+    <div class="form-horizontal">
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Medio</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.DropDownList("IdMedioPago", listadoMedioPago, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                    @Html.ValidationMessageFor(model => model.IdMedioPago, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Fecha Cheque</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FechaRecibo, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.FechaRecibo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Directo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Directo)
+                        @Html.ValidationMessageFor(model => model.Directo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Banco</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.DropDownList("IdEntidadBancaria", listadoEntidadBancaria, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
+                    @Html.ValidationMessageFor(model => model.IdEntidadBancaria, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Plazo</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PlazoRecibo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PlazoRecibo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Documento</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DocLibrador, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DocLibrador, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="col-sm-4">
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>N° Cheque</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NumeroRecibo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumeroRecibo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endosable, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Endosable)
+                        @Html.ValidationMessageFor(model => model.Endosable, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            @*<input type="hidden" id="custId" name="custId" value="@id">*@
+
+            @Html.HiddenFor(m => m.idcobranza, new { Value = id })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Monto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Monto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Agregar" class="btn btn-primary btn-lg btn-block" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@using (Html.BeginForm("GenerarCobranza", "Cobranza", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table class="table" id="tabla">
+        <tr>
+            <th>
+                Medio
+            </th>
+            <th>
+                Banco
+            </th>
+            <th>
+                Numero
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Plazo
+            </th>
+            <th>
+                Endosable
+            </th>
+            <th>
+                Directo
+            </th>
+            <th>
+                Documento
+            </th>
+            <th>
+                Cabecera
+            </th>
+            <th>
+                Monto
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+        <tfoot>
+            <tr>
+                <th colspan="8">Total:</th>
+                <th>
+                    <span id="total">$ 0.00</span>
+                </th>
+                <th>
+                </th>
+            </tr>
+        </tfoot>
+        </table>
+        <div class="form-group">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="Crear" class="btn btn-primary btn-lg btn-block" />
+
+            </div>
+                <div class="col-md-4">
+                    <input type="submit" value="Anular" class="btn btn-primary btn-lg btn-block" />
+
+                </div>
+            
+        </div>
+}
+
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script>
+                $("#IdMedioPago").selectize();
+                $("#IdEntidadBancaria").selectize();
+                $('#formagregar').submit(function (e) {
+                    e.preventDefault()
+                    var item = decode($(e.target).serialize())
+                    console.log(item)
+                    if (valido(item)) {
+                        $("#tabla").append(
+                            "<tr>" +
+                            "<td>" +
+                            "<input type='hidden' name='IdMedioPago' value='" + item.IdMedioPago + "'/>" + item.IdMedioPago +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='IdEntidadBancaria' value='" + item.IdEntidadBancaria + "'/>" + item.IdEntidadBancaria +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='NumeroRecibo' value='" + item.NumeroRecibo + "'/>" + item.NumeroRecibo +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='FechaRecibo' value='" + item.FechaRecibo + "'/>" + item.FechaRecibo +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='PlazoRecibo' value='" + item.PlazoRecibo + "'/>" + item.PlazoRecibo +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='Endosable' value='" + item.Endosable + "'/>" + item.Endosable +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='Directo' value='" + item.Directo + "'/>" + item.Directo +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='DocLibrador' value='" + item.DocLibrador + "'/>" + item.DocLibrador +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' name='idcobranza' value='" + item.idcobranza + "'/>" + item.idcobranza +
+                            "</td>" +
+                            "<td>" +
+                            "<input type='hidden' class='monto' name='Monto' value='" + item.Monto + "'/>" + item.Monto +
+                            "</td>" +
+                            "<td>" +
+                            "<a class='quitar' data-toggle='tooltip' data-placement='top' title='Quitar'>" +
+                            "<span class='fas fa-times'></span >" +
+                            "</a>" +
+                            "</td>" +
+                            "</tr>"
+                        )
+                        var total = 0;
+                        $('.monto').each(function (i, e) {
+                            console.log(e.val, e.value)
+                            total += parseFloat(e.value);
+                            console.log(total)
+                        })
+                        $('#total').text('$ ' + total.toFixed(2));
+                        e.target.reset()
+                    }
+                });
+                $('table').on('click', '.quitar', function (e) {
+                    var tag = e.target.parentNode.parentNode;
+                    if (tag.tagName !== 'TR') tag = tag.parentNode;
+                    tag.remove();
+                    var total = 0;
+                    $('.monto').each(function (i, e) {
+                        console.log(e.val, e.value)
+                        total += parseFloat(e.value);
+                        console.log(total)
+                    })
+                    $('#total').text('$ ' + total.toFixed(2));
+                })
+                function decode(params, obj) {
+                    obj = obj || {};
+                    params.split('&').forEach((piece) => {
+                        const values = piece.split('=');
+                        obj[values[0]] = decodeURIComponent(values[1]);
+                    });
+                    return obj;
+                }
+                function valido(item) {
+                    var res = true;
+                    if (!item.Monto) res = false;
+                    return res;
+                }
+            </script>
+        }

@@ -16,7 +16,7 @@ namespace Services
         {
             try
             {
-                conexion = new SqlConnection("Data Source = frdell\\sqlexpress; Initial Catalog = SIGT_Web; Integrated Security = True");
+                conexion = new SqlConnection("Data Source = localhost\\sqlexpress; Initial Catalog = SIGT_Web; Integrated Security = True");
                 conexion.Open();
             }
             catch (Exception ex)
@@ -29,7 +29,7 @@ namespace Services
         {
             try
             {
-                conexion = new SqlConnection("Data Source = frdell\\sqlexpress; Initial Catalog = SIGT_Web; Integrated Security = True");
+                conexion = new SqlConnection("Data Source = localhost\\sqlexpress; Initial Catalog = SIGT_Web; Integrated Security = True");
                 conexion.Close();
             }
             catch (Exception ex)

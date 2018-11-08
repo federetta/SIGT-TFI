@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BootstrapSupport, Version=1.0.4895.40200, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quintsys.BootstrapSupport.1.0.4895.40200\lib\net45\BootstrapSupport.dll</HintPath>
+    </Reference>
     <Reference Include="ClosedXML, Version=0.92.1.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.92.1\lib\net46\ClosedXML.dll</HintPath>
     </Reference>
@@ -246,10 +249,15 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
+    <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
+    <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
+    <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CobranzaController.cs" />
     <Compile Include="Controllers\ContactoController.cs" />
+    <Compile Include="Controllers\CuentaCorrienteController.cs" />
     <Compile Include="Controllers\DomicilioController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\ListaPrecioController.cs" />
@@ -318,7 +326,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Reports\ListarTraslados.vb" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -340,6 +347,7 @@
     <Content Include="Reports\ListarFacturas.rpt" />
     <Content Include="Reports\ListarTraslados.rpt" />
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -418,7 +426,7 @@
     <Content Include="Views\Traslado\Index.cshtml" />
     <Content Include="Views\Factura\Buscar.cshtml" />
     <Content Include="Views\Factura\Create.cshtml" />
-    <Content Include="Views\Cobranza\Create.cshtml" />
+    <Content Include="Views\Cobranza\CreateOld.cshtml" />
     <Content Include="Views\Factura\BuscarComprobante.cshtml" />
     <Content Include="Views\Factura\makePDFFact.cshtml" />
     <Content Include="Views\ListaPrecio\Index.cshtml" />
@@ -428,6 +436,10 @@
     <Content Include="Views\Factura\PDF4.cshtml" />
     <Content Include="Views\Factura\PDF4 - Copia.cshtml" />
     <Content Include="Views\Cobranza\Index.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\Cobranza\CreateDetalle.cshtml" />
+    <Content Include="Views\Cobranza\Create.cshtml" />
+    <Content Include="Views\CuentaCorriente\BuscarComprobantes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

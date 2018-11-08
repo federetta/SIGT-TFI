@@ -50,7 +50,7 @@ namespace SIGT_TFI.Controllers
                 var blltraslado = new BLLTraslado();
                 blltraslado.CreateTraslado(traslado);
 
-
+                TempData["OKNormal"] = "Andoo";
                 return RedirectToAction("Create");
             }
             catch

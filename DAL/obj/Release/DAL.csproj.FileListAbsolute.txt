@@ -1,0 +1,13 @@
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\DAL.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\DAL.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Entities.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Services.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Entities.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Services.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.pdb

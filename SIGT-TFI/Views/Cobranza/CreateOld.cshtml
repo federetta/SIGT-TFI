@@ -1,0 +1,79 @@
+﻿@model Entities.Cobranza
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@{ var listadoCliente = new List<SelectListItem>();
+    foreach (var std in ViewData["Cliente"] as IList<Entities.Empresa>)
+    {
+        var elemento = new SelectListItem()
+        {
+            Text = std.RazonSocial,
+            Value = std.id.ToString()
+        };
+        listadoCliente.Add(elemento);
+    }
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Recibo</h4>
+        <hr />
+        <div class="col-sm-4">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Numero</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.LabelFor(model => model.NumeroCobranza, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.NumeroCobranza, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>Fecha</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.ValidationMessageFor(model => model.NumeroCobranza, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaCobranza, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FechaCobranza, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FechaCobranza, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary btn-lg btn-block" />
+            </div>
+        </div>
+    </div>=> model.IdCliente, htmlAttributes: new
+ @class = "control-label col-md-2" });
+}
+
+
+@section Scripts {
+    @new { @class = ")
+    <script>
+        $("#IdCliente").selectize();
+    </script>
+}

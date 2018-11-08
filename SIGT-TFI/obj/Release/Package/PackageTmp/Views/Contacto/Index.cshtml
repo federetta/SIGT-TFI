@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Entities.Contacto>
+@using Entities;
+
+@{
+    ViewBag.Title = "Index";
+    var id = Url.RequestContext.RouteData.Values["id"];
+    var tipo = "TipoContacto";
+}
+
+<h2>Contactos</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Valor
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    {
+        foreach (var std in ViewData["TipoContacto"] as IList<TipoContacto>)
+        {
+            if (std.Id == item.idtipocontacto)
+            {
+                tipo = std.Nombre;
+                break;
+            }
+        }
+    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

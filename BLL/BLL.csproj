@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLContacto.cs" />
+    <Compile Include="BLLCtacte.cs" />
     <Compile Include="BLLDomicilio.cs" />
     <Compile Include="BLLEmpresa.cs" />
+    <Compile Include="BLLCobranza.cs" />
     <Compile Include="BLLFactura.cs" />
     <Compile Include="BLLEntidadBancaria.cs" />
     <Compile Include="BLLListaPrecio.cs" />

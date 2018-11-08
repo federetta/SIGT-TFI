@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Factura
+    public class Cliente
     {
         [DisplayName("id")]
         [Browsable(false)]
@@ -120,5 +120,16 @@ namespace Entities
         [DisplayName("TipoContribuyente")]
         [Browsable(false)]
         public String TipoContribuyente { get; set; }
+
+     
+        [Browsable(false)]
+        public int NumeroCobranza { get; set; }
+        public DateTime FechaCobranza { get; set; }
+        public decimal TotalCobranza { get; set; }
+        public decimal Saldo { get; set; }
+
+
+
+
     }
 }

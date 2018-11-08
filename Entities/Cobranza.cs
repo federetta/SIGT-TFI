@@ -32,5 +32,9 @@ namespace Entities
         [DisplayName("Cliente")]
         [Browsable(false)]
         public int IdCliente { get; set; }
+
+        [DisplayName("Recibos")]
+        [Browsable(false)]
+        public List<Recibo> Recibos { get; set; }
     }
 }

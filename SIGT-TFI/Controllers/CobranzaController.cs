@@ -4,23 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Entities;
 
 namespace SIGT_TFI.Controllers
 {
     public class CobranzaController : Controller
     {
-        // GET: Cobranza
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Cobranza/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Cobranza/Create
         public ActionResult Create()
         {
@@ -33,15 +22,70 @@ namespace SIGT_TFI.Controllers
             return View();
         }
 
+        // GET: Cobranza/Create/Detalle
+        public ActionResult CreateDetalle(Cobranza cobranza)
+        {
+            var btc = new BLLEntidadBancaria();
+            ViewData["EntidadBancaria"] = btc.All();
+            var btcomp = new BllMedioPago();
+            ViewData["MedioPago"] = btcomp.All();
+            var bllempresa = new BLLEmpresa();
+            ViewData["Cliente"] = bllempresa.AllCliente();
+            return View();
+        }
+        [HttpPost]
+        // GET: Cobranza/Create/Detalle
+        public ActionResult GenerarCobranza(FormCollection form)
+        {
+           
+            
+            var idmedios = form["IdMedioPago"].Split(new char[] { ',' }).Select(x => Convert.ToInt32(x)).ToList();
+            var identidadbancarias = form["IdEntidadBancaria"].Split(new char[] { ',' }).Select(x => Convert.ToInt32(x)).ToList();
+            var numerorecibos = form["NumeroRecibo"].Split(new char[] { ',' }).Select(x => Convert.ToInt32(x)).ToList();
+            var fechas = form["FechaRecibo"].Split(new char[] { ',' }).Select(x => Convert.ToDateTime(x)).ToList();
+            var plazos = form["PlazoRecibo"].Split(new char[] { ',' }).Select(x => Convert.ToInt32(x)).ToList();
+            var endosables = form["Endosable"].Split(new char[] { ',' }).Select(x => Convert.ToBoolean(x)).ToList();
+            var directos = form["Directo"].Split(new char[] { ',' }).Select(x => Convert.ToBoolean(x)).ToList();
+            var docs = form["DocLibrador"].Split(new char[] { ',' }).Select(x => Convert.ToInt32(x)).ToList();
+            var idcobranzas = form["idcobranza"].Split(new char[] { ',' }).Select(x => Convert.ToInt32(x)).ToList();
+            var montos = form["Monto"].Split(new char[] { ',' }).Select(x => Convert.ToDouble(x)).ToList();
+            var lista = new List<Recibo>();
+            int len = idmedios.Count();
+            for (int i = 0; i<len;i++)
+            {
+                lista.Add(new Recibo
+                {
+                    IdMedioPago = idmedios[i],
+                    IdEntidadBancaria = identidadbancarias[i],
+                    NumeroRecibo = numerorecibos[i],
+                    FechaRecibo = fechas[i],
+                    PlazoRecibo = plazos[i],
+                    Endosable = endosables[i],
+                    Directo = directos[i],
+                    DocLibrador = docs[i],
+                    idcobranza = idcobranzas[i],
+                    Monto = montos[i],
+                });
+
+            }
+            var bll = new BLLCobranza();
+            bll.CrearCobranzaDetalle(lista);
+                       
+
+            return RedirectToAction("Create");
+        }
+
+
         // POST: Cobranza/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Cobranza cobranza)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var bll = new BLLCobranza();
+                bll.CrearCobranzaCabecera(cobranza);
+                ViewBag.Mesagge = "lala";
+                return RedirectToAction("CreateDetalle", new { id = cobranza.IdCobranzaCabecera });
             }
             catch
             {
@@ -49,48 +93,10 @@ namespace SIGT_TFI.Controllers
             }
         }
 
-        // GET: Cobranza/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+      
 
-        // POST: Cobranza/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+       
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Cobranza/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Cobranza/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Entities.Traslado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <div><a href="@Url.Action("ExportToXML")"> Report XML </a></div> 
+    <div><a href="@Url.Action("ExportToXLS")"> Report Excel </a></div> 
+</p>
+<a href="@Url.Action("ExportToXLS", "Traslado")" class="btn btn-warning">
+    Exportar Excel
+</a>
+<p>
+    @using (Html.BeginForm("Index", "Traslado", FormMethod.Get))
+    {
+        <b>Buscar por Nombre:</b>
+        @Html.TextBox("Search") <input type="submit" value="Search" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroTraslado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdTransporte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdRecorrido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carga)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroTraslado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdTransporte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdRecorrido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carga)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

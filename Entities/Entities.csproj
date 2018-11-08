@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Cobranza.cs" />
     <Compile Include="Contacto.cs" />
+    <Compile Include="CuentaCorriente.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="EntidadBancaria.cs" />

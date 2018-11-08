@@ -1,0 +1,101 @@
+﻿@model IPagedList<Entities.Empresa>
+@using PagedList;
+@using PagedList.Mvc;
+@using Entities;
+@{
+    ViewBag.Title = "Index";
+    var tipocontri = "TipoContribuyente";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<h2>Proveedores</h2> 
+
+<p>
+    @Html.ActionLink("Nuevo Proveedor", "Create")
+</p>
+<p>
+    @using (Html.BeginForm("Index","Proveedor", FormMethod.Get)) {
+    <b>Buscar por Nombre:</b>
+    @Html.TextBox("Search") <input type="submit" value="Search" />
+    }
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Razon Social
+        </th>
+        <th>
+            Nombre Fantasia 
+        </th>
+        <th>
+           Cuit
+        </th>
+        <th>
+            Tipo Contribuyente
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    {
+        foreach (var std in ViewData["TipoContribuyente"] as IList<TipoContribuyente>)
+        {
+            if (std.id == item.Tipo_Contribuyente)
+            {
+                tipocontri = std.nombre;
+                break;
+            }
+        }
+    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazonSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => tipocontri)
+        </td>
+       
+        <td>
+            <a href="@Url.Action("Edit", "Proveedor", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Editar!">
+                <span class="far fa-edit"></span>
+            </a>|
+            <a href="@Url.Action("Details", "Detalles", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Detalles!">
+            <span class="glyphicon glyphicon-search">
+                </span>
+                </a>|
+            <a href="@Url.Action("Index", "Transporte", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Camiones!">
+                <span class="fas fa-truck"></span>
+            </a>|
+            <a href="@Url.Action("Index", "Contacto", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Contactos!">
+                <span class="far fa-envelope-open"></span>
+            </a>
+            |
+            <a href="@Url.Action("Index", "Domicilio", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Domicilio!">
+                <span class="far fa-address-book"></span>
+            </a>
+
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+}
