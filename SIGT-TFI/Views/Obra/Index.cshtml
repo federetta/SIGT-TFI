@@ -7,6 +7,7 @@
 }
 
 <h2>Listado Obras</h2>
+<br />
 
 <p>
     @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
@@ -15,7 +16,7 @@
     @using (Html.BeginForm("Index", "Obra", FormMethod.Get))
     {
         <b>Buscar por Nombre:</b>
-        @Html.TextBox("Search") <input type="submit" value="Search" />
+        @Html.TextBox("Search") <input type="submit" value="Buscar" class="btn btn-primary"/>
     }
 </p>
 <table class="table table-striped">
@@ -32,9 +33,7 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.id })|
+           
             <a href="@Url.Action("Index", "Recorrido", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Rutas!">
                 <span class="fas fa-route"></span>
             </a>

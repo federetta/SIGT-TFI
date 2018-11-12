@@ -22,7 +22,7 @@ namespace DAL
         {
             const string sqlStatement = "INSERT INTO dbo.Recorrido ([idObra_Recorrido]," +
                 " [DomicilioInicial_Recorrido], [DomicilioFinal_Recorrido], [Nombre_Recorrido]) " +
-                "VALUES(@idObra_Recorrido, @DomicilioInicial_Recorrido, @DomicilioFinal_Recorrido); SELECT SCOPE_IDENTITY();";
+                "VALUES(@idObra_Recorrido, @DomicilioInicial_Recorrido, @DomicilioFinal_Recorrido, @Nombre_Recorrido); SELECT SCOPE_IDENTITY();";
 
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
@@ -58,7 +58,7 @@ namespace DAL
             const string sqlStatement = "SELECT [id_Recorrido]," +
                 "                       [idObra_Recorrido]," +
                 "                       [DomicilioInicial_Recorrido]," +
-                "                       [DomicilioFinal_Recorrido] " +
+                "                       [DomicilioFinal_Recorrido], " +
                 "                       [Nombre_Recorrido] " + 
                 "                       FROM[dbo].[Recorrido]" +
                 "                       WHERE [idObra_Recorrido] = @idObra_Recorrido";

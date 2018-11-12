@@ -8,16 +8,19 @@
 }
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
-<h2>Clientes</h2>
+<h2>Listado de clientes</h2>
+<br>
 
 <p>
-    @Html.ActionLink("Nuevo Cliente", "Create")
+    @Html.ActionLink("Nuevo Cliente", "Create", null, new {  @class = "btn btn-primary" })
+    <br>
 </p>
 <p>
     @using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
     {
         <b>Buscar por Nombre:</b>
-        @Html.TextBox("Search") <input type="submit" value="Search" />
+        @Html.TextBox("Search") <input type="submit" value="Buscar" class="btn btn-primary"/>
+        <br>
     }
 </p>
 
@@ -66,13 +69,13 @@
             </td>
 
             <td>
-                <a href="@Url.Action("Edit", "Proveedor", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Editar!">
+                @*<a href="@Url.Action("Edit", "Proveedor", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Editar!">
                     <span class="far fa-edit"></span>
                 </a>|
                 <a href="@Url.Action("Details", "Detalles", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Detalles!">
                     <span class="glyphicon glyphicon-search">
                     </span>
-                </a>|
+                </a>|*@
                 <a href="@Url.Action("Index", "Contacto", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Contactos!">
                     <span class="far fa-envelope-open"></span>
                 </a>
@@ -92,10 +95,7 @@
     }
 
 </table>
-<p>
-    
-        <input type="submit" value="ExporttoExcel" class="button" />
-</p>
+
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
 @section Scripts {

@@ -24,6 +24,8 @@ namespace Entities
         [DisplayName("Cuit")]
         [Browsable(false)]
         public string Cuit { get; set; }
+        [DisplayName("Saldo Inicial")]
+        public decimal? SaldoInicial { get; set; }
         public int Tipo_Contribuyente { get; set; }
         public string Tipo_Name { get; set; }
         //public TipoEmpresa Tipo_Empresa { get; set; }

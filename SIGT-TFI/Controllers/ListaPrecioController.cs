@@ -38,32 +38,21 @@ namespace SIGT_TFI.Controllers
             return View();
         }
 
-
-        // GET: ListaPrecio/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ListaPrecio/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         // POST: ListaPrecio/Create
         [HttpPost]
-        public ActionResult Create(FormCollection form)
+        public ActionResult Create(ListaPrecio form)
         {
             try
             {
                 var bllPrecio = new BLLListaPrecio();
                 var bllrecorrido = new BLLRecorrido();
                 var listaPrecio = new ListaPrecio();
-                listaPrecio.idrecorrido = Convert.ToInt32(form["IdRecorrido"]);
-                listaPrecio.fechainicial = Convert.ToDateTime(form["FechaInicial"]);
-                listaPrecio.precio = Convert.ToDecimal(form["Precio"]);
-                listaPrecio.comision = Convert.ToDecimal(form["Comision"]);
+                listaPrecio.idrecorrido = form.id;
+                //listaPrecio.idrecorrido = Convert.ToInt32(form["IdRecorrido"]);
+                //listaPrecio.fechainicial = Convert.ToDateTime(form["FechaInicial"]);
+                //listaPrecio.precio = Convert.ToDecimal(form["Precio"]);
+                //listaPrecio.comision = Convert.ToDecimal(form["Comision"]);
+
                 bllPrecio.CrearListaPrecio(listaPrecio);
                 ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
                 ViewData["Recorrido"] = bllrecorrido.ListAll();

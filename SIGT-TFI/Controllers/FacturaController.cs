@@ -112,7 +112,7 @@ namespace SIGT_TFI.Controllers
             }
             bll.CrearTotales(factura);
 
-            return View();
+            return RedirectToAction("BuscarComprobante");
         }
 
         public ActionResult PDF(Cliente Factura)

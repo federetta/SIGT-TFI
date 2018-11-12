@@ -9,14 +9,15 @@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
 <h2>Proveedores</h2> 
+<br />
 
 <p>
-    @Html.ActionLink("Nuevo Proveedor", "Create")
+    @Html.ActionLink("Nuevo Proveedor", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <p>
     @using (Html.BeginForm("Index","Proveedor", FormMethod.Get)) {
     <b>Buscar por Nombre:</b>
-    @Html.TextBox("Search") <input type="submit" value="Search" />
+    @Html.TextBox("Search") <input type="submit" value="Buscar" class="btn btn-primary" />
     }
 </p>
 <table class="table table-striped">
@@ -63,13 +64,13 @@
         </td>
        
         <td>
-            <a href="@Url.Action("Edit", "Proveedor", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Editar!">
+            @*<a href="@Url.Action("Edit", "Proveedor", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Editar!">
                 <span class="far fa-edit"></span>
             </a>|
             <a href="@Url.Action("Details", "Detalles", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Detalles!">
             <span class="glyphicon glyphicon-search">
                 </span>
-                </a>|
+                </a>|*@
             <a href="@Url.Action("Index", "Transporte", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Camiones!">
                 <span class="fas fa-truck"></span>
             </a>|

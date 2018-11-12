@@ -9,6 +9,7 @@ using CrystalDecisions.Web;
 using SIGT_TFI.Reports;
 using Rotativa;
 using OfficeOpenXml;
+using System;
 
 namespace SIGT_TFI.Controllers
 {
@@ -49,13 +50,20 @@ namespace SIGT_TFI.Controllers
             {
                 var blltraslado = new BLLTraslado();
                 blltraslado.CreateTraslado(traslado);
-
                 TempData["OKNormal"] = "Andoo";
+                //this.TempData["Notification"] = "Traslado cargado correctamente";
+                //this.TempData["NotificationCSS"] = "notificationbox nb-success";
+                //TempData["msg"] = "<script>alert('Nuevo traslado ingresado');</script>";
+                //ViewBag.Message = "Nuevo Traslado Cargado";
                 return RedirectToAction("Create");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                //this.TempData["Notification"] = "Error: " + ex.Message.ToString();
+                //this.TempData["NotificationCSS"] = "notificationbox nb-success";
+                TempData["OKNormal"] = "Andoo";
+                //TempData["msg"] = "<script>alert('"+ ex.Message.ToString()+"');</script>";
+                return RedirectToAction("Create");
             }
         }
 

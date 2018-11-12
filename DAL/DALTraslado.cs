@@ -20,25 +20,34 @@ namespace DAL
         /// <returns></returns>
         public Traslado CreateTraslado(Traslado traslado)
         {
-            const string sqlStatement = "INSERT INTO dbo.Traslado ([Numero_Traslado], [Fecha_Traslado],[IdTransporte_Traslado], " +
-                "[IdRecorrido_Traslado], [Carga_Traslado],[Estado_Traslado]) " +
-                "VALUES(@Numero_Traslado, @Fecha_Traslado, @IdTransporte_Traslado, @IdRecorrido_Traslado" +
-                ", @Carga_Traslado,@Estado_Traslado); SELECT SCOPE_IDENTITY();";
-
-            var db = DatabaseFactory.CreateDatabase(ConnectionName);
-            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            try
             {
-                db.AddInParameter(cmd, "@Numero_Traslado", DbType.Int32, traslado.NumeroTraslado);
-                db.AddInParameter(cmd, "@Fecha_Traslado", DbType.Date, traslado.Fecha);
-                db.AddInParameter(cmd, "@IdTransporte_Traslado", DbType.Int32, traslado.IdTransporte);
-                db.AddInParameter(cmd, "@IdRecorrido_Traslado", DbType.Int32, traslado.IdRecorrido);
-                db.AddInParameter(cmd, "@Carga_Traslado", DbType.Int32, traslado.Carga);
-                db.AddInParameter(cmd, "@Estado_Traslado", DbType.String, traslado.Estado);
+                const string sqlStatement = "INSERT INTO dbo.Traslado ([Numero_Traslado], [Fecha_Traslado],[IdTransporte_Traslado], " +
+               "[IdRecorrido_Traslado], [Carga_Traslado],[Estado_Traslado]) " +
+               "VALUES(@Numero_Traslado, @Fecha_Traslado, @IdTransporte_Traslado, @IdRecorrido_Traslado" +
+               ", @Carga_Traslado,@Estado_Traslado); SELECT SCOPE_IDENTITY();";
+
+                var db = DatabaseFactory.CreateDatabase(ConnectionName);
+                using (var cmd = db.GetSqlStringCommand(sqlStatement))
+                {
+                    db.AddInParameter(cmd, "@Numero_Traslado", DbType.Int32, "lala");
+                    db.AddInParameter(cmd, "@Fecha_Traslado", DbType.Date, traslado.Fecha);
+                    db.AddInParameter(cmd, "@IdTransporte_Traslado", DbType.Int32, traslado.IdTransporte);
+                    db.AddInParameter(cmd, "@IdRecorrido_Traslado", DbType.Int32, traslado.IdRecorrido);
+                    db.AddInParameter(cmd, "@Carga_Traslado", DbType.Int32, traslado.Carga);
+                    db.AddInParameter(cmd, "@Estado_Traslado", DbType.String, traslado.Estado);
 
 
-                // Obtener el valor de la primary key.
-                traslado.id = Convert.ToInt32(db.ExecuteScalar(cmd));
+                    // Obtener el valor de la primary key.
+                    traslado.id = Convert.ToInt32(db.ExecuteScalar(cmd));
+                }
             }
+            catch (Exception ex)
+            {
+                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                throw ex;
+            }
+           
 
             return traslado;
         }

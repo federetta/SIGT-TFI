@@ -16,7 +16,7 @@ namespace Services
         {
             try
             {
-                conexion = new SqlConnection("Data Source = localhost\\sqlexpress; Initial Catalog = SIGT_Web; Integrated Security = True");
+                conexion = new SqlConnection("Data Source =.\\SQLEXPRESS; Initial Catalog = SIGT_Web; User ID = fretta; Password = Napoli10");
                 conexion.Open();
             }
             catch (Exception ex)

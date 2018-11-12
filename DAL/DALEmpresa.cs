@@ -21,8 +21,8 @@ namespace DAL
         /// <returns></returns>
         public Empresa CreateEmpresa(Empresa proveedor)
         {
-            const string sqlStatement = "INSERT INTO dbo.Empresa ([razonSocial_empresa], [NombreFantasia_empresa], [Cuit_empresa], [TipoContribuyente_empresa], [Tipo_empresa]) " +
-                "VALUES(@razonSocial_empresa, @NombreFantasia_empresa, @Cuit_empresa, @TipoContribuyente_empresa, @Tipo_empresa); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Empresa ([razonSocial_empresa], [NombreFantasia_empresa], [Cuit_empresa], [TipoContribuyente_empresa], [Tipo_empresa], [SaldoInicial_empresa]) " +
+                "VALUES(@razonSocial_empresa, @NombreFantasia_empresa, @Cuit_empresa, @TipoContribuyente_empresa, @Tipo_empresa, @SaldoInicial_empresa); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -32,6 +32,8 @@ namespace DAL
                 db.AddInParameter(cmd, "@Cuit_empresa", DbType.String, proveedor.Cuit);
                 db.AddInParameter(cmd, "@TipoContribuyente_empresa", DbType.Int32, proveedor.Tipo_Contribuyente);
                 db.AddInParameter(cmd, "@Tipo_empresa", DbType.Int32, proveedor.Tipo_Empresa);
+                db.AddInParameter(cmd, "@SaldoInicial_Empresa", DbType.Decimal, proveedor.SaldoInicial);
+
                 // Obtener el valor de la primary key.
                 proveedor.id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }

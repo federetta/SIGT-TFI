@@ -1,5 +1,8 @@
 ﻿@model Entities.Traslado
-
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/toastr.js"></script>
+<link href="~/Content/toastr.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
 @{
     ViewBag.Title = "Create";
 
@@ -30,6 +33,17 @@
 }
 
 <h2>Alta de traslado</h2>
+
+@*@if (TempData["Notification"] != null)
+{
+    <div id="NotificationBox" class="@TempData["NotificationCSS"]" style="display: none">
+        @TempData["Notification"]
+    </div>
+}*@
+
+
+
+
 
 @using (Html.BeginForm()) 
 {
@@ -83,13 +97,19 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
           
         </div>
+       
+        @*@Html.Raw("<div class=\"alert alert - success\">" + TempData["msg"] + "</div>")*@
+        @*@Html.Raw(TempData["msg"])*@
+        
+
+       
     </div>
 }
-
+<button class="btn btn-warning" id="btn-1"> Warning </button>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -99,7 +119,46 @@
     <script>
         $("#IdTransporte").selectize();
         $("#IdRecorrido").selectize();
+        
+        
+</script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        $('#btn-1')
+            .click(function () {
+                toastr.warning("Prueba Warning", "hasta");
+            });
+       
     </script>
+
+
+    @*<script>  
+        $(document).ready(function () {
+                $("#NotificationBox").fadeIn(5000);
+
+            if ($("#NotificationBox").attr('class').split(' ').slice(-1) == "nb-success") {
+                $("#NotificationBox").delay(3000).fadeOut(1000);
+            }
+        });
+
+       
+</script>*@
 
 
 }
