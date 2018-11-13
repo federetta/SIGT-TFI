@@ -30,7 +30,7 @@ namespace DAL
                 var db = DatabaseFactory.CreateDatabase(ConnectionName);
                 using (var cmd = db.GetSqlStringCommand(sqlStatement))
                 {
-                    db.AddInParameter(cmd, "@Numero_Traslado", DbType.Int32, "lala");
+                    db.AddInParameter(cmd, "@Numero_Traslado", DbType.Int32, traslado.NumeroTraslado);
                     db.AddInParameter(cmd, "@Fecha_Traslado", DbType.Date, traslado.Fecha);
                     db.AddInParameter(cmd, "@IdTransporte_Traslado", DbType.Int32, traslado.IdTransporte);
                     db.AddInParameter(cmd, "@IdRecorrido_Traslado", DbType.Int32, traslado.IdRecorrido);

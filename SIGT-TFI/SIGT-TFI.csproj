@@ -266,6 +266,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RecorridoController.cs" />
+    <Compile Include="Controllers\TempDataMessageController.cs" />
     <Compile Include="Controllers\TipoEmpresaController.cs" />
     <Compile Include="Controllers\TransporteController.cs" />
     <Compile Include="Controllers\TrasladoController.cs" />
@@ -446,9 +447,12 @@
     <Content Include="Views\Cobranza\CreateDetalle.cshtml" />
     <Content Include="Views\Cobranza\Create.cshtml" />
     <Content Include="Views\CuentaCorriente\BuscarComprobantes.cshtml" />
+    <Content Include="Views\Shared\_Messages.cshtml" />
+    <Content Include="Views\Shared\_MessagesFixed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\TempDataMessage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

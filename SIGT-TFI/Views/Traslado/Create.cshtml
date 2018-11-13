@@ -123,6 +123,14 @@
         
 </script>
     <script>
+        $(function () {
+            var a = '@TempData["msg"]';
+            if (a != '')
+                toastr.info(a, "Información");
+               // alert("ab" + a)
+        })
+    </script>    
+    <script>
         toastr.options = {
             "closeButton": true,
             "debug": false,

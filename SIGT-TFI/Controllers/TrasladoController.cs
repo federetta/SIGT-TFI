@@ -50,7 +50,9 @@ namespace SIGT_TFI.Controllers
             {
                 var blltraslado = new BLLTraslado();
                 blltraslado.CreateTraslado(traslado);
-                TempData["OKNormal"] = "Andoo";
+                TempData["msg"] = "Traslado cargado correctamente";
+                //this.AddMessage("success", "Un mensaje de prueba");
+                //TempData["OKNormal"] = "Andoo";
                 //this.TempData["Notification"] = "Traslado cargado correctamente";
                 //this.TempData["NotificationCSS"] = "notificationbox nb-success";
                 //TempData["msg"] = "<script>alert('Nuevo traslado ingresado');</script>";
@@ -61,7 +63,7 @@ namespace SIGT_TFI.Controllers
             {
                 //this.TempData["Notification"] = "Error: " + ex.Message.ToString();
                 //this.TempData["NotificationCSS"] = "notificationbox nb-success";
-                TempData["OKNormal"] = "Andoo";
+                TempData["msg"] = ex.Message.ToString();
                 //TempData["msg"] = "<script>alert('"+ ex.Message.ToString()+"');</script>";
                 return RedirectToAction("Create");
             }
