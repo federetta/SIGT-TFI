@@ -25,7 +25,7 @@ namespace DAL
                 Services.ConexionSQL conexion = new Services.ConexionSQL();
                 var link = conexion.ConectarBaseDatos();
                 conexion.ConectarBaseDatos();
-                SqlCommand cmd = new SqlCommand("INSERTAR_LISTAPRECIO", link);
+                SqlCommand cmd = new SqlCommand("INSERTAR_LISTAPRECIO2", link);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Idrecorrido_listaPrecio", SqlDbType.Int).Value = ListaPrecio.idrecorrido;
                 cmd.Parameters.Add("@FechaInicial_listaPrecio", SqlDbType.Date).Value = ListaPrecio.fechainicial;
@@ -34,12 +34,12 @@ namespace DAL
                 cmd.Parameters.Add("@comision_listaPrecio", SqlDbType.Decimal).Value = ListaPrecio.comision;
 
                 // Declaro el ID para retornarlo en el textbox
-                var returnParameter = cmd.Parameters.Add("@id_listaprecio", SqlDbType.Int);
-                returnParameter.Direction = ParameterDirection.ReturnValue;
+                //var returnParameter = cmd.Parameters.Add("@id_listaPrecio", SqlDbType.Int);
+                //returnParameter.Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
                 // Retorno el ID_OBRA
-                var result = returnParameter.Value;
-                ListaPrecio.id = Convert.ToInt32(result);
+                //var result = returnParameter.Value;
+                //ListaPrecio.id = Convert.ToInt32(result);
             }
             catch (Exception ex)
             {
@@ -100,6 +100,46 @@ namespace DAL
             return Listaprecio;
         }
 
+        /// <summary>
+        /// Trae la lista de precios segun el ID del recorrido
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DateTime GetUltimaFecha(int id)
+        {
+            try
+            {
+                // WARNING! Performance
+                const string sqlStatement = "SELECT TOP 1 [FechaInicial_listaPrecio] FROM[dbo].[ListaPrecio] WHERE [IdRecorrido_listaPrecio] = @Idrecorrido_listaPrecio AND [FechaFinal_listaPrecio] IS NULL";
+
+                var result = new DateTime();
+                var db = DatabaseFactory.CreateDatabase(ConnectionName);
+                using (var cmd = db.GetSqlStringCommand(sqlStatement))
+                {
+                    db.AddInParameter(cmd, "@Idrecorrido_listaPrecio", DbType.Int32, id);
+
+                    result = Convert.ToDateTime(db.ExecuteScalar(cmd));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
+        private static ListaPrecio LoadListaPrecio2(IDataReader dr)
+        {
+            var Listaprecio = new ListaPrecio
+            {
+
+                fechainicial = GetDataValue<DateTime>(dr, "FechaInicial_listaPrecio"),
+              
+
+            };
+            return Listaprecio;
+        }
 
 
     }

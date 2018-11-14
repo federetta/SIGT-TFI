@@ -23,6 +23,7 @@ namespace SIGT_TFI.Controllers
         {
             var bll = new BLLRecorrido();
             ViewData["Recorrido"] = bll.ListAll();
+
             ViewData["ListaPrecio"] = null;
             return View();
         }
@@ -35,6 +36,9 @@ namespace SIGT_TFI.Controllers
             listaPrecio.idrecorrido = Convert.ToInt32(form["IdRecorrido"]);
             ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
             ViewData["Recorrido"] = bllrecorrido.ListAll();
+            TempData["msg"] = Convert.ToInt32(form["IdRecorrido"]);
+            var fecha = bllPrecio.GetUltimaFecha(listaPrecio.idrecorrido);
+            TempData["fecha"] = fecha;
             return View();
         }
 
@@ -47,22 +51,41 @@ namespace SIGT_TFI.Controllers
                 var bllPrecio = new BLLListaPrecio();
                 var bllrecorrido = new BLLRecorrido();
                 var listaPrecio = new ListaPrecio();
-                listaPrecio.idrecorrido = form.id;
+                listaPrecio.idrecorrido = form.idrecorrido;
+                listaPrecio.fechainicial = form.fechainicial;
+                listaPrecio.precio = form.precio;
+                listaPrecio.comision = form.comision;
+                listaPrecio.fechavalidacion = form.fechavalidacion;
+
+                if (listaPrecio.fechainicial > listaPrecio.fechavalidacion)
+                {
+
+                    bllPrecio.CrearListaPrecio(listaPrecio);
+                    ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
+                    ViewData["Recorrido"] = bllrecorrido.ListAll();
+
+                    return RedirectToAction("Buscar");
+                }
+                else
+                {
+                    TempData["Error"] = "La fecha inicial no puede ser menor a la inicial de otra lista de precios";
+                    return RedirectToAction("Buscar");
+                }
                 //listaPrecio.idrecorrido = Convert.ToInt32(form["IdRecorrido"]);
                 //listaPrecio.fechainicial = Convert.ToDateTime(form["FechaInicial"]);
                 //listaPrecio.precio = Convert.ToDecimal(form["Precio"]);
                 //listaPrecio.comision = Convert.ToDecimal(form["Comision"]);
 
-                bllPrecio.CrearListaPrecio(listaPrecio);
-                ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
-                ViewData["Recorrido"] = bllrecorrido.ListAll();
 
-                return RedirectToAction("Index");
             }
+
+
             catch
             {
-                return View();
+                return RedirectToAction("Index");
+
             }
+           
         }
 
         // GET: ListaPrecio/Edit/5

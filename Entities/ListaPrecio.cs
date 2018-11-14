@@ -33,6 +33,10 @@ namespace Entities
         [Browsable(false)]
         public decimal comision { get; set; }
 
+        [DisplayName("fechavalidacion")]
+        [Browsable(false)]
+        public DateTime fechavalidacion { get; set; }
+
 
     }
 }

@@ -36,5 +36,12 @@ namespace BLL
             var result = DAL.SelectListaPrecio(id);
             return result;
         }
+
+        
+        public DateTime GetUltimaFecha(int id)
+        {
+            var result = DAL.GetUltimaFecha(id);
+            return result;
+        }
     }
 }
