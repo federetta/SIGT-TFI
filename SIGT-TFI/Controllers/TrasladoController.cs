@@ -10,6 +10,7 @@ using SIGT_TFI.Reports;
 using Rotativa;
 using OfficeOpenXml;
 using System;
+using Newtonsoft.Json;
 
 namespace SIGT_TFI.Controllers
 {
@@ -184,5 +185,65 @@ namespace SIGT_TFI.Controllers
                 return View();
             }
         }
+
+
+        //Web Service GetTransportes
+        public string GetTransportes()
+        {
+            try
+            {
+                var blltransporte = new BLLTransporte();
+
+                return JsonConvert.SerializeObject(blltransporte.List(), Formatting.None,
+                      new JsonSerializerSettings()
+                      {
+                          ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                      });
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        //Web Service GetRecorrido
+        public string GetRecorridos()
+        {
+            try
+            {
+                var bllrecorrido = new BLLRecorrido();
+
+                return JsonConvert.SerializeObject(bllrecorrido.ListAll(), Formatting.None,
+                      new JsonSerializerSettings()
+                      {
+                          ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                      });
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult PostTraslado(Traslado traslado)
+        {
+            try
+            {
+                var blltraslado = new BLLTraslado();
+                blltraslado.CreateTraslado(traslado);
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

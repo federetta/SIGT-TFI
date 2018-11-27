@@ -1,5 +1,8 @@
 ﻿@model Entities.Traslado
-
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/toastr.js"></script>
+<link href="~/Content/toastr.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
 @{
     ViewBag.Title = "Create";
 
@@ -31,6 +34,17 @@
 
 <h2>Alta de traslado</h2>
 
+@*@if (TempData["Notification"] != null)
+{
+    <div id="NotificationBox" class="@TempData["NotificationCSS"]" style="display: none">
+        @TempData["Notification"]
+    </div>
+}*@
+
+
+
+
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -48,7 +62,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2"  })
+            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" , id="fecha" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" , @type = "date" } })
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
@@ -87,29 +101,69 @@
             </div>
           
         </div>
+       
+        @*@Html.Raw("<div class=\"alert alert - success\">" + TempData["msg"] + "</div>")*@
+        @*@Html.Raw(TempData["msg"])*@
+        
 
-        @if (ViewBag.Message != null)
-        {
-            <script type="text/javascript">
-                windows.onload = function () {
-                    alert("@ViewBag.Message");
-                };
-
-            </script>
-        }
+       
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $("#IdTransporte").selectize();
         $("#IdRecorrido").selectize();
+        
+        
+</script>
+    <script>
+        $(function () {
+            var a = '@TempData["msg"]';
+            if (a != '')
+                toastr.info(a, "Información");
+               // alert("ab" + a)
+        })
+        
+    </script>    
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        //$('#btn-1')
+        //    .click(function () {
+        //        toastr.warning("Prueba Warning", "hasta");
+        //    });
+       
     </script>
+
+
+    @*<script>  
+        $(document).ready(function () {
+                $("#NotificationBox").fadeIn(5000);
+
+            if ($("#NotificationBox").attr('class').split(' ').slice(-1) == "nb-success") {
+                $("#NotificationBox").delay(3000).fadeOut(1000);
+            }
+        });
+
+       
+</script>*@
 
 
 }

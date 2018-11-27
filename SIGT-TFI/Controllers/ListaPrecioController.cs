@@ -57,12 +57,14 @@ namespace SIGT_TFI.Controllers
                 listaPrecio.comision = form.comision;
                 listaPrecio.fechavalidacion = form.fechavalidacion;
 
+
                 if (listaPrecio.fechainicial > listaPrecio.fechavalidacion)
                 {
-
+                    
                     bllPrecio.CrearListaPrecio(listaPrecio);
                     ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
                     ViewData["Recorrido"] = bllrecorrido.ListAll();
+                    TempData["Error"] = "El precio fue cargado correctamente";
 
                     return RedirectToAction("Buscar");
                 }

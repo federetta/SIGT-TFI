@@ -8,6 +8,8 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Re
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Services.pdb
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.xml
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.csprojAssemblyReference.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\DAL\obj\Release\DAL.csproj.CopyComplete

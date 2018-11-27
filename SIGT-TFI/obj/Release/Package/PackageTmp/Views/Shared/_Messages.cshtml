@@ -1,0 +1,12 @@
+﻿<!-- _Messages.cshtml -->
+@model Dictionary<string, string>
+
+@if (Model != null)
+{
+    @foreach (var message in Model)
+    {
+        <script>
+      toastr['@message.Key']('@message.Value')
+        </script>
+    }
+}

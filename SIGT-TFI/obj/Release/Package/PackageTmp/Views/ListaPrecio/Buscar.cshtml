@@ -113,6 +113,8 @@
                                 @Html.ValidationMessageFor(model => model.fechainicial, "", new { @class = "text-danger" })
                             </div>
                         </div>
+                        @Html.Hidden("IdRecorrido", TempData["msg"])
+                        @Html.Hidden("fechavalidacion", TempData["fecha"])
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -149,6 +151,40 @@
                 <script>
                     $("#IdRecorrido").selectize();
                 </script>
+<script>
+        $(function () {
+            var a = '@TempData["Error"]';
+            if (a != '')
+                toastr.info(a, "Información");
+               // alert("ab" + a)
+        })
+
+</script>
+<script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        //$('#btn-1')
+        //    .click(function () {
+        //        toastr.warning("Prueba Warning", "hasta");
+        //    });
+
+</script>
+
 
 
             }

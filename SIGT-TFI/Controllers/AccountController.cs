@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json;
 using SIGT_TFI.Models;
 
 namespace SIGT_TFI.Controllers
@@ -87,6 +88,26 @@ namespace SIGT_TFI.Controllers
                 default:
                     ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
                     return View(model);
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        public async Task<string> LoginAPI(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return JsonConvert.SerializeObject(new { loggedIn = false });
+            }
+
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return JsonConvert.SerializeObject(new { loggedIn = true });
+                default:
+                    return JsonConvert.SerializeObject(new { loggedIn = false });
             }
         }
 

@@ -49,6 +49,7 @@
 
     <div class="form-horizontal">
         <h4>Buscar Factura</h4>
+        <br />
 
         <div class="col-sm-4">
             <div class="form-group">
@@ -91,6 +92,7 @@
                     <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
                 </div>
             </div>
+            <br />
         </div>
     </div>
 }
@@ -150,20 +152,23 @@
                         @Html.DisplayFor(i => std.FechaFactura)
                     </td>
                     <td>
-                        @Html.DisplayFor(i => std.NumeroFactura)
+                        @std.NumeroFactura.ToString().PadLeft(8, '0')
                     </td>
                     <td>
-                        @Html.DisplayFor(i => std.Subtotal)
+                     $ @std.Subtotal
                     </td>
                     <td>
-                        @Html.DisplayFor(i => std.Iva)
+                       $ @std.Iva
                     </td>
                     <td>
-                        @Html.DisplayFor(i => std.Total)
+                       $ @std.Total
                     </td>
                    
                     <td>
-                        @Html.ActionLink("PDF", "PDF", new { id = std.id }) 
+                        @Html.ActionLink("PDF", "PDF", new { id = std.id }, new { @class = "btn btn-info" }) 
+                    </td>
+                    <td>
+                        @Html.ActionLink("Imprimir", "PDF", new { id = std.id }, new { @class = "btn btn-info" })
                     </td>
                    
 

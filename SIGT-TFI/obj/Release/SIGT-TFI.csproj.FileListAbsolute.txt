@@ -155,7 +155,6 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\b
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\es\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\SIGT-TFI.csprojResolveAssemblyReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\Interop.CRReportPromptEMFLib.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\Interop.CrystalActiveXReportViewerLib13.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\Interop.CrystalAnalysisCommLayerLib.dll
@@ -174,3 +173,6 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\o
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\SIGT-TFI.csproj.ResolveComReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\SIGT-TFI.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\SIGT-TFI.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\SIGT-TFI.csprojAssemblyReference.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\SIGT-TFI.csproj.CoreCompileInputs.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Release\SIGT-TFI.csproj.CopyComplete

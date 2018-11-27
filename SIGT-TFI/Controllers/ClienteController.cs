@@ -17,6 +17,7 @@ namespace SIGT_TFI.Controllers
     public class ClienteController : Controller
     {
         // GET: Empresa
+        [Authorize]
         public ActionResult Index(string search, int? page)
         {
             var cp = new BLLEmpresa();
@@ -54,6 +55,7 @@ namespace SIGT_TFI.Controllers
             return View();
         }
 
+        [Authorize]
         // GET: Empresa/Create
         public ActionResult Create()
         {
@@ -76,7 +78,7 @@ namespace SIGT_TFI.Controllers
 
             return View();
         }
-
+        [Authorize]
         // POST: Empresa/Create
         [HttpPost]
         public ActionResult Create(Empresa cliente)
@@ -94,6 +96,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Empresa/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var btc = new BLLTipoContribuyente();

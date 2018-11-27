@@ -230,7 +230,6 @@ C:\Users\fretta\Documents\Visual Studio 2017\SIGT-TFI-master\SIGT-TFI-master\SIG
 C:\Users\fretta\Documents\Visual Studio 2017\SIGT-TFI-master\SIGT-TFI-master\SIGT-TFI\obj\Debug\SIGT-TFI.csproj.CopyComplete
 C:\Users\fretta\Documents\Visual Studio 2017\SIGT-TFI-master\SIGT-TFI-master\SIGT-TFI\obj\Debug\SIGT-TFI.dll
 C:\Users\fretta\Documents\Visual Studio 2017\SIGT-TFI-master\SIGT-TFI-master\SIGT-TFI\obj\Debug\SIGT-TFI.pdb
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\SIGT-TFI.csprojResolveAssemblyReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\Interop.CRReportPromptEMFLib.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\Interop.CrystalActiveXReportViewerLib13.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\Interop.CrystalAnalysisCommLayerLib.dll
@@ -406,3 +405,6 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\b
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\EPPlus.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\EPPlus.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\bin\BootstrapSupport.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\SIGT-TFI.csprojAssemblyReference.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\SIGT-TFI.csproj.CoreCompileInputs.cache
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\SIGT-TFI\obj\Debug\SIGT-TFI.csproj.CopyComplete

@@ -316,12 +316,14 @@
     <Content Include="Content\bootstrap-datepicker3.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\camion.jpg" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\fail.gif" />
     <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Logo.JPG" />
+    <Content Include="Content\mercedes.jpg" />
     <Content Include="Content\ok.gif" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\selectize.default.css" />
