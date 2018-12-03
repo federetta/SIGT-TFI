@@ -10,8 +10,8 @@ C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\bin\De
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\bin\Debug\Services.pdb
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\obj\Debug\BLL.dll
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\obj\Debug\BLL.pdb
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\obj\Debug\BLL.dll
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\BLL\obj\Debug\BLL.pdb

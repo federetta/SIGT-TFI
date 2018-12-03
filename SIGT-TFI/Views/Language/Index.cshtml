@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Index</h2>
+
+<ul>
+    <li>@Html.ActionLink("Español", "Change", "Language", new { LanguageAbbrevation = "en" }, null)</li>
+    <li>@Html.ActionLink("Ingles", "Change", "Language", new { LanguageAbbrevation = "fr" }, null)</li>
+    <li>@DateTime.Now.ToString()</li>
+</ul>

@@ -16,8 +16,8 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="centerBlock">
-                <h2 align="center">Iniciar Sesion</h2>
-                <p align="center">Ingrese email y password</p>
+                <h2 align="center">@SIGT_TFI.Resources.HomeTexts.IniciarSesion</h2>
+                <p align="center">@SIGT_TFI.Resources.HomeTexts.IngresarEmailPass</p>
                 <hr />
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
                     @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
                     <div class="col-md-12">
                         <div class="input-group">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Contraseña", @id = "password-input2" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = SIGT_TFI.Resources.HomeTexts.Contraseña, @id = "password-input2" })
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             <span class="input-group-btn" style="width:0;">
                                 <button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
@@ -47,7 +47,7 @@
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                            @SIGT_TFI.Resources.HomeTexts.Recordar
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="col-sm-4">
                     </div>
                     <div class="col-sm-4">
-                        <input type="submit" class="btn btn-primary" id="btn1" value="Iniciar Sesion" />
+                        <input type="submit" class="btn btn-primary" id="btn1" value= "@SIGT_TFI.Resources.HomeTexts.IniciarSesion" />
                     </div>
                     <div class="col-sm-4">
                     </div>
@@ -66,11 +66,11 @@
                     </div>
                 </div>*@
                 <p>
-                    @Html.ActionLink("Registrar como nuevo usuario", "Register")
+                    @Html.ActionLink(SIGT_TFI.Resources.HomeTexts.Registrarse, "Register")
                 </p>
                  @*Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña*@
                     <p>
-                        @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                        @Html.ActionLink(SIGT_TFI.Resources.HomeTexts.Olvidado, "ForgotPassword")
                     </p>
             </div>
         </div>

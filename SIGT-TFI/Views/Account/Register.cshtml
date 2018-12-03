@@ -14,8 +14,8 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="centerBlock">
-                <h2 align="center">Registrar</h2>
-                <p align="center">Ingrese email y password</p>
+                <h2 align="center">@SIGT_TFI.Resources.HomeTexts.Registrar</h2>
+                <p align="center">@SIGT_TFI.Resources.HomeTexts.IngresarEmailPass</p>
                 <hr />
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="form-horizontal">
@@ -30,7 +30,7 @@
                     @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
                     <div class="col-md-12">
                         <div class="input-group">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Contraseña", @id = "password-input2" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = @SIGT_TFI.Resources.HomeTexts.Contraseña, @id = "password-input2" })
                             <span class="input-group-btn" style="width:0;">
                                 <button class="btn btn-default reveal" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
                             </span>
@@ -42,7 +42,7 @@
                     @*@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })*@
                     <div class="col-md-12">
                         <div class="input-group">
-                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Repetir Contraseña", @id = "password-input3" })
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = @SIGT_TFI.Resources.HomeTexts.Contraseña , @id = "password-input3" })
                             <span class="input-group-btn" style="width:0;">
                                 <button class="btn btn-default lala" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
                             </span>
@@ -53,7 +53,7 @@
                     <div class="col-sm-4">
                     </div>
                     <div class="col-sm-4">
-                        <input type="submit" class="btn btn-primary" id="btn1" value="Registrarse" />
+                        <input type="submit" class="btn btn-primary" id="btn1" value="@SIGT_TFI.Resources.HomeTexts.Registrar" />
                     </div>
                     <div class="col-sm-4">
                     </div>

@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<Entities.Domicilio>
 @using Entities;
-
+<link href="~/Content/jquery.fancybox.css" rel="stylesheet" media="screen" />
+<script src="~/Scripts/jquery.fancybox.js"></script>
+<script src="~/Scripts/jquery.fancybox.pack.js"></script>
+<script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
 @{
     ViewBag.Title = "Index";
     var id = Url.RequestContext.RouteData.Values["id"];
@@ -12,11 +15,11 @@
 <h2>Domicilios</h2>
 
 <p>
-   @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
 </p>
 <table class="table">
     <tr>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.Calle)
         </th>
@@ -41,51 +44,93 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+    @foreach (var item in Model)
     {
-        foreach (var std in ViewData["Localidad"] as IList<Localidad>)
         {
-            if (std.Id == item.IdLocalidad)
+            foreach (var std in ViewData["Localidad"] as IList<Localidad>)
             {
-                localidad = std.Nombre;
-                break;
+                if (std.Id == item.IdLocalidad)
+                {
+                    localidad = std.Nombre;
+                    break;
+                }
+            }
+            foreach (var std in ViewData["Provincia"] as IList<Provincia>)
+            {
+                if (std.Id == item.IdProvincia)
+                {
+                    provincia = std.Nombre;
+                    break;
+                }
             }
         }
-        foreach (var std in ViewData["Provincia"] as IList<Provincia>)
-        {
-            if (std.Id == item.IdProvincia)
-            {
-                provincia = std.Nombre;
-                break;
-            }
-        }
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => localidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Piso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoPostal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => provincia)
+            </td>
+            <td>
+                <a class="fancy-text" href="http://maps.google.com/maps?q=@item.Calle+@item.Numero+@localidad+@provincia&t=h&z=17" onclick="void (0);">
+                    @Html.DisplayFor(modelItem => item.Calle)
+                    @Html.DisplayFor(modelItem => item.Numero),
+                    @Html.DisplayFor(modelItem => localidad),
+                    @Html.DisplayFor(modelItem => provincia)
+                </a>
+
+                <a class="various iframe" href="http://maps.google.com/?output=embed&amp;f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=London+Eye,+County+Hall,+Westminster+Bridge+Road,+London,+United+Kingdom&amp;hl=lv&amp;ll=51.504155,-0.117749&amp;spn=0.00571,0.016512&amp;sll=56.879635,24.603189&amp;sspn=10.280244,33.815918&amp;vpsrc=6&amp;hq=London+Eye&amp;radius=15000&amp;t=h&amp;z=17">Google maps (iframe)</a>
+            </td>
+        </tr>
     }
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Calle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => localidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Piso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Depto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoPostal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => provincia)
-        </td>
-       
-    </tr>
-}
 
 </table>
+XHTML
+
+<div class="fancy-text" href="#moreInfo" onclick="void (0);">
+    Some info
+</div>
+
+<div id="moreInfo" style="display: none">
+    My awesome text
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+            $(".fancy-text").fancybox();
+        });
+        $(document).ready(function () {
+            $(".fancy-text").fancybox();
+        });
+
+        $(document).ready(function () {
+            $(".various iframet").fancybox();
+        });
+            $('.fancybox-media').fancybox({
+                openEffect: 'elastic',
+                closeEffect: 'elastic',
+                helpers: {
+                    media: {}
+                }
+            });
+    </script>}

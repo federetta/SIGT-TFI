@@ -16,6 +16,8 @@
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/toastr.js"></script>
     <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" media="screen" />
+    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
 </head>
 <body>
     @*<div class="navbar navbar-inverse navbar-fixed-top">
@@ -89,8 +91,16 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>@Html.ActionLink(SIGT_TFI.Resources.HomeTexts.Home, "Index", "Home")</li>
+                    <li>@Html.ActionLink(SIGT_TFI.Resources.HomeTexts.Contact, "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink(SIGT_TFI.Resources.HomeTexts.Language, "Index", "Language")</li>*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@SIGT_TFI.Resources.HomeTexts.Language<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Español", "Change", "Language", new { LanguageAbbrevation = "en" }, null)</li>
+                            <li>@Html.ActionLink("Ingles", "Change", "Language", new { LanguageAbbrevation = "fr" }, null)</li>
+                        </ul>
+                    </li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="dropdown">
@@ -154,6 +164,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/selectize.min.js"></script>
+    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

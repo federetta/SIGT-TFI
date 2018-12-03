@@ -1,6 +1,5 @@
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Entities\bin\Debug\Entities.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Entities\bin\Debug\Entities.pdb
+C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Entities\obj\Debug\Entities.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Entities\obj\Debug\Entities.pdb
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
