@@ -48,12 +48,12 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Buscar Factura</h4>
+        <h4>@SIGT_TFI.Resources.HomeTexts.Buscar @SIGT_TFI.Resources.HomeTexts.Facturas</h4>
         <br />
 
         <div class="col-sm-4">
             <div class="form-group">
-                @Html.LabelFor(model => model.IdTipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.IdTipo, @SIGT_TFI.Resources.HomeTexts.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("IdTipoComprobante", listadoTipoComprobante, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
                     @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
@@ -65,7 +65,7 @@
         <div class="col-sm-4">
             <div class="form-group">
 
-                @Html.LabelFor(model => model.IdLetra, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.IdLetra, @SIGT_TFI.Resources.HomeTexts.Letra, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("IdLetra", listadoLetra, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
                     @Html.ValidationMessageFor(model => model.IdLetra, "", new { @class = "text-danger" })
@@ -77,7 +77,7 @@
         <div class="col-sm-4">
             <div class="form-group">
                 <div class="col-md-2">
-                    <label>Cliente</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Cliente</label>
                 </div>
                 @*@Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
@@ -89,7 +89,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+                    <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" class="btn btn-primary btn-lg btn-block" />
                 </div>
             </div>
             <br />
@@ -111,25 +111,25 @@
                     <label>Id</label>
                 </th>
                 <th>
-                    <label>Tipo</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Tipo</label>
                 </th>
                 <th>
-                    <label>Letra</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Letra</label>
                 </th>
                 <th>
-                    <label>Fecha</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Fecha</label>
                 </th>
                 <th>
-                    <label>Numero</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Numero</label>
                 </th>
                 <th>
-                    <label>Subtotal</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Subtotal</label>
                 </th>
                 <th>
-                    <label>Iva</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Iva</label>
                 </th>
                 <th>
-                    <label>Total</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Total</label>
                 </th>
                
                
@@ -168,7 +168,7 @@
                         @Html.ActionLink("PDF", "PDF", new { id = std.id }, new { @class = "btn btn-info" }) 
                     </td>
                     <td>
-                        @Html.ActionLink("Imprimir", "PDF", new { id = std.id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Imprimir, "PDF", new { id = std.id }, new { @class = "btn btn-info" })
                     </td>
                    
 

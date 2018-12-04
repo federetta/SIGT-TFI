@@ -11,6 +11,7 @@ namespace SIGT_TFI.Controllers
     public class ContactoController : Controller
     {
         // GET: Contacto
+        [Authorize]
         public ActionResult Index(int id)
         {
             var cp = new BLLContacto();
@@ -29,6 +30,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Contacto/Create
+        [Authorize]
         public ActionResult Create(int id)
         {
             var btc = new BLLTipoContacto();
@@ -40,6 +42,8 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Contacto/Create
+        [Authorize]
+
         [HttpPost]
         public ActionResult Create(Contacto contacto, int id)
         {
@@ -59,6 +63,8 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Contacto/Edit/5
+        [Authorize]
+
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -81,6 +87,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Contacto/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

@@ -120,11 +120,44 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="Acciones" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Agregar" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AgregarRecibos" xml:space="preserve">
+    <value>Add Receipts</value>
+  </data>
+  <data name="Anular" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Banco" xml:space="preserve">
+    <value>Bank</value>
+  </data>
   <data name="Buscar" xml:space="preserve">
     <value>Search</value>
   </data>
   <data name="BuscarPor" xml:space="preserve">
     <value>Search by name:</value>
+  </data>
+  <data name="Cabecera" xml:space="preserve">
+    <value>Head</value>
+  </data>
+  <data name="Calle" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Cliente" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="Cobranza" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="CodigoPostal" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
+  <data name="Comision" xml:space="preserve">
+    <value>commission</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -138,23 +171,74 @@
   <data name="Contraseña" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Crear" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="CrearCliente" xml:space="preserve">
+    <value>Create Client</value>
+  </data>
+  <data name="CrearCobranza" xml:space="preserve">
+    <value>Create collection</value>
+  </data>
+  <data name="CrearEmpresa" xml:space="preserve">
+    <value>Create Company</value>
+  </data>
+  <data name="CrearObra" xml:space="preserve">
+    <value>Add Work</value>
+  </data>
   <data name="Cuit" xml:space="preserve">
     <value>Cuit</value>
+  </data>
+  <data name="Depto" xml:space="preserve">
+    <value>Departament</value>
+  </data>
+  <data name="Descripcion" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Directo" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="Documento" xml:space="preserve">
+    <value>Document</value>
   </data>
   <data name="Domicilio" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="Endosable" xml:space="preserve">
+    <value>Endosable</value>
+  </data>
   <data name="Especialistas" xml:space="preserve">
     <value>Specialists</value>
+  </data>
+  <data name="Facturas" xml:space="preserve">
+    <value>Billing</value>
+  </data>
+  <data name="Fecha" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="FechafTraslado" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="FechaiTraslado" xml:space="preserve">
+    <value>Start date</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Imprimir" xml:space="preserve">
+    <value>Print</value>
+  </data>
   <data name="IngresarEmailPass" xml:space="preserve">
     <value>Enter email and password</value>
   </data>
+  <data name="Ingresedatosdom" xml:space="preserve">
+    <value>Enter the address information below</value>
+  </data>
   <data name="IniciarSesion" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="Iva" xml:space="preserve">
+    <value>Iva</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
@@ -162,8 +246,26 @@
   <data name="Leermas" xml:space="preserve">
     <value>Read More</value>
   </data>
+  <data name="Letra" xml:space="preserve">
+    <value>Letter</value>
+  </data>
   <data name="ListadoClientes" xml:space="preserve">
     <value>List of Customers</value>
+  </data>
+  <data name="ListadoObras" xml:space="preserve">
+    <value>List of works</value>
+  </data>
+  <data name="listrecorridosporobra" xml:space="preserve">
+    <value>List of routes per work</value>
+  </data>
+  <data name="Localidad" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Marca" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="Medio" xml:space="preserve">
+    <value>Method</value>
   </data>
   <data name="Mision" xml:space="preserve">
     <value>Mision</value>
@@ -171,11 +273,29 @@
   <data name="MisionTxt" xml:space="preserve">
     <value>Provide and guarantee a safe transport service of excellence recognized by customers, based on a cutting-edge fleet management and control system in the transport service.</value>
   </data>
+  <data name="Modelo" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Monto" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="Nombrefantasia" xml:space="preserve">
     <value>Fancy name</value>
   </data>
   <data name="NuevoCliente" xml:space="preserve">
     <value>New Customer</value>
+  </data>
+  <data name="NuevoContacto" xml:space="preserve">
+    <value>New Contact</value>
+  </data>
+  <data name="Numero" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="NumeroCheque" xml:space="preserve">
+    <value>N° Check</value>
   </data>
   <data name="Objetivos" xml:space="preserve">
     <value>Objetives</value>
@@ -189,11 +309,32 @@
   <data name="Olvidado" xml:space="preserve">
     <value>Have you forgotten your password?</value>
   </data>
+  <data name="Patente" xml:space="preserve">
+    <value>Patent</value>
+  </data>
+  <data name="Piso" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="Plazo" xml:space="preserve">
+    <value>Term</value>
+  </data>
+  <data name="Precio" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Proveedores" xml:space="preserve">
+    <value>Providers</value>
+  </data>
+  <data name="Provincia" xml:space="preserve">
+    <value>State</value>
+  </data>
   <data name="RazonSocial" xml:space="preserve">
     <value>Business name</value>
   </data>
   <data name="Recordar" xml:space="preserve">
     <value>Remember</value>
+  </data>
+  <data name="Recorridos" xml:space="preserve">
+    <value>Route</value>
   </data>
   <data name="Registrar" xml:space="preserve">
     <value>Register</value>
@@ -207,11 +348,26 @@
   <data name="RestablecerPass" xml:space="preserve">
     <value>Reset Password</value>
   </data>
+  <data name="Saldo" xml:space="preserve">
+    <value>Beginning balance</value>
+  </data>
   <data name="String1" xml:space="preserve">
     <value />
   </data>
+  <data name="Subtotal" xml:space="preserve">
+    <value>SubTotal</value>
+  </data>
+  <data name="Tara" xml:space="preserve">
+    <value>Tare</value>
+  </data>
+  <data name="Tipo" xml:space="preserve">
+    <value>Type</value>
+  </data>
   <data name="TipoContribuyente" xml:space="preserve">
     <value>Taxpayer Type</value>
+  </data>
+  <data name="Titular" xml:space="preserve">
+    <value>Owner</value>
   </data>
   <data name="Titulo1" xml:space="preserve">
     <value>WHAT ARE WE DOING?</value>
@@ -219,16 +375,91 @@
   <data name="Titulo2" xml:space="preserve">
     <value>We handle your resources correctly</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="Transporte" xml:space="preserve">
     <value>Transport</value>
   </data>
   <data name="TransporteText" xml:space="preserve">
     <value>Be leaders and recognized in the market as a land transport company.</value>
   </data>
+  <data name="Traslado" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="Valor" xml:space="preserve">
+    <value>Value</value>
+  </data>
   <data name="Venta" xml:space="preserve">
     <value>Sales</value>
   </data>
   <data name="Vision" xml:space="preserve">
     <value>Be leaders and recognized in the market as a land transport company.</value>
+  </data>
+  <data name="Volver" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BuscarTraslados" xml:space="preserve">
+    <value>Tranfer Search</value>
+  </data>
+  <data name="Carga" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="CuentaCorriente" xml:space="preserve">
+    <value>Client Account</value>
+  </data>
+  <data name="Estado" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Exportar" xml:space="preserve">
+    <value>Export to excel</value>
+  </data>
+  <data name="Fin" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="Gerencia" xml:space="preserve">
+    <value>Management</value>
+  </data>
+  <data name="Hola" xml:space="preserve">
+    <value>Hello </value>
+  </data>
+  <data name="Inicio" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Listar" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="listtranspor" xml:space="preserve">
+    <value>Truck List</value>
+  </data>
+  <data name="Recorrido" xml:space="preserve">
+    <value>Travel</value>
+  </data>
+  <data name="Seleccionar" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Localizar" xml:space="preserve">
+    <value>Localize</value>
+  </data>
+  <data name="Bitacora" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="Sistema" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Computadora" xml:space="preserve">
+    <value>Computer</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="Usuario" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UsuarioWindows" xml:space="preserve">
+    <value>WindowsUser</value>
   </data>
 </root>

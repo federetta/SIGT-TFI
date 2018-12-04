@@ -1,0 +1,79 @@
+﻿@model IPagedList<Entities.BitacoraSQL>
+@using PagedList;
+@using PagedList.Mvc;
+@using Entities;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@SIGT_TFI.Resources.HomeTexts.Bitacora</h2>
+
+
+<p>
+    @using (Html.BeginForm("Index", "Bitacora", FormMethod.Get))
+    {
+        <b>@SIGT_TFI.Resources.HomeTexts.BuscarPor</b>
+        @Html.TextBox("Search") <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" class="btn btn-primary" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>@SIGT_TFI.Resources.HomeTexts.Fecha</th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Mensaje
+        </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Computadora
+        </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Ip
+            
+        </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.UsuarioWindows
+        </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Error
+        </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Usuario
+        </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Tipo
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mensaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComputerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WindowsUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomError)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

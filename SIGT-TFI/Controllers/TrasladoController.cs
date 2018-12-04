@@ -16,7 +16,9 @@ namespace SIGT_TFI.Controllers
 {
     public class TrasladoController : Controller
     {
+
         // GET: Traslado
+        [Authorize]
         public ActionResult Index(string search, int? page)
         {
             var cp = new BLLTraslado();
@@ -34,6 +36,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Traslado/Create
+        [Authorize]
         public ActionResult Create()
         {
             var blltransporte = new BLLTransporte();
@@ -44,13 +47,16 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Traslado/Create
+        [Authorize]
         [HttpPost]
-        public ActionResult Create(Traslado traslado)
+        public ActionResult Create(Traslado traslado, string user)
         {
             try
             {
                 var blltraslado = new BLLTraslado();
-                blltraslado.CreateTraslado(traslado);
+                user = User.Identity.Name;
+
+                blltraslado.CreateTraslado(traslado, user);
                 TempData["msg"] = "Traslado cargado correctamente";
                 //this.AddMessage("success", "Un mensaje de prueba");
                 //TempData["OKNormal"] = "Andoo";
@@ -64,13 +70,14 @@ namespace SIGT_TFI.Controllers
             {
                 //this.TempData["Notification"] = "Error: " + ex.Message.ToString();
                 //this.TempData["NotificationCSS"] = "notificationbox nb-success";
-                TempData["msg"] = ex.Message.ToString();
+                TempData["msg"] = "Error Consulte el registro de eventos";
                 //TempData["msg"] = "<script>alert('"+ ex.Message.ToString()+"');</script>";
                 return RedirectToAction("Create");
             }
         }
 
 
+        [Authorize]
         public ActionResult ExportTraslados()
         {
 
@@ -96,6 +103,7 @@ namespace SIGT_TFI.Controllers
             return File(stream, "application/pdf", "lista.pdf");
         }
 
+        [Authorize]
         public void ExportToXML()
         {
             var cp = new BLLTraslado();
@@ -111,6 +119,7 @@ namespace SIGT_TFI.Controllers
             serializer.Serialize(Response.OutputStream, lista);
         }
 
+        [Authorize]
         public void ExportToXLS()
         {
             var cp = new BLLTraslado();
@@ -229,12 +238,13 @@ namespace SIGT_TFI.Controllers
 
 
         [HttpPost]
-        public ActionResult PostTraslado(Traslado traslado)
+        public ActionResult PostTraslado(Traslado traslado, string user)
         {
+            user = User.Identity.Name;
             try
             {
                 var blltraslado = new BLLTraslado();
-                blltraslado.CreateTraslado(traslado);
+                blltraslado.CreateTraslado(traslado, user);
                 return null;
             }
             catch (Exception ex)

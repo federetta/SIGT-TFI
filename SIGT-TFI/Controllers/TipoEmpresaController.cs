@@ -9,6 +9,7 @@ namespace SIGT_TFI.Controllers
     public class TipoEmpresaController : Controller
     {
         // GET: TipoEmpresa
+        [Authorize]
         public ActionResult Index()
         {
             var TipoEmpresaBll = new BLL.BLLTipoEmpresa();
@@ -17,18 +18,21 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: TipoEmpresa/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: TipoEmpresa/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: TipoEmpresa/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -51,6 +55,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: TipoEmpresa/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {

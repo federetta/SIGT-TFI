@@ -10,7 +10,9 @@ namespace SIGT_TFI.Controllers
 {
     public class ListaPrecioController : Controller
     {
+
         // GET: ListaPrecio
+        [Authorize]
         public ActionResult Index()
         {
             var cp = new BLLListaPrecio();
@@ -19,6 +21,7 @@ namespace SIGT_TFI.Controllers
             return View(lista);
         }
 
+        [Authorize]
         public ActionResult Buscar()
         {
             var bll = new BLLRecorrido();
@@ -27,6 +30,7 @@ namespace SIGT_TFI.Controllers
             ViewData["ListaPrecio"] = null;
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Buscar(FormCollection form)
         {
@@ -43,9 +47,12 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: ListaPrecio/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(ListaPrecio form)
         {
+            var user = User.Identity.Name;
+
             try
             {
                 var bllPrecio = new BLLListaPrecio();
@@ -60,8 +67,8 @@ namespace SIGT_TFI.Controllers
 
                 if (listaPrecio.fechainicial > listaPrecio.fechavalidacion)
                 {
-                    
-                    bllPrecio.CrearListaPrecio(listaPrecio);
+
+                    bllPrecio.CrearListaPrecio(listaPrecio, user);
                     ViewData["ListaPrecio"] = bllPrecio.ListByRecorrido(listaPrecio.idrecorrido).ToList();
                     ViewData["Recorrido"] = bllrecorrido.ListAll();
                     TempData["Error"] = "El precio fue cargado correctamente";
@@ -97,6 +104,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: ListaPrecio/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -113,6 +121,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: ListaPrecio/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             return View();

@@ -12,8 +12,8 @@ namespace BLL
 {
     public class BLLCobranza
     {
-
-        public void CrearCobranzaDetalle(List<Recibo> recibos)
+        BLLBitacoraSQL logSQL = new BLLBitacoraSQL();
+        public void CrearCobranzaDetalle(List<Recibo> recibos, string user)
         {
             var DAC = new DALCobranza();
             var id = recibos.FirstOrDefault().idcobranza;
@@ -26,10 +26,12 @@ namespace BLL
 
                 }
                 DAC.CrearTotales(id);
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = "Cobranz aDetalle " + Convert.ToString(id), tipo = "negocio", Usuario = user });
+
             }
             catch (Exception ex)
             {
-                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = user, CustomError = ex.StackTrace });
                 throw ex;
             }
 
@@ -44,13 +46,13 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = "", CustomError = ex.StackTrace });
                 throw ex;
             }
 
         }
 
-        public Cobranza CrearCobranzaCabecera(Cobranza cobranza)
+        public Cobranza CrearCobranzaCabecera(Cobranza cobranza, string user)
         {
             var DAC = new DALCobranza();
             try
@@ -60,7 +62,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = user, CustomError = ex.StackTrace });
                 throw ex;
             }
 

@@ -32,7 +32,7 @@
     }
 }
 
-<h2>Alta de traslado</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.Agregar</h2>
 
 @*@if (TempData["Notification"] != null)
 {
@@ -50,11 +50,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Traslado</h4>
+        <h4>@SIGT_TFI.Resources.HomeTexts.Traslado</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.NumeroTraslado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NumeroTraslado, @SIGT_TFI.Resources.HomeTexts.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumeroTraslado, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumeroTraslado, "", new { @class = "text-danger" })
@@ -62,7 +62,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" , id="fecha" })
+            @Html.LabelFor(model => model.Fecha, @SIGT_TFI.Resources.HomeTexts.Fecha, htmlAttributes: new { @class = "control-label col-md-2" , id="fecha" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" , @type = "date" } })
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
@@ -71,7 +71,7 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdTransporte, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdTransporte, @SIGT_TFI.Resources.HomeTexts.Transporte, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdTransporte", listadoTransporte, new { @class = "form-control dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.IdTransporte, "", new { @class = "text-danger" })
@@ -79,7 +79,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdRecorrido, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdRecorrido, @SIGT_TFI.Resources.HomeTexts.Recorrido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdRecorrido", listadoRecorrido ,new { @class = "form-control dropdown-toggle"})
                 @Html.ValidationMessageFor(model => model.IdRecorrido, "", new { @class = "text-danger" })
@@ -87,7 +87,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Carga, htmlAttributes: new { @class = "control-label col-md-2"  })
+            @Html.LabelFor(model => model.Carga, @SIGT_TFI.Resources.HomeTexts.Carga, htmlAttributes: new { @class = "control-label col-md-2"  })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Carga, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Carga, "", new { @class = "text-danger" })
@@ -97,7 +97,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Crear" class="btn btn-primary" />
             </div>
           
         </div>

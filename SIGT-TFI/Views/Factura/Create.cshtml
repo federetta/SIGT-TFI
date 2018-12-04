@@ -11,11 +11,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Factura</h4>
+        <h4>@SIGT_TFI.Resources.HomeTexts.Facturas</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.NumeroFactura, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NumeroFactura, @SIGT_TFI.Resources.HomeTexts.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumeroFactura, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumeroFactura, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdTipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdTipo, @SIGT_TFI.Resources.HomeTexts.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdTipo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdLetra, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdLetra, @SIGT_TFI.Resources.HomeTexts.Letra, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdLetra, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IdLetra, "", new { @class = "text-danger" })
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaFactura, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FechaFactura, @SIGT_TFI.Resources.HomeTexts.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FechaFactura, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FechaFactura, "", new { @class = "text-danger" })
@@ -47,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaInicialTraslado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FechaInicialTraslado, @SIGT_TFI.Resources.HomeTexts.FechaiTraslado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FechaInicialTraslado, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FechaInicialTraslado, "", new { @class = "text-danger" })
@@ -55,7 +55,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaFinalTraslado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FechaFinalTraslado, @SIGT_TFI.Resources.HomeTexts.FechafTraslado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FechaFinalTraslado, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FechaFinalTraslado, "", new { @class = "text-danger" })
@@ -63,7 +63,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdCliente, @SIGT_TFI.Resources.HomeTexts.Cliente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdCliente, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
@@ -71,7 +71,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdTraslado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdTraslado, @SIGT_TFI.Resources.HomeTexts.Traslado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdTraslado, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IdTraslado, "", new { @class = "text-danger" })
@@ -88,12 +88,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Volver, "Index")
 </div>

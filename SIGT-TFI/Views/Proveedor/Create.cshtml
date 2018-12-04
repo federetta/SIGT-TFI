@@ -23,11 +23,11 @@
     
     <div class="form-horizontal">
         <hr />
-        <h4>Crear Proveedores</h4>
+        <h4>@SIGT_TFI.Resources.HomeTexts.Crear @SIGT_TFI.Resources.HomeTexts.Proveedores</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.RazonSocial, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RazonSocial, @SIGT_TFI.Resources.HomeTexts.RazonSocial, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.RazonSocial, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RazonSocial, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NombreFantasia, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NombreFantasia, @SIGT_TFI.Resources.HomeTexts.Nombrefantasia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NombreFantasia, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NombreFantasia, "", new { @class = "text-danger" })
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Cuit, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Cuit, @SIGT_TFI.Resources.HomeTexts.Cuit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Cuit, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Cuit, "", new { @class = "text-danger" })
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Tipo_Contribuyente, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tipo_Contribuyente, @SIGT_TFI.Resources.HomeTexts.TipoContribuyente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Tipo_Contribuyente", listadoTipoContribuyente, new { @class = "form-control dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.Tipo_Contribuyente, "", new { @class = "text-danger" })
@@ -60,7 +60,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Agregar" class="btn btn-primary" />
             </div>
         </div>
     </div>

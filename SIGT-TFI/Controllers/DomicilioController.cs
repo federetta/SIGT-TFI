@@ -11,6 +11,7 @@ namespace SIGT_TFI.Controllers
     public class DomicilioController : Controller
     {
         // GET: Domicilio
+        [Authorize]
         public ActionResult Index(int id)
         {
             var cp = new BLLDomicilio();
@@ -26,12 +27,14 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Domicilio/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Domicilio/Create
+        [Authorize]
         public ActionResult Create(int id)
         {
             var blllocalidad = new BLLLocalidad();
@@ -46,6 +49,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Domicilio/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Domicilio domicilio, int id)
         {
@@ -66,12 +70,14 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Domicilio/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             return View();
         }
 
         // POST: Domicilio/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {

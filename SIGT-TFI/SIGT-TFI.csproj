@@ -254,6 +254,7 @@
     <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BitacoraController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CobranzaController.cs" />
     <Compile Include="Controllers\ContactoController.cs" />
@@ -494,6 +495,7 @@
     <Content Include="Views\Shared\_Messages.cshtml" />
     <Content Include="Views\Shared\_MessagesFixed.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Bitacora\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -519,6 +521,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{b92870d1-13af-4549-af0b-b0ce0d6b4872}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{0bc75d30-9605-4b1b-87c3-f6c3738f338f}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

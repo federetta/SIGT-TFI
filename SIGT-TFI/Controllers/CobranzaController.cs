@@ -10,7 +10,8 @@ namespace SIGT_TFI.Controllers
 {
     public class CobranzaController : Controller
     {
-        // GET: Cobranza/Create
+        [Authorize]
+
         public ActionResult Create()
         {
             var btc = new BLLEntidadBancaria();
@@ -23,6 +24,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Cobranza/Create/Detalle
+        [Authorize]
         public ActionResult CreateDetalle(Cobranza cobranza)
         {
             var btc = new BLLEntidadBancaria();
@@ -33,6 +35,7 @@ namespace SIGT_TFI.Controllers
             ViewData["Cliente"] = bllempresa.AllCliente();
             return View();
         }
+        [Authorize]
         [HttpPost]
         // GET: Cobranza/Create/Detalle
         public ActionResult GenerarCobranza(FormCollection form)
@@ -69,7 +72,9 @@ namespace SIGT_TFI.Controllers
 
             }
             var bll = new BLLCobranza();
-            bll.CrearCobranzaDetalle(lista);
+            var user = User.Identity.Name;
+
+            bll.CrearCobranzaDetalle(lista,user);
                        
 
             return RedirectToAction("Create");
@@ -77,13 +82,16 @@ namespace SIGT_TFI.Controllers
 
 
         // POST: Cobranza/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Cobranza cobranza)
         {
             try
             {
                 var bll = new BLLCobranza();
-                bll.CrearCobranzaCabecera(cobranza);
+                var user = User.Identity.Name;
+
+                bll.CrearCobranzaCabecera(cobranza, user);
                 ViewBag.Mesagge = "lala";
                 return RedirectToAction("CreateDetalle", new { id = cobranza.IdCobranzaCabecera });
             }

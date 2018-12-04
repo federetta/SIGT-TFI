@@ -14,20 +14,20 @@
         listadoCliente.Add(elemento);
     }
 }
-<h2>Crear Cobranza</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.CrearCobranza</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Cobranza</h4>
+        <h4>@SIGT_TFI.Resources.HomeTexts.Cobranza</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumeroCobranza, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NumeroCobranza, @SIGT_TFI.Resources.HomeTexts.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumeroCobranza, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumeroCobranza, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaCobranza, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FechaCobranza, @SIGT_TFI.Resources.HomeTexts.Fecha , htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FechaCobranza, new { htmlAttributes = new { @class = "form-control" , @type = "date" } })
                 @Html.ValidationMessageFor(model => model.FechaCobranza, "", new { @class = "text-danger" })
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2"  })
+            @Html.LabelFor(model => model.IdCliente, @SIGT_TFI.Resources.HomeTexts.Cliente , htmlAttributes: new { @class = "control-label col-md-2"  })
             <div class="col-md-10">
                 @Html.DropDownList("IdCliente", listadoCliente, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
                 @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
@@ -52,7 +52,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Agregar Recibos" class="btn btn-default" />
+                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.AgregarRecibos" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
     </script>
 }
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Volver, "Index")
 </div>
 
 

@@ -12,34 +12,34 @@
 
 }
 
-<h2>Domicilios</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.Domicilio</h2>
 
 <p>
-    @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink(SIGT_TFI.Resources.HomeTexts.Agregar, "Create", new { id }, new { @class = "btn btn-primary btn-large" })
 </p>
 <table class="table">
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.Calle)
+            @SIGT_TFI.Resources.HomeTexts.Calle
+            </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Numero
+            </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Localidad
+            </th>
+        <th>
+            @SIGT_TFI.Resources.HomeTexts.Piso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Numero)
+            @SIGT_TFI.Resources.HomeTexts.Depto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdLocalidad)
+            @SIGT_TFI.Resources.HomeTexts.CodigoPostal
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Piso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Depto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CodigoPostal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdProvincia)
+            @SIGT_TFI.Resources.HomeTexts.Provincia
         </th>
         <th></th>
     </tr>
@@ -88,28 +88,18 @@
                 @Html.DisplayFor(modelItem => provincia)
             </td>
             <td>
-                <a class="fancy-text" href="http://maps.google.com/maps?q=@item.Calle+@item.Numero+@localidad+@provincia&t=h&z=17" onclick="void (0);">
-                    @Html.DisplayFor(modelItem => item.Calle)
-                    @Html.DisplayFor(modelItem => item.Numero),
-                    @Html.DisplayFor(modelItem => localidad),
-                    @Html.DisplayFor(modelItem => provincia)
+                <a id="various3" class="btn btn-info" href="https://maps.google.com/maps?width=100%&height=600&hl=es&q=+@item.Calle+%20+@item.Numero+%20+@localidad+(SIGT)&ie=UTF8&t=&z=14&iwloc=B&output=embed" onclick="void (0);">
+                   @SIGT_TFI.Resources.HomeTexts.Localizar
                 </a>
 
-                <a class="various iframe" href="http://maps.google.com/?output=embed&amp;f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=London+Eye,+County+Hall,+Westminster+Bridge+Road,+London,+United+Kingdom&amp;hl=lv&amp;ll=51.504155,-0.117749&amp;spn=0.00571,0.016512&amp;sll=56.879635,24.603189&amp;sspn=10.280244,33.815918&amp;vpsrc=6&amp;hq=London+Eye&amp;radius=15000&amp;t=h&amp;z=17">Google maps (iframe)</a>
+                @*<src="https://maps.google.com/maps?width=100%&height=600&hl=es&q=Paunero%201879%20martinez+(SIGT)&ie=UTF8&t=&z=14&iwloc=B&output=embed"*@
+                @*<a id="various3" href="http://maps.google.com/?output=embed&amp;f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=London+Eye,+County+Hall,+Westminster+Bridge+Road,+London,+United+Kingdom&amp;hl=lv&amp;ll=51.504155,-0.117749&amp;spn=0.00571,0.016512&amp;sll=56.879635,24.603189&amp;sspn=10.280244,33.815918&amp;vpsrc=6&amp;hq=London+Eye&amp;radius=15000&amp;t=h&amp;z=17">Iframe</a>*@
             </td>
         </tr>
     }
 
 </table>
-XHTML
 
-<div class="fancy-text" href="#moreInfo" onclick="void (0);">
-    Some info
-</div>
-
-<div id="moreInfo" style="display: none">
-    My awesome text
-</div>
 
 
 @section Scripts {
@@ -122,7 +112,14 @@ XHTML
         $(document).ready(function () {
             $(".fancy-text").fancybox();
         });
-
+        $("#various3").fancybox({
+            'width': '75%',
+            'height': '75%',
+            'autoScale': false,
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'type': 'iframe'
+        });
         $(document).ready(function () {
             $(".various iframet").fancybox();
         });

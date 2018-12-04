@@ -4,41 +4,41 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
     <div><a href="@Url.Action("ExportToXML")"class="btn btn-warning"> Report XML </a></div> 
 </p>
 <a href="@Url.Action("ExportToXLS", "Traslado")" class="btn btn-warning">
-    Exportar Excel
+    @SIGT_TFI.Resources.HomeTexts.Exportar
 </a>
 <p>
     @using (Html.BeginForm("Index", "Traslado", FormMethod.Get))
     {
-        <b>Buscar por Nombre:</b>
-        @Html.TextBox("Search") <input type="submit" value="Search" />
+    <b>@SIGT_TFI.Resources.HomeTexts.BuscarPor:</b>
+        @Html.TextBox("Search") <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" />
     }
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NumeroTraslado)
+            @SIGT_TFI.Resources.HomeTexts.Numero
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha)
+            @SIGT_TFI.Resources.HomeTexts.Fecha
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdTransporte)
+            @SIGT_TFI.Resources.HomeTexts.Transporte
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdRecorrido)
+            @SIGT_TFI.Resources.HomeTexts.Recorrido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Carga)
+            @SIGT_TFI.Resources.HomeTexts.Carga
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Estado)
+            @SIGT_TFI.Resources.HomeTexts.Estado
         </th>
         <th></th>
     </tr>
@@ -63,11 +63,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
+        
     </tr>
 }
 

@@ -11,6 +11,7 @@ namespace SIGT_TFI.Controllers
     public class TransporteController : Controller
     {
         // GET: Transporte
+        [Authorize]
         public ActionResult Index(int id)
         {
             var cp = new BLL.BLLTransporte();
@@ -21,12 +22,14 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Transporte/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Transporte/Create
+        [Authorize]
         public ActionResult Create(int id)
         {
             var blltipocontacto = new BLLTipoContacto();
@@ -38,6 +41,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Transporte/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Transporte transporte, int id)
         {

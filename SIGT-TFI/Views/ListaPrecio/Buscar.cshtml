@@ -15,7 +15,7 @@
         listadoRecorrido.Add(elemento);
     }
 }
-<h2>Buscar</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.Buscar</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -23,7 +23,7 @@
     
     <div class="form-horizontal">
         <div class="col-sm-12">
-            <h4>Buscar</h4>
+            <h4>@SIGT_TFI.Resources.HomeTexts.Buscar</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+                    <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" class="btn btn-primary btn-lg btn-block" />
                 </div>
             </div>
 
@@ -57,16 +57,16 @@
                         <label>ID</label>
                     </th>
                     <th>
-                        <label>Fecha Inicial</label>
+                        <label>@SIGT_TFI.Resources.HomeTexts.FechaiTraslado</label>
                     </th>
                     <th>
-                        <label>Fecha Final</label>
+                        <label>@SIGT_TFI.Resources.HomeTexts.FechafTraslado</label>
                     </th>
                     <th>
-                        <label>Precio</label>
+                        <label>@SIGT_TFI.Resources.HomeTexts.Precio</label>
                     </th>
                     <th>
-                        <label>Comision</label>
+                        <label>@SIGT_TFI.Resources.HomeTexts.Comision</label>
                     </th>
                 </tr>
                 @foreach (var std in ViewData["ListaPrecio"] as IList<Entities.ListaPrecio>)
@@ -104,10 +104,10 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>Ingresar</h4>
+                    <h4>@SIGT_TFI.Resources.HomeTexts.Crear</h4>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.fechainicial, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.fechainicial, @SIGT_TFI.Resources.HomeTexts.FechaiTraslado, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.fechainicial, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                                 @Html.ValidationMessageFor(model => model.fechainicial, "", new { @class = "text-danger" })
@@ -117,7 +117,7 @@
                         @Html.Hidden("fechavalidacion", TempData["fecha"])
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.precio, @SIGT_TFI.Resources.HomeTexts.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.comision, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.comision, @SIGT_TFI.Resources.HomeTexts.Comision, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.comision, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.comision, "", new { @class = "text-danger" })
@@ -134,7 +134,7 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Agregar" class="btn btn-primary btn-lg btn-block" />
+                                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Agregar" class="btn btn-primary btn-lg btn-block" />
                             </div>
                         </div>
                     </div>

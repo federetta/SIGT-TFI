@@ -5,21 +5,21 @@
     var id = Url.RequestContext.RouteData.Values["id"];
 }
 
-<h2>Listado de Recorridos por obra</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.listrecorridosporobra</h2>
 
 <p>
-    @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Recorridos, "Create", new { id }, new { @class = "btn btn-primary btn-large" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @SIGT_TFI.Resources.HomeTexts.Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Inicio)
+            @SIGT_TFI.Resources.HomeTexts.FechaiTraslado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fin)
+            @SIGT_TFI.Resources.HomeTexts.FechafTraslado
         </th>
         <th></th>
     </tr>
@@ -44,5 +44,5 @@
 </table>
 
 <div>
-    @Html.ActionLink("Volver", "Index", "Obra", new { id }, null)
+    @Html.ActionLink(SIGT_TFI.Resources.HomeTexts.Volver, "Index", "Obra", new { id }, null)
 </div>

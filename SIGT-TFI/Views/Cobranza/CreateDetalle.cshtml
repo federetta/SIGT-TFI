@@ -40,7 +40,7 @@
     }
 }
 
-<h2>Create</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.AgregarRecibos</h2>
 
 <form id="formagregar">
     <div class="form-horizontal">
@@ -48,7 +48,7 @@
         <div class="col-sm-4">
             <div class="form-group">
                 <div class="col-md-2">
-                    <label>Medio</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Medio</label>
                 </div>
                 <div class="col-md-10">
                     @Html.DropDownList("IdMedioPago", listadoMedioPago, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
@@ -60,13 +60,13 @@
                     <label>Fecha Cheque</label>
                 </div>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.FechaRecibo, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.EditorFor(model => model.FechaRecibo, @SIGT_TFI.Resources.HomeTexts.Fecha , new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                     @Html.ValidationMessageFor(model => model.FechaRecibo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Directo, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Directo, @SIGT_TFI.Resources.HomeTexts.Directo , htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="checkbox">
                         @Html.EditorFor(model => model.Directo)
@@ -80,7 +80,7 @@
         <div class="col-sm-4">
             <div class="form-group">
                 <div class="col-md-2">
-                    <label>Banco</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Banco</label>
                 </div>
                 <div class="col-md-10">
                     @Html.DropDownList("IdEntidadBancaria", listadoEntidadBancaria, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
@@ -91,7 +91,7 @@
 
             <div class="form-group">
                 <div class="col-md-2">
-                    <label>Plazo</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Plazo</label>
                 </div>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.PlazoRecibo, new { htmlAttributes = new { @class = "form-control" } })
@@ -103,7 +103,7 @@
 
             <div class="form-group">
                 <div class="col-md-2">
-                    <label>Documento</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Documento</label>
                 </div>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.DocLibrador, new { htmlAttributes = new { @class = "form-control" } })
@@ -120,7 +120,7 @@
 
             <div class="form-group">
                 <div class="col-md-2">
-                    <label>N° Cheque</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.NumeroCheque</label>
                 </div>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.NumeroRecibo, new { htmlAttributes = new { @class = "form-control" } })
@@ -131,7 +131,7 @@
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Endosable, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Endosable, @SIGT_TFI.Resources.HomeTexts.Endosable , htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="checkbox">
                         @Html.EditorFor(model => model.Endosable)
@@ -147,7 +147,7 @@
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Monto, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Monto, @SIGT_TFI.Resources.HomeTexts.Monto , htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Monto, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
@@ -155,7 +155,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Agregar" class="btn btn-primary btn-lg btn-block" />
+                    <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Agregar" class="btn btn-primary btn-lg btn-block" />
                 </div>
             </div>
         </div>
@@ -169,42 +169,42 @@
     <table class="table" id="tabla">
         <tr>
             <th>
-                Medio
+                @SIGT_TFI.Resources.HomeTexts.Medio
             </th>
             <th>
-                Banco
+                @SIGT_TFI.Resources.HomeTexts.Banco
             </th>
             <th>
-                Numero
+                @SIGT_TFI.Resources.HomeTexts.Numero
             </th>
             <th>
-                Fecha
+                @SIGT_TFI.Resources.HomeTexts.Fecha
             </th>
             <th>
-                Plazo
+                @SIGT_TFI.Resources.HomeTexts.Plazo
             </th>
             <th>
-                Endosable
+                @SIGT_TFI.Resources.HomeTexts.Endosable
             </th>
             <th>
-                Directo
+                @SIGT_TFI.Resources.HomeTexts.Directo
             </th>
             <th>
-                Documento
+                @SIGT_TFI.Resources.HomeTexts.Documento
             </th>
             <th>
-                Cabecera
+                @SIGT_TFI.Resources.HomeTexts.Cabecera
             </th>
             <th>
-                Monto
+                @SIGT_TFI.Resources.HomeTexts.Monto
             </th>
             <th>
-                Acciones
+                @SIGT_TFI.Resources.HomeTexts.Acciones
             </th>
         </tr>
         <tfoot>
             <tr>
-                <th colspan="8">Total:</th>
+                <th colspan="8">@SIGT_TFI.Resources.HomeTexts.Total:</th>
                 <th>
                     <span id="total">$ 0.00</span>
                 </th>
@@ -217,11 +217,11 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-4">
-                <input type="submit" value="Crear" class="btn btn-primary btn-lg btn-block" />
+                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Crear" class="btn btn-primary btn-lg btn-block" />
 
             </div>
                 <div class="col-md-4">
-                    <input type="submit" value="Anular" class="btn btn-primary btn-lg btn-block" />
+                    <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Anular" class="btn btn-primary btn-lg btn-block" />
 
                 </div>
             

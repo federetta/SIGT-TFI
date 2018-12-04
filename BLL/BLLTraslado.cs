@@ -5,25 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Entities;
+using Services;
 
 namespace BLL
 {
     public class BLLTraslado
     {
         DALTraslado daltraslado = new DALTraslado();
-       
-        public Entities.Traslado CreateTraslado(Traslado objeto)
+        BLLBitacoraSQL logSQL = new BLLBitacoraSQL();
+        public Entities.Traslado CreateTraslado(Traslado objeto, string user)
         {
             try
             {
                 objeto.Estado = 2;
                 daltraslado.CreateTraslado(objeto);
-                // Guardo una bitacora Local
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = "Nuevo Traslado " + Convert.ToString(objeto.NumeroTraslado), tipo = "negocio", Usuario = user });
 
             }
             catch (Exception ex)
             {
-                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = user, CustomError = ex.StackTrace });
                 throw ex;
             }
             return objeto;

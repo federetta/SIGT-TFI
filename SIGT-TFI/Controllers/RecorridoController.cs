@@ -13,6 +13,7 @@ namespace SIGT_TFI.Controllers
     public class RecorridoController : Controller
     {
         // GET: Recorrido
+        [Authorize]
         public ActionResult Index(int id, string search, int? page)
         {
             var cp = new BLLRecorrido();
@@ -28,6 +29,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Contacto/Create
+        [Authorize]
         public ActionResult Create(int id)
         {
             var recorrido = new Recorrido();
@@ -37,6 +39,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Contacto/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Recorrido recorrido, int id)
         {
@@ -56,6 +59,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Recorrido/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -78,6 +82,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Recorrido/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

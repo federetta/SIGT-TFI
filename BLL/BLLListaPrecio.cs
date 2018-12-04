@@ -10,12 +10,15 @@ namespace BLL
 {
     public class BLLListaPrecio
     {
-        public ListaPrecio CrearListaPrecio(ListaPrecio objeto)
+        BLLBitacoraSQL logSQL = new BLLBitacoraSQL();
+
+        public ListaPrecio CrearListaPrecio(ListaPrecio objeto, string user)
         {
             try
             {
                 var DAC = new DALListaPrecio();
                 DAC.CrearListaPrecio(objeto);
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = "Nueva Lista Precio  " + Convert.ToString(objeto.id), tipo = "negocio", Usuario = user });
 
                 // Guardo una bitacora Local
                 //logLocal.CrearLog("NuevaFactura");
@@ -25,7 +28,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = user, CustomError = ex.StackTrace });
                 throw ex;
             }
         }

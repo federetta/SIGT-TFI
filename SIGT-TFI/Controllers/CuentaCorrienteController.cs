@@ -11,18 +11,21 @@ namespace SIGT_TFI.Controllers
     public class CuentaCorrienteController : Controller
     {
         // GET: CuentaCorriente
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: CuentaCorriente/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             return View();
         }
 
 
+        [Authorize]
         public ActionResult BuscarComprobantes()
         {
 
@@ -36,6 +39,7 @@ namespace SIGT_TFI.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult BuscarComprobantes(Cliente factura)
         {
@@ -58,6 +62,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: CuentaCorriente/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -80,6 +85,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: CuentaCorriente/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -102,6 +108,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: CuentaCorriente/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

@@ -28,6 +28,8 @@ namespace SIGT_TFI.Controllers
             return View(lista.Where(x => x.RazonSocial.ToUpper().StartsWith(search.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
 
         }
+        [Authorize]
+
         public ActionResult ExportToExcel(string search, int? page)
         {
             var gv = new GridView();
@@ -67,7 +69,8 @@ namespace SIGT_TFI.Controllers
             return View();
         }
 
-        // GET: Cliente/Create
+        [Authorize]
+
         public ActionResult CreateProveedor()
         {
             var be = new BLLEmpresa();
@@ -85,8 +88,9 @@ namespace SIGT_TFI.Controllers
         {
             try
             {
+                var user = User.Identity.Name;
                 BLLEmpresa bllempresa = new BLLEmpresa();
-                bllempresa.CreateCliente(cliente);
+                bllempresa.CreateCliente(cliente, user);
                 return RedirectToAction("Index");
             }
             catch
@@ -108,6 +112,8 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Empresa/Edit/5
+        [Authorize]
+
         [HttpPost]
         public ActionResult Edit(int id, Empresa proveedor)
         {

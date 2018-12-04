@@ -6,7 +6,7 @@
 
 }
 
-<h2>Listado de Transportes</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.listtranspor</h2>
 <br />
 @*@foreach (var item in Model)
 {
@@ -18,29 +18,29 @@
 
 <p>
   
-       @Html.ActionLink("Agregar", "Create", new { id } , new {@class = "btn btn-primary btn-large" })
+       @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Agregar, "Create", new { id } , new {@class = "btn btn-primary btn-large" })
 
 </p>
 <table class="table">
     <tr>
         
         <th>
-            @Html.DisplayNameFor(model => model.Marca)
+            @SIGT_TFI.Resources.HomeTexts.Marca
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Modelo)
+            @SIGT_TFI.Resources.HomeTexts.Modelo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tara)
+            @SIGT_TFI.Resources.HomeTexts.Tara
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Patente)
+            @SIGT_TFI.Resources.HomeTexts.Patente
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @SIGT_TFI.Resources.HomeTexts.Descripcion
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Titular)
+            @SIGT_TFI.Resources.HomeTexts.Titular
         </th>
         <th></th>
     </tr>

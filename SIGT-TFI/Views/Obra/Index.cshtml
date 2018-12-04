@@ -6,23 +6,23 @@
     var id = Url.RequestContext.RouteData.Values["id"];
 }
 
-<h2>Listado Obras</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.ListadoObras</h2>
 <br />
 
 <p>
-    @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Agregar, "Create", new { id }, new { @class = "btn btn-primary btn-large" })
 </p>
 <p>
     @using (Html.BeginForm("Index", "Obra", FormMethod.Get))
     {
-        <b>Buscar por Nombre:</b>
-        @Html.TextBox("Search") <input type="submit" value="Buscar" class="btn btn-primary"/>
+    <b>@SIGT_TFI.Resources.HomeTexts.BuscarPor:</b>
+        @Html.TextBox("Search") <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" class="btn btn-primary"/>
     }
 </p>
 <table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @SIGT_TFI.Resources.HomeTexts.Obra
         </th>
         <th></th>
     </tr>
@@ -34,7 +34,7 @@
         </td>
         <td>
            
-            <a href="@Url.Action("Index", "Recorrido", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Rutas!">
+            <a href="@Url.Action("Index", "Recorrido", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="@SIGT_TFI.Resources.HomeTexts.Recorridos">
                 <span class="fas fa-route"></span>
             </a>
         </td>
@@ -43,7 +43,7 @@
 
 </table>
 <div>
-    @Html.ActionLink("Volver", "Index", "Cliente")
+    @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Volver, "Index", "Cliente")
 </div>
 
     @section Scripts {

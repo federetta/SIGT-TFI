@@ -8,31 +8,31 @@
 }
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
-<h2>Proveedores</h2> 
+<h2>@SIGT_TFI.Resources.HomeTexts.Proveedores</h2> 
 <br />
 
 <p>
-    @Html.ActionLink("Nuevo Proveedor", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Crear, "Create", null, new { @class = "btn btn-primary" })
 </p>
 <p>
     @using (Html.BeginForm("Index","Proveedor", FormMethod.Get)) {
-    <b>Buscar por Nombre:</b>
-    @Html.TextBox("Search") <input type="submit" value="Buscar" class="btn btn-primary" />
+    <b>@SIGT_TFI.Resources.HomeTexts.BuscarPor:</b>
+    @Html.TextBox("Search") <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" class="btn btn-primary" />
     }
 </p>
 <table class="table table-striped">
     <tr>
         <th>
-            Razon Social
+            @SIGT_TFI.Resources.HomeTexts.RazonSocial
         </th>
         <th>
-            Nombre Fantasia 
+            @SIGT_TFI.Resources.HomeTexts.Nombrefantasia
         </th>
         <th>
-           Cuit
+            @SIGT_TFI.Resources.HomeTexts.Cuit
         </th>
         <th>
-            Tipo Contribuyente
+            @SIGT_TFI.Resources.HomeTexts.TipoContribuyente
         </th>
         
         <th></th>
@@ -71,14 +71,14 @@
             <span class="glyphicon glyphicon-search">
                 </span>
                 </a>|*@
-            <a href="@Url.Action("Index", "Transporte", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Camiones!">
+            <a href="@Url.Action("Index", "Transporte", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="@SIGT_TFI.Resources.HomeTexts.Transporte">
                 <span class="fas fa-truck"></span>
             </a>|
-            <a href="@Url.Action("Index", "Contacto", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Contactos!">
+            <a href="@Url.Action("Index", "Contacto", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="@SIGT_TFI.Resources.HomeTexts.Contactos">
                 <span class="far fa-envelope-open"></span>
             </a>
             |
-            <a href="@Url.Action("Index", "Domicilio", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="Domicilio!">
+            <a href="@Url.Action("Index", "Domicilio", new { id = item.id })" data-toggle="tooltip" data-placement="top" title="@SIGT_TFI.Resources.HomeTexts.Domicilio">
                 <span class="far fa-address-book"></span>
             </a>
 

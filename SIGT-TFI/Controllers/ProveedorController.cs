@@ -12,6 +12,7 @@ namespace SIGT_TFI.Controllers
 {
     public class ProveedorController : Controller
     {
+        [Authorize]
         // GET: Empresa
         public ActionResult Index(string search, int ? page)
         {
@@ -31,6 +32,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Empresa/Create
+        [Authorize]
         public ActionResult Create()
         {
             var be = new BLLEmpresa();
@@ -42,6 +44,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Cliente/Create
+        [Authorize]
         public ActionResult CreateProveedor()
         {
             var be = new BLLEmpresa();
@@ -55,12 +58,15 @@ namespace SIGT_TFI.Controllers
 
         // POST: Empresa/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Empresa proveedor)
         {
             try
             {
+                var user = User.Identity.Name;
+
                 BLLEmpresa bllempresa = new BLLEmpresa();
-                bllempresa.CreateProveedor(proveedor);
+                bllempresa.CreateProveedor(proveedor, user);
                 return RedirectToAction("Index");
             }
             catch
@@ -70,6 +76,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Empresa/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var btc = new BLLTipoContribuyente();
@@ -81,6 +88,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Empresa/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, Empresa proveedor)
         {
@@ -106,6 +114,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Empresa/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

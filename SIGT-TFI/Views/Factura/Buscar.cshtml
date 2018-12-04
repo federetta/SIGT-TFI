@@ -48,12 +48,12 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Buscar Traslados</h4>
+    <h4>@SIGT_TFI.Resources.HomeTexts.BuscarTraslados</h4>
    
     <div class="col-sm-4">
         <div class="form-group">
             <div class="col-md-2">
-                <label>Fecha Inicial</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.FechaiTraslado</label>
             </div>
             @*@Html.LabelFor(model => model.FechaInicialTraslado, htmlAttributes: new { @class = "control-label col-md-6" })*@
             <div class="col-md-10">
@@ -67,7 +67,7 @@
     <div class="col-sm-4">
         <div class="form-group">
             <div class="col-md-2">
-                <label>Fecha Final</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.FechafTraslado</label>
             </div>
             @*@Html.LabelFor(model => model.FechaFinalTraslado, htmlAttributes: new { @class = "control-label col-md-6" })*@
             <div class="col-md-10">
@@ -81,7 +81,7 @@
     <div class="col-sm-4">
         <div class="form-group">
             <div class="col-md-2">
-                <label>Cliente</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Cliente</label>
             </div>
             @*@Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
@@ -93,7 +93,7 @@
       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" class="btn btn-primary btn-lg btn-block" />
             </div>
         </div>
     </div>   
@@ -104,12 +104,12 @@
 {
     @Html.AntiForgeryToken()
 <div class="form-horizontal">
-    <h4>Factura</h4>
+    <h4>@SIGT_TFI.Resources.HomeTexts.Facturas</h4>
     @Html.HiddenFor(model => model.IdCliente)
     <div class="col-sm-4">
       
         <div class="form-group">
-            @Html.LabelFor(model => model.IdTipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdTipo, @SIGT_TFI.Resources.HomeTexts.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdTipoComprobante", listadoTipoComprobante, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
                 @Html.ValidationMessageFor(model => model.IdTipo, "", new { @class = "text-danger" })
@@ -121,7 +121,7 @@
        
         <div class="form-group">
 
-            @Html.LabelFor(model => model.IdLetra, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdLetra, @SIGT_TFI.Resources.HomeTexts.Letra, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdLetra", listadoLetra, new { htmlAttributes = new { @class = "form-control dropdown-toggle" } })
                 @Html.ValidationMessageFor(model => model.IdLetra, "", new { @class = "text-danger" })
@@ -132,7 +132,7 @@
     <div class="col-sm-4">
        
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaFactura, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FechaFactura, @SIGT_TFI.Resources.HomeTexts.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FechaFactura, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.FechaFactura, "", new { @class = "text-danger" })
@@ -141,7 +141,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Facturar" class="btn btn-primary btn-lg btn-block" />
+                <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Crear" class="btn btn-primary btn-lg btn-block" />
             </div>
         </div>
     </div>
@@ -155,34 +155,34 @@
                 <label>ID</label>
             </th>
             <th>
-                <label>Numero</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Numero</label>
             </th>
             <th>
-                <label>Fecha</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Fecha</label>
             </th>
             <th>
-                <label>Patente</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Patente</label>
             </th>
             <th>
-                <label>Obra</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Obra</label>
             </th>
             <th>
-                <label>Carga</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Carga</label>
             </th>
             <th>
-                <label>Precio</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Precio</label>
             </th>
             <th>
-                <label>Comision</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Comision</label>
             </th>
             <th>
-                <label>Total</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Total</label>
             </th>
             <th>
-                <label>Estado</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Estado</label>
             </th>
             <th>
-                <label>Seleccionar</label>
+                <label>@SIGT_TFI.Resources.HomeTexts.Seleccionar</label>
             </th>
 
             <th></th>

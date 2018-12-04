@@ -1,6 +1,5 @@
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\bin\Debug\Services.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\bin\Debug\Services.pdb
-C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\obj\Debug\Services.csprojAssemblyReference.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\obj\Debug\Services.dll
 C:\Users\Fede\Documents\Visual Studio 2017\Projects\SIGT-TFI\SIGT-TFI\Services\obj\Debug\Services.pdb

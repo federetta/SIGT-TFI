@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALBitacoraSQL.cs" />
     <Compile Include="DALContacto.cs" />
     <Compile Include="DALCuentaCorriente.cs" />
     <Compile Include="DALDomicilio.cs" />

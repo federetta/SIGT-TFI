@@ -19,6 +19,7 @@ namespace SIGT_TFI.Controllers
             
             return View();
         }
+        [Authorize]
         public ActionResult Buscar()
         {
             var btc = new BLLTipoContribuyente();
@@ -33,6 +34,7 @@ namespace SIGT_TFI.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult BuscarComprobante()
         {
            
@@ -47,6 +49,7 @@ namespace SIGT_TFI.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult BuscarComprobante(Cliente factura)
         {
@@ -64,6 +67,7 @@ namespace SIGT_TFI.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public ActionResult Buscar(Cliente factura)
         {
@@ -87,6 +91,7 @@ namespace SIGT_TFI.Controllers
                 return View();
             }
         }
+        [Authorize]
         [HttpPost]
         public ActionResult GenerarFactura(FormCollection form)
         {
@@ -101,20 +106,22 @@ namespace SIGT_TFI.Controllers
             factura.IdLetra = Convert.ToInt32(form["IdLetra"]);
             factura.FechaFactura = Convert.ToDateTime(form["FechaFactura"]);
             factura.IdCliente = Convert.ToInt32(form["IdCliente"]);
-            bll.CrearFactura(factura);
+            var user = User.Identity.Name;
+
+            bll.CrearFactura(factura, user);
             var Lista = new System.Collections.ArrayList();
             Lista.Add(new Cliente());
             foreach (int value in translations)
             {
                 factura.IdTraslado = value;
                
-                bll.CrearFacturaDetalle(factura);
+                bll.CrearFacturaDetalle(factura, user);
             }
-            bll.CrearTotales(factura);
+            bll.CrearTotales(factura, user);
 
             return RedirectToAction("BuscarComprobante");
         }
-
+        
         public ActionResult PDF(Cliente Factura)
         {
                  GIdFactura = Factura.id;
@@ -123,7 +130,7 @@ namespace SIGT_TFI.Controllers
        
 
         }
-
+        
         public ActionResult PDF4()
         {
             var bll = new BLLFactura();
@@ -133,7 +140,7 @@ namespace SIGT_TFI.Controllers
             return View(Vista);
 
         }
-
+        
         private FacturaPDFViewModels MapVista(List<Cliente> doc)
         {
             FacturaPDFViewModels model = new FacturaPDFViewModels();

@@ -29,13 +29,13 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Buscar Comprobantes</h4>
+        <h4>@SIGT_TFI.Resources.HomeTexts.Buscar</h4>
         <hr />
 
         <div class="col-sm-4">
             <div class="form-group">
                 <div class="col-md-2">
-                    <label>Cliente</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Cliente</label>
                 </div>
                 @*@Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
@@ -56,7 +56,7 @@
            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Buscar" class="btn btn-primary btn-lg btn-block" />
+                    <input type="submit" value="@SIGT_TFI.Resources.HomeTexts.Buscar" class="btn btn-primary btn-lg btn-block" />
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
     </div>
 }
 <hr />
-<h4>Facturas</h4>
+<h4>@SIGT_TFI.Resources.HomeTexts.Facturas</h4>
 
 @using (Html.BeginForm("BuscarComprobante", "CuentaCorriente", FormMethod.Post))
 {
@@ -76,25 +76,25 @@
             <tr>
                 
                 <th>
-                    <label>Tipo</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Tipo</label>
                 </th>
                 <th>
-                    <label>Letra</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Letra</label>
                 </th>
                 <th>
-                    <label>Fecha</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Fecha</label>
                 </th>
                 <th>
-                    <label>Numero</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Numero</label>
                 </th>
                 <th>
-                    <label>Subtotal</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Subtotal</label>
                 </th>
                 <th>
-                    <label>Iva</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Iva</label>
                 </th>
                 <th>
-                    <label>Total</label>
+                    <label>@SIGT_TFI.Resources.HomeTexts.Total</label>
                 </th>
 
             </tr>
@@ -136,7 +136,7 @@
 
     }
     <hr />
-    <h4>Cobranzas</h4>
+    <h4>@SIGT_TFI.Resources.HomeTexts.Cobranza</h4>
     if (ViewData["ListaCobranzas"] != null)
     {
         <div class="row">
@@ -144,13 +144,13 @@
                 <table class="table table-striped">
                     <tr>
                         <th>
-                            <label>Numero</label>
+                            <label>@SIGT_TFI.Resources.HomeTexts.Numero</label>
                         </th>
                         <th>
-                            <label>Fecha</label>
+                            <label>@SIGT_TFI.Resources.HomeTexts.Fecha</label>
                         </th>
                         <th>
-                            <label>Total</label>
+                            <label>@SIGT_TFI.Resources.HomeTexts.Total</label>
                         </th>
                     </tr>
                     @foreach (var std in ViewData["ListaCobranzas"] as IList<Entities.Cliente>)
@@ -176,7 +176,7 @@
                 <table class="table table-striped">
                     <tr>
                         <th>
-                            <label>Saldo</label>
+                            <label>@SIGT_TFI.Resources.HomeTexts.Saldo</label>
                         </th>
 
                     </tr>

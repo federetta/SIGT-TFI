@@ -13,6 +13,7 @@ namespace SIGT_TFI.Controllers
     public class ObraController : Controller
     {
         // GET: Obra
+        [Authorize]
         public ActionResult Index(int id, string search, int? page)
         {
             var cp = new BLLObra();
@@ -22,12 +23,14 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Obra/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Contacto/Create
+        [Authorize]
         public ActionResult Create(int id)
         {
             var obra = new Obra();
@@ -37,6 +40,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Contacto/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Obra obra, int id)
         {
@@ -56,6 +60,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // POST: Obra/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -72,6 +77,7 @@ namespace SIGT_TFI.Controllers
         }
 
         // GET: Obra/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             return View();

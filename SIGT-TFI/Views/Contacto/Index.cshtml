@@ -7,18 +7,18 @@
     var tipo = "TipoContacto";
 }
 
-<h2>Contactos</h2>
+<h2>@SIGT_TFI.Resources.HomeTexts.Contactos</h2>
 
 <p>
-    @Html.ActionLink("Agregar", "Create", new { id }, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink(@SIGT_TFI.Resources.HomeTexts.Agregar, "Create", new { id }, new { @class = "btn btn-primary btn-large" })
 </p>
 <table class="table">
     <tr>
         <th>
-            Tipo
+            @SIGT_TFI.Resources.HomeTexts.Tipo
         </th>
         <th>
-            Valor
+            @SIGT_TFI.Resources.HomeTexts.Valor
         </th>
         <th></th>
     </tr>

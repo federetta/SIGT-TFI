@@ -12,6 +12,7 @@ namespace BLL
 {
     public class BLLFactura
     {
+        BLLBitacoraSQL logSQL = new BLLBitacoraSQL();
 
         public List<Traslado> LISTAR_COMPROBANTE_DETALLE(Cliente objeto)
         {
@@ -39,6 +40,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
@@ -63,6 +65,8 @@ namespace BLL
 
 
                 }).ToList();
+
+
             }
             catch (Exception ex)
             {
@@ -154,7 +158,7 @@ namespace BLL
         ///     ''' </summary>
         ///     ''' <param name="objeto"></param>
         ///     ''' <returns></returns>
-        public Cliente CrearFactura(Cliente objeto)
+        public Cliente CrearFactura(Cliente objeto, string user)
         {
             try
             {
@@ -163,15 +167,13 @@ namespace BLL
                 objeto.NumeroFactura = ultimonumero.NumeroFactura;
 
                 DAC.CrearFactura(objeto);
-                // Guardo una bitacora Local
-                //logLocal.CrearLog("NuevaFactura");
                 //// Guardo una Bitacora en la DB
-                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = "Nueva Cabecera Factura  " + Convert.ToString(objeto.Cliente.RazonSocial) + "ID:" + Convert.ToString(objeto.IDComprobanteCabecera) + "Numero: " + Convert.ToString(objeto.numero), tipo = "negocio", Usuario = Sesion.sesion.Nombreusuario });
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = "Nueva Factura" + Convert.ToString(objeto.NumeroFactura), tipo = "negocio", Usuario = user });
                 return objeto;
             }
             catch (Exception ex)
             {
-                //logSQL.CrearBitacora(new Services.BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = Sesion.sesion.Nombreusuario, CustomError = ex.StackTrace });
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = user, CustomError = ex.StackTrace });
                 throw ex;
             }
         }
@@ -180,7 +182,7 @@ namespace BLL
         ///     '''     Creo el detalle de la Factura emitida.
         ///     ''' </summary>
         ///     ''' <param name="factura"></param>
-        public void CrearFacturaDetalle(Cliente factura)
+        public void CrearFacturaDetalle(Cliente factura, string user)
         {
             var DAC = new DALFactura();
             try
@@ -192,9 +194,13 @@ namespace BLL
                 try
                 {
                     DAC.CrearTotales(factura);
+                    logSQL.CrearBitacora(new BitacoraSQL() { mensaje = "Nuevo Detalle" + Convert.ToString(factura.NumeroFactura), tipo = "negocio", Usuario = user });
+
                 }
                 catch (Exception ex)
                 {
+                    logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = user, CustomError = ex.StackTrace });
+
                     throw ex;
 
                 }
@@ -215,7 +221,7 @@ namespace BLL
         }
 
 
-        public void CrearTotales(Cliente factura)
+        public void CrearTotales(Cliente factura, string user)
         {
             var DAC = new DALFactura();
         
@@ -225,7 +231,9 @@ namespace BLL
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
+                logSQL.CrearBitacora(new BitacoraSQL() { mensaje = ex.Message, tipo = "sistema", Usuario = user, CustomError = ex.StackTrace });
+
+                throw ex;
 
                 }
             
